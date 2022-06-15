@@ -1,0 +1,329 @@
+﻿ <script src="~/lib/jquery/dist/jquery.min.js"/>
+<script type="text/jscript">
+    BindGrid();
+      $(document).ready(function () {
+
+
+
+      })
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+  .form-inputs {
+            padding: 40px;
+            flex: 60%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .form-btn {
+            margin: 20px 0px;
+            background-color: #f6fe00;
+            color: black;
+            padding: 10px 40px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-row {
+            
+            padding: 10px 0px;
+            position: relative;
+        }
+
+        .form-row-field {
+            color:#000000;
+            position: absolute;
+            pointer-events: none;
+            transition: 0.5s;
+            top: 10px;
+            margin-left: 2em;
+        }
+
+        .form-row-field-input {
+            background-color: inherit;
+            display: block;
+            top: 10px;
+            transition: 0.5s;
+            margin-left: 1.5em;
+        }
+
+        .form-row-field-input:focus~label,input:not(:placeholder-shown) ~label {
+            top: -5px;
+            font-size: 12px;
+            color: #9b91f5;
+            font-weight: bold;
+        }
+		
+		 .fileCss {
+            top: -11px;
+			font-size: 14px;
+			color: #000000;
+			font-weight: bold;
+        }
+</style>
+<div class="Gridtable">
+  <section class="">
+      <div class="">
+        <div class="Imgcontainer"> 
+            <img class="CommanImage" src="/Images/41.jpg" />
+            
+            <div class="top-rightWhite1">Expense Master</div>
+        </div> 
+        </div> 
+    </section> 
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="card" style="width: 100%;">
+      
+              <div class="card-body">
+               <div class="row align-items-center my-0">
+        <div class="col">
+
+            <h2 class="">
+            </h2>
+
+        </div>
+        <div class="">
+           
+                <button type="button" class="btn mb-2 btn-outline-primary btm_mnl" onclick="GridShow(2)"><span class="fas fa-plus mr-2" aria-hidden="true"></span>Add</button>
+      
+        </div>
+    </div>
+     <div class="table-responsive" width="100%">
+                <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Category</th> 
+                     
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody id="bodyData">
+                  <tr>
+                    <td>Trident</td>
+                  </tr>
+                  
+                  </tbody> 
+                </table>
+              </div> 
+            </div>
+              </div> 
+
+        </div> 
+      </div> 
+    </section>
+</div> 
+
+
+<div class="GridView" style="display:none">
+   
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="card" style="width: 100%;">
+      
+              <div class="card-body">
+                                          <div class="row align-items-center my-0">
+            <div class="row col-12">
+                        <div class="col-2">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                        
+                        </div>
+                        <div class="col-8">
+                        <h2 class="h3 mb-0 text-center">Expense Master - Add</h2>
+                        </div>
+                        <div class="col-2">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printResult()" src="/Images/Print.jpg">
+                        
+                        </div>
+                        </div>
+
+
+                        </div>
+ 
+   <div class="form-inputs">
+        <div class="row">
+		
+		  
+		 <div class="col-sm-6">
+            <div class="form-row form-group">
+                <input type="text" id="txttransactioncategory" placeholder=" " class="form-row-field-input form-control">
+                <label for="POST-name" class="form-row-field">Category</label>
+            </div>
+			</div>
+
+
+			
+        </div>
+        <div class="text-center mt-5 mb-3">
+                <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
+                <a href="#" class="btn btn-md btn-primary"  onclick="clearAll()">Back</a>
+              </div> 
+    </div>
+    <!--end-->
+            </div>
+              </div> 
+
+        </div> 
+      </div> 
+    </section>
+</div> 
+
+<script src="/js/CommonFunction.js"></script> 
+<script> 
+    $(document).ready(function () {
+  BindGrid();  
+   GridShow(1);
+         $('#Menu_Parameter_master').show();
+          $('a.nav-link.ExpenseCategory').addClass("active");
+          $('#Menu_Parameter_master').css({'display':'block'});
+ 
+    })
+  
+async function BindGrid() {          
+    var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+    var data = {"trnId":0};
+    data = await callController(url, data);
+    console.log(data);
+    
+    $('h2.h3.mb-0.text-center').text('Expense Master - Add');
+    Gridappend(data.expenseCategoryResponse);
+}
+async function _View(csId) {         
+    debugger;
+    var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+    var data = {"trnId":csId};
+     cCId = csId;
+    data = await callController(url, data);
+    console.log(data.expenseCategoryResponse);
+    data=data.expenseCategoryResponse;
+}
+function GridShow(Flag){
+    if(Flag==1){
+        $('.Gridtable').show();
+        $('.GridView').hide();
+    }
+    else{        
+        $('.Gridtable').hide();
+        $('.GridView').show();
+    }
+}
+var cCId = 0;
+var type ='';
+async function _Edit(CustId){
+    debugger;
+      var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+    var data = {"trnId":CustId};
+    data = await callController(url, data);
+    GridShow(2);
+    type = 'update';
+    cCId = CustId;
+    $('h2.h3.mb-0.text-center').text('Expense Master - Edit');
+    $('#txttransactioncategory').val(data['expenseCategoryResponse'][0].trnCategory);
+      $("#txttransactioncategory").prop('disabled', false); 
+    $("#_btnSubmit").show(); 
+}
+async function _Delete(csId){
+     var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+    var data = {"trnId":csId};
+    data = await callController(url, data);
+    GridShow(2);
+    type = 'delete';
+    cCId = csId;
+    $('h2.h3.mb-0.text-center').text('Expense Master - Delete');
+    $('#txttransactioncategory').val('');
+    $('#txttransactioncategory').val(data['expenseCategoryResponse'][0].trnCategory);
+    $("#txttransactioncategory").prop('disabled', true); 
+    $("#_btnSubmit").show(); 
+}
+async function _View(csId){
+     var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+    var data = {"trnId":csId};
+    data = await callController(url, data);
+    GridShow(2);
+    type = 'delete';
+    
+    $('h2.h3.mb-0.text-center').text('Expense Master - View');
+    cCId = csId;
+    $('#txttransactioncategory').val('');
+    $('#txttransactioncategory').val(data['expenseCategoryResponse'][0].trnCategory);
+    $("#txttransactioncategory").prop('disabled', true); 
+    $("#_btnSubmit").hide(); 
+}
+function Gridappend(data) {
+    debugger;
+    var item = '';
+    var Arr;
+    if (data!=undefined) 
+    {
+    if (data.length > 0) {
+        Arr = data;
+        for (var i = 0; i < Arr.length; i++) 
+        {
+            var sno=i+1;
+            item += '<tr>';
+            item += '<td>' + sno+ '</td>';
+            item += '<td>' + Arr[i].trnCategory + '</td>';            
+  
+            item += '  <td>';
+            item += ActionsButtons(Arr[i].trnId)
+            item += '</td>';
+            item += ' </tr>';
+        }
+        $('#bodyData').html('').append(item);
+    } else {
+        $('#bodyData').html('').append('<tr><td colspan="10" style="text-align:center">No records found.</td></tr>');
+    }
+    }
+    else {
+        $('#bodyData').html('').append('<tr><td colspan="10" style="text-align:center">No records found.</td></tr>');
+    }
+}
+
+async function IUDEmpDetails(){
+debugger;
+    var data = 
+    {
+        "trnId":cCId,
+        "trnCategory":$('#txttransactioncategory').val(),
+    };
+    if(cCId == 0)
+    {
+        var url = '@Url.Action("Add", "ExpenseCategory")';
+        data = await callController(url, data);
+        toastr.success('Expense category master added.');
+    }
+    else
+    {
+        if(type == 'update'){
+            var url = '@Url.Action("Update", "ExpenseCategory")';
+            data = await callController(url, data);
+            toastr.success('Expense category master updated.');
+        }
+        else{
+            var url = '@Url.Action("Delete", "ExpenseCategory")';
+            data = await callController(url, data);
+            toastr.success('Expense category master deleted.');
+        }
+    }
+    console.log(data);
+    setTimeout(function() {location.reload();}, 3000);
+}
+
+function clearAll(){
+      GridShow(1);
+      
+       $('input[type=text]').val('');
+    $('h2.h3.mb-0.text-center').text('Expense Master - Add');
+}
+
+</script>

@@ -1,0 +1,1204 @@
+﻿<script src="~/lib/jquery/dist/jquery.min.js" />
+<script type="text/jscript">
+    BindGrid();
+      $(document).ready(function () {
+
+
+
+      })
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+    .form-inputs {
+        padding: 40px;
+        flex: 60%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .form-btn {
+        margin: 20px 0px;
+        background-color: #f6fe00;
+        color: black;
+        padding: 10px 40px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-row {
+        padding: 10px 0px;
+        position: relative;
+    }
+
+    .form-row-field {
+        color: #000000;
+        position: absolute;
+        pointer-events: none;
+        transition: 0.5s;
+        top: 16px;
+        margin-left: 2em;
+    }
+
+    .form-row-field-input {
+        background-color: inherit;
+        display: block;
+        top: 10px;
+        transition: 0.5s;
+        margin-left: 1.5em;
+    }
+
+        .form-row-field-input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            top: -5px;
+            font-size: 12px;
+            color: #9b91f5;
+            font-weight: bold;
+        }
+
+    .fileCss {
+        top: -11px;
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold;
+    }
+    #printable-Area
+    {
+      width: 80%;
+      height: 900px;
+      background-color: white;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      font-size: 15px;
+    }
+</style>
+<div class="Gridtable">
+    <section class="">
+        <div class="">
+            <div class="Imgcontainer">
+                <img class="CommanImage" src="/Images/26.jpg" />
+
+                <div class="top-rightWhite1">Employee Master</div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card" style="width: 100%;">
+
+                    <div class="card-body">
+                        <div class="row align-items-center my-0">
+                            <div class="col">
+
+                                <h2 class=""></h2>
+
+                            </div>
+                            <div class="">
+
+                                <button type="button" class="btn mb-2 btn-outline-primary btm_mnl" onclick="GridShow(2)"><span class="fas fa-plus mr-2" aria-hidden="true"></span>Add</button>
+
+                            </div>
+                        </div>
+                        <div class="table-responsive" width="100%">
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Name</th>
+                                        <th>Location</th>
+                                        <th>Code</th>
+                                        <th>Cost Centre</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyData">
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>
+                                            Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td> 4</td>
+                                        <td>X</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="GridIUD" id="formData" style="display:none">
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card" style="width: 100%;">
+
+                    <div class="card-body">
+                                                          <div class="row align-items-center my-0">
+            <div class="row col-12">
+                        <div class="col-2">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                        
+                        </div>
+                        <div class="col-8">
+                        <h2 class="h3 mb-0 text-center">Employee Master - Add</h2>
+                        </div>
+                        <div class="col-2">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="/Images/Print.jpg">
+                        
+                        </div>
+                        </div>
+
+
+                        </div>
+                        
+                        <div class="form-inputs" id="forminputs">
+                            <div class="row">
+                            <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <select id="ddlCostCenter" class="form-row-field-input form-control ">
+                                            <option selected>Select</option>
+                                        </select>
+                                        <label for="POST-name" class="fileCss form-row-field">Cost Center</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpName" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpCode" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Code/Staff Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <select id="ddlGender" class="form-row-field-input form-control">
+                                            <option selected>Select</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Others</option>
+                                        </select>
+                                        <label for="POST-name" class="fileCss form-row-field">Gender</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpDesignation" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Designation</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpDepartment" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Department</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" id = "imgEmpPhoto">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field ">Photo</label>
+                                        <input type="file" id="fileEmpPhoto" ImageID="img_fileEmpPhoto" placeholder=" " accept="image/png, image/gif, image/jpeg" onchange="FileuploadsImage(this)" class="form-row-field-input form-control">
+                                        <img src="" id="img_fileEmpPhoto_View" height="75px" style="display:none; margin-left:6%;"/>
+                                        <div class="nav-item dropdown img_fileEmpPhoto">
+                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
+                                                <img src="" id="img_fileEmpPhoto" height="175px"/>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#" id="lnk_fileEmpPhoto" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" id = "imgEmpPhotolable" style = "display:none">
+                                    <div class="form-row form-group">
+                                        <img class="Righttext" id="print" style="width:10%; top:5%; left:90%; display:none;" src="" />
+                                 </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpNation" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Nationality</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="date" id="txtEmpJoinDate" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="fileCss form-row-field">Joining Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="number" id="txtEmpMonthSal" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Month Salary</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpSlaPaidFrom" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Salary Paid From</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Date Of Birth</label>
+                                        <input type="date" id="txtEmpDOB" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEmployer" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Employer</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpJobLoc" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Job Location</label>
+                                    </div>
+                                </div>
+                                                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpPPNo" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Passport Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field ">Passport Image Attachment</label>
+                                        <input type="file" id="fileEmpImageAttach" ImageID="img_fileEmpImageAttach" multiple placeholder=" " accept="image/png, image/gif, image/jpeg" onchange="FileuploadsPassportImage(this)" class="form-row-field-input form-control">
+                                        
+                                              <img src="" id="img_fileEmpImageAttachFront_View" height="75px" style="display:none; margin-left:6%;"/>
+                                                <img src="" id="img_fileEmpImageAttachBack_View" height="75px" style="display:none; margin-left:6%;"/>
+                                        <div class="nav-item dropdown img_fileEmpImageAttach">
+                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+                                            <input type="hidden" id="hdnfileEmpImageAttach"/>
+                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
+                                                <a class="" href="#" id="lnk_fileEmpImageAttachFront" target="_blank">
+                                                <img src="" id="img_fileEmpImageAttachFront" width="100px" title="Passport Image 1"  height="100px" /></a>
+                                                 <a class="" href="#" id="lnk_fileEmpImageAttachBack" target="_blank">
+                                                <img src="" id="img_fileEmpImageAttachBack" width="100px"height="100px" title="Passport Image 2"  /></a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#" id="lnk_fileEmpImageAttach" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Passport Issued Date</label>
+                                        <input type="date" id="txtEmpPPIssuedDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Passport Expiry Date</label>
+                                        <input type="date" id="txtEmpPPExpDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Visa Issued From</label>
+                                        <input type="text" id="txtEmpVisaIssuDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpVisaNo" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Visa Number</label>
+                                    </div>
+                                </div>
+                         
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Visa Expiry Date</label>
+                                        <input type="date" id="txtEmpVisaExpDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                       <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field ">Visa Image Attachment</label>
+                                        <input type="file" id="fileEmpVisaImage" ImageID="img_fileEmpVisaImage" placeholder=" " multiple accept="image/png, image/gif, image/jpeg" onchange="FileuploadsVisaImage(this)" class="form-row-field-input form-control">
+                                          
+                                           <img src="" id="img_fileEmpVisaImageFront_View" height="75px" style="display:none; margin-left:6%;"/>
+                                                <img src="" id="img_fileEmpVisaImageBack_View" height="75px" style="display:none; margin-left:6%;"/>
+                                        <div class="nav-item dropdown img_fileEmpVisaImage">
+                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+                                            <input type="hidden" id="hdnfileEmpVisaImage"/>
+                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
+                                                <a class="" href="#" id="lnk_fileEmpVisaImageFront" target="_blank">
+                                                <img src="" id="img_fileEmpVisaImageFront" width="100px" title="Passport Image 1"  height="100px" /></a>
+                                                 <a class="" href="#" id="lnk_fileEmpVisaImageBack" target="_blank">
+                                                <img src="" id="img_fileEmpVisaImageBack" width="100px"height="100px" title="Passport Image 2"  /></a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#" id="lnk_fileEmpVisaImage" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEIDNo" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">EID Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field ">EID Expiry Date</label>
+                                        <input type="date" id="txtEmpEIDExpDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                              
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpAssetGiven" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Assets Given</label>
+                                    </div>
+                                </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field ">EID Image Attachment</label>
+                                        <input type="file" id="fileEmpEIDImage" ImageID="img_fileEmpEIDImage" accept="image/png, image/gif, image/jpeg" placeholder=" " onchange="FileuploadsImage(this)" class="form-row-field-input form-control">
+                                         <img src="" id="img_fileEmpEIDImage_View" height="75px" style="display:none; margin-left:6%;"/>
+                                        <div class="nav-item dropdown img_fileEmpEIDImage">
+                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
+                                                <img src="" id="img_fileEmpEIDImage" height="175px" />
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#" id="lnk_fileEmpEIDImage" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpHousDetails" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Housing Details</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpLoansGiven" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Loans Given</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpMobileNo" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Mobile Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEmailId" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Email ID</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpPrevVactionDetails" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Previous Vacation Details</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpLeaveBalance" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Leave Balance</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpAirTicket" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Air Ticket</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpProbationPeriod" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Probation Period</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <label for="POST-name" class="fileCss form-row-field">Employment End Date</label>
+                                        <input type="date" id="txtEmpEmploymentEndDate" placeholder=" " class="form-row-field-input form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEmploymentStatus" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Employment Status</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEmployeeType" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Employment Type</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtEmpEmployeeOthers" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field ">Others</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-5 mb-3"> 
+                            <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
+                            <a href="#" class="btn btn-md btn-primary" onclick="clearAll()">Back</a> 
+                            </div>
+                        
+                        </div>
+                        <!--end-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="/js/CommonFunction.js"></script>
+<script>
+    var Flag = 0;
+    $(document).ready(function ()
+    {
+          $('#Menu_Parameter_master').show();
+          $('a.nav-link.Employee_Master').addClass("active");
+          $('#Menu_Parameter_master').css({'display':'block'});
+        $('.img_fileEmpPhoto').hide();
+        $('.img_fileEmpVisaImage').hide();
+        $('.img_fileEmpImageAttach').hide();
+        $('.img_fileEmpEIDImage').hide();
+        BindGrid();
+        GridShow(1);
+        BindCostCenter();
+        $('#print').hide();
+    });
+       var empIdG = 0;
+    async function BindGrid()
+    {
+        debugger;
+        var url = '@Url.Action("BindGrid", "Employee_master")';
+        var data = {};
+        data = await callController(url, data);
+        console.log(data);
+        Gridappend(data.employeeMasterResponse);
+    }
+    async function _View(EmpId)
+    {
+        $('h2.h3.mb-0.text-center').text('Employee Master - View');
+        var url = '@Url.Action("BindGrid", "Employee_master")';
+        var data = {"EmpId":EmpId};
+        await GridShow(2);
+        
+        $('#print').attr("_PrintID",EmpId);
+        empIdG = EmpId;
+        data = await callController(url, data);
+        console.log(data.employeeMasterResponse);
+        data=data.employeeMasterResponse;
+        $('#_btnSubmit').hide();
+        EnableDisble(true, data);
+        $("#imgEmpPhoto").css({'display':'block'});
+        $("#imgEmpPhotolable").css({'display':'none'});
+        $("#print").css({'display':'block'});
+    }
+    function printResult1() {
+        $.print('#forminputs');
+        //var DocumentContainer = document.getElementById('forminputs');
+        //var WindowObject = window.open('', "PrintWindow", "width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes");
+        //WindowObject.document.writeln(DocumentContainer.innerHTML);
+        //WindowObject.document.close();
+        //WindowObject.focus();
+        //WindowObject.print();
+        //WindowObject.close();
+    } 
+    //function printResult()
+    //{
+    //  //var text = document.getElementsByTagName('input')[0].value;
+    //  var text = document.getElementById('formData').innerHTML
+    //  document.getElementById('formData').innerHTML = text;
+    //  window.print();
+    //}
+    function printPage(obj) {
+    var url = '@Url.Action("EmployeePDF", "PrintPDF")'; 
+    var _id = $(obj).attr("_PrintID");
+    window.open(url + "?ID=" + _id);
+}
+    async function _Delete(EmpId)
+    {
+        $("#imgEmpPhoto").css({'display':'block'});
+        $("#imgEmpPhotolable").css({'display':'none'});
+        var data = {"EmpId":EmpId};
+        var url = '@Url.Action("BindGrid", "Employee_master")';
+        data = await callController(url, data);
+        debugger;
+         await GridShow(2)
+        Flag = 3;
+        empIdG = EmpId;
+        console.log(data.employeeMasterResponse);
+        data=data.employeeMasterResponse;
+        $('h2.h3.mb-0.text-center').text('Employee Master - Delete');
+        $('#_btnSubmit').show();
+        EnableDisble(true,data);
+        $("#print").css({'display':'none'});
+    }
+    async function EnableDisble(type,data)
+    {
+        $('#txtEmpVisaIssuDate').val('');
+        $('#txtEmpVisaNo').val('');
+        $('#txtEmpVisaExpDate').val('');
+        $('#txtEmpEIDNo').val('');
+        $('#txtEmpEIDExpDate').val('');
+        $('#txtEmpAssetGiven').val('');
+        $('#txtEmpHousDetails').val('');
+        $('#txtEmpLoansGiven').val('');
+        $('#txtEmpMobileNo').val('');
+        $('#txtEmpEmailId').val('');
+        $('#txtEmpPrevVactionDetails').val('');
+        $('#txtEmpLeaveBalance').val('');
+        $('#txtEmpAirTicket').val('');
+        $('#txtEmpProbationPeriod').val('');
+        $('#txtEmpEmploymentEndDate').val("");
+        $('#txtEmpEmploymentStatus').val('');
+        $('#txtEmpEmployeeType').val('');
+        $('#txtEmpEmployeeOthers').val('');
+        $('#txtEmpName').val('');
+        $('#txtEmpCode').val('');
+        $('#ddlGender').val(0);
+        $('#txtEmpDesignation').val('');
+        $('#txtEmpDepartment').val('');
+        $('#txtEmpNation').val('');
+        $('#txtEmpJoinDate').val('');
+        $('#txtEmpMonthSal').val('');
+        $('#txtEmpSlaPaidFrom').val('');
+        $('#txtEmpDOB').val('');
+        $('#txtEmpEmployer').val('');
+        $('#txtEmpJobLoc').val('');
+        $('#ddlCostCenter').val(0);
+        $('#txtEmpPPExpDate').val('');
+        $('#txtEmpPPNo').val('');
+        $('#txtEmpVisaIssuDate').val('');
+        $('#txtEmpVisaNo').val('');
+        $('#txtEmpVisaExpDate').val('');
+        $('#txtEmpEIDNo').val('');
+        $('#txtEmpEIDExpDate').val('');
+        $('#txtEmpAssetGiven').val('');
+        $('#txtEmpHousDetails').val('');
+        $('#txtEmpLoansGiven').val('');
+        $('#txtEmpMobileNo').val('');
+        $('#txtEmpEmailId').val('');
+        $('#txtEmpPrevVactionDetails').val('');
+        $('#txtEmpLeaveBalance').val('');
+        $('#txtEmpAirTicket').val('');
+        $('#txtEmpProbationPeriod').val('');
+        $('#txtEmpEmploymentEndDate').val('');
+        $('#txtEmpEmploymentStatus').val('');
+        $('#txtEmpEmployeeType').val('');
+        $('#txtEmpEmployeeOthers').val('');
+        $('#txtEmpPPIssuedDate').val('');
+
+        
+        $('#txtEmpName').val(data[0].empName);
+        $('#txtEmpCode').val(data[0].empCode);
+        $('#ddlGender').val(1);
+        $('#txtEmpDesignation').val(data[0].empDesignation);
+        $('#txtEmpDepartment').val(data[0].empDepartment);
+        if(data[0].empPhoto!=""||data[0].empPhoto!=null)
+        {
+            $('#lnk_fileEmpPhoto').attr("href",data[0].empPhoto);
+            $('#img_fileEmpPhoto').attr("src",data[0].empPhoto);
+            $('.img_fileEmpPhoto').show();
+            $('#img_fileEmpPhoto_View').show();            
+            $('#img_fileEmpPhoto_View').attr("src",data[0].empPhoto);
+        }
+        else
+        {
+            $('#lnk_fileEmpPhoto').attr("href","");
+            $('#img_fileEmpPhoto').attr("src","");
+            $('.img_fileEmpPhoto').show();            
+            $('#img_fileEmpPhoto_View').attr("src","");
+             $('#img_fileEmpPhoto_View').hide();
+        }
+
+       
+        $('#print .picture').html('<img src="'+data[0].empPhoto+'" />');
+        $('#txtEmpNation').val(data[0].empNationality);
+        $('#txtEmpNation').val(data[0].empNationality);
+        if(data[0].empJoiningDate!=null &&  data[0].empJoiningDate!=""){
+            $('#txtEmpJoinDate').val(data[0].empJoiningDate.slice(0,10));
+        }
+        else
+            $('#txtEmpJoinDate').val("");
+        $('#txtEmpMonthSal').val(data[0].empMonthlySalary);
+        $('#txtEmpSlaPaidFrom').val(data[0].empSalaryPaid);
+        if(data[0].empDob!=null &&  data[0].empDob!="")
+            $('#txtEmpDOB').val(data[0].empDob.slice(0,10));
+        else
+            $('#txtEmpDOB').val("");
+        $('#txtEmpEmployer').val(data[0].empEmployer);
+        $('#txtEmpJobLoc').val(data[0].empJobLocation);
+       // $('#ddlCostCenter').val(data[0].empCostCentreId);
+        $('#ddlCostCenter').val(data[0].empCostCenter); 
+        if(data[0].empDob!=null &&  data[0].empDob!="")
+            $('#txtEmpDOB').val(data[0].empDob.slice(0,10));
+        else
+            $('#txtEmpDOB').val("");
+
+        if(data[0].empPpIssuedDate!=null &&  data[0].empPpIssuedDate!="")
+            $('#txtEmpPPIssuedDate').val(data[0].empPpIssuedDate.slice(0,10));
+        else
+            $('#txtEmpPPIssuedDate').val("");
+            
+        if(data[0].empPpExpirationDate!=null &&  data[0].empPpExpirationDate!="")
+            $('#txtEmpPPExpDate').val(data[0].empPpExpirationDate.slice(0,10));
+        else
+            $('#txtEmpPPExpDate').val("");
+            
+        $('#txtEmpPPNo').val(data[0].empPpNo); 
+        $('#hdnfileEmpVisaImage').val(data[0].empVisaImageAttachment);
+        $('#hdnfileEmpImageAttach').val(data[0].empPpImageAttachment);
+        var _splitimg=data[0].empPpImageAttachment.split("&&");
+        if(data[0].empPpImageAttachment!=""||data[0].empPpImageAttachment!=null)
+        {
+            $('#lnk_fileEmpImageAttachFront').attr("href",_splitimg[0]);
+            $('#img_fileEmpImageAttachFront').attr("src",_splitimg[0]);
+            $('.img_fileEmpImageAttach').show();   
+            $('#lnk_fileEmpImageAttachBack').attr("href",_splitimg[1]);
+            $('#img_fileEmpImageAttachBack').attr("src",_splitimg[1]);
+            $('#img_fileEmpImageAttachBack_View').attr("src",_splitimg[1]);
+            $('#img_fileEmpImageAttachFront_View').attr("src",_splitimg[0]);
+            $('.img_fileEmpImageAttach').show();
+
+        }
+        else
+        {
+            $('#lnk_fileEmpImageAttachFront').attr("href","");
+            $('#img_fileEmpImageAttachFront').attr("src","");
+            $('.img_fileEmpImageAttach').show();
+            $('#lnk_fileEmpImageAttachBack').attr("href","");
+            $('#img_fileEmpImageAttachBack').attr("src","");
+            $('.img_fileEmpImageAttach').show();
+            $('#img_fileEmpImageAttachBack_View').attr("src","");
+            $('#img_fileEmpImageAttachFront_View').attr("src","");
+        }
+        _splitimg=data[0].empVisaImageAttachment.split("&&");
+         if(data[0].empVisaImageAttachment!=""||data[0].empVisaImageAttachment!=null)
+        {
+            $('#lnk_fileEmpVisaImageFront').attr("href",_splitimg[0]);
+            $('#img_fileEmpVisaImageFront').attr("src",_splitimg[0]);
+            $('.img_fileEmpVisaImage').show();   
+            $('#lnk_fileEmpVisaImageBack').attr("href",_splitimg[1]);
+            $('#img_fileEmpVisaImageBack').attr("src",_splitimg[1]);
+            $('#img_fileEmpVisaImageBack_View').attr("src",_splitimg[1]);
+            $('#img_fileEmpVisaImageFront_View').attr("src",_splitimg[0]);
+            $('.img_fileEmpVisaImage').show();
+
+        }
+        else
+        {
+            $('#lnk_fileEmpVisaImageFront').attr("href","");
+            $('#img_fileEmpVisaImageFront').attr("src","");
+            $('.img_fileEmpVisaImage').show();
+            $('#lnk_fileEmpVisaImageBack').attr("href","");
+            $('#img_fileEmpVisaImageBack').attr("src","");
+            $('.img_fileEmpVisaImage').show();
+            $('#img_fileEmpVisaImageBack_View').attr("src","");
+            $('#img_fileEmpVisaImageFront_View').attr("src","");
+        }
+        //if(data[0].empVisaImageAttachment!=""||data[0].empVisaImageAttachment!=null)
+        //{
+        //    $('#lnk_fileEmpVisaImage').attr("href",data[0].empVisaImageAttachment);
+        //    $('#img_fileEmpVisaImage').attr("src",data[0].empVisaImageAttachment);
+        //    $('.img_fileEmpVisaImage').show();
+        //          $('#img_fileEmpVisaImage_View').show();            
+        //    $('#img_fileEmpVisaImage_View').attr("src",data[0].empVisaImageAttachment);
+        //}
+        //else
+        //{
+        //    $('#lnk_fileEmpVisaImage').attr("href","");
+        //    $('#img_fileEmpVisaImage').attr("src","");
+        //    $('.img_fileEmpVisaImage').show();
+        //}
+        if(data[0].empEidImageAttachment!=""||data[0].empEidImageAttachment!=null)
+        {
+            $('#lnk_fileEmpEIDImage').attr("href",data[0].empEidImageAttachment);
+            $('#img_fileEmpEIDImage').attr("src",data[0].empEidImageAttachment);
+            $('.img_fileEmpEIDImage').show();
+            $('#img_fileEmpEIDImage_View').show();            
+            $('#img_fileEmpEIDImage_View').attr("src",data[0].empEidImageAttachment);
+        }
+        else
+        {
+            $('#lnk_fileEmpEIDImage').attr("href","");
+            $('#img_fileEmpEIDImage').attr("src","");
+            $('.img_fileEmpEIDImage').show();
+        }
+        $('#txtEmpVisaIssuDate').val(data[0].empVisaIssuedFrom);
+        $('#txtEmpVisaNo').val(data[0].empVisaNo);
+        $('#txtEmpVisaExpDate').val(data[0].empVisaExpDt);
+        $('#txtEmpEIDNo').val(data[0].empEidNo);
+        $('#txtEmpEIDExpDate').val(data[0].empEidExpDt);
+        $('#txtEmpAssetGiven').val(data[0].empAssetsGiven);
+        $('#txtEmpHousDetails').val(data[0].empHousingDetails);
+        $('#txtEmpLoansGiven').val(data[0].empLoansGiven);
+        $('#txtEmpMobileNo').val(data[0].empMobileNumber);
+        $('#txtEmpEmailId').val(data[0].empEmailId);
+        $('#txtEmpPrevVactionDetails').val(data[0].empPrevVacationDetails);
+        $('#txtEmpLeaveBalance').val(data[0].empLeaveBalance);
+        $('#txtEmpAirTicket').val(data[0].empAirTicket);
+        $('#txtEmpProbationPeriod').val(data[0].empProbationPeriod);
+         if(data[0].empEmploymentEndDate!=null &&  data[0].empEmploymentEndDate!=""){
+            $('#txtEmpEmploymentEndDate').val(data[0].empEmploymentEndDate.slice(0,10));
+        }
+        else
+            $('#txtEmpEmploymentEndDate').val("");
+        $('#txtEmpEmploymentStatus').val(data[0].empLeaveBalance);
+        $('#txtEmpEmployeeType').val(data[0].empType);
+        $('#txtEmpEmployeeOthers').val(data[0].empOthers1);
+        $('#txtEmpName').prop('disabled', type);
+        $('#txtEmpCode').prop('disabled', type);
+        $('#ddlGender').prop('disabled', type);
+        $('#txtEmpDesignation').prop('disabled', type);
+        $('#txtEmpDepartment').prop('disabled', type);
+        $('#txtEmpNation').prop('disabled', type);
+        $('#txtEmpJoinDate').prop('disabled', type);
+        $('#txtEmpMonthSal').prop('disabled', type);
+        $('#txtEmpSlaPaidFrom').prop('disabled', type);
+        $('#txtEmpDOB').prop('disabled', type);
+        $('#txtEmpEmployer').prop('disabled', type);
+        $('#txtEmpJobLoc').prop('disabled', type);
+        $('#ddlCostCenter').prop('disabled', type);
+        $('#txtEmpPPExpDate').prop('disabled', type);
+        $('#txtEmpPPNo').prop('disabled', type);
+        $('#txtEmpVisaIssuDate').prop('disabled', type);
+        $('#txtEmpVisaNo').prop('disabled', type);
+        $('#txtEmpVisaExpDate').prop('disabled', type);
+        $('#txtEmpEIDNo').prop('disabled', type);
+        $('#txtEmpEIDExpDate').prop('disabled', type);
+        $('#txtEmpAssetGiven').prop('disabled', type);
+        $('#txtEmpHousDetails').prop('disabled', type);
+        $('#txtEmpLoansGiven').prop('disabled', type);
+        $('#txtEmpMobileNo').prop('disabled', type);
+        $('#txtEmpEmailId').prop('disabled', type);
+        $('#txtEmpPrevVactionDetails').prop('disabled', type);
+        $('#txtEmpLeaveBalance').prop('disabled', type);
+        $('#txtEmpAirTicket').prop('disabled', type);
+        $('#txtEmpProbationPeriod').prop('disabled', type);
+        $('#txtEmpEmploymentEndDate').prop('disabled', type);
+        $('#txtEmpEmploymentStatus').prop('disabled', type);
+        $('#txtEmpEmployeeType').prop('disabled', type);
+        $('#txtEmpEmployeeOthers').prop('disabled', type);
+        $('#txtEmpPPIssuedDate').prop('disabled', type);
+        
+        ////Image Show
+        if(type== true){
+             $('.img_fileEmpPhoto').hide(); 
+             $('#fileEmpPhoto').hide(); 
+             $('#img_fileEmpPhoto_View').show(); 
+             
+             $('.img_fileEmpEIDImage').hide(); 
+             $('#fileEmpEIDImage').hide(); 
+             $('#img_fileEmpEIDImage_View').show();
+             
+             //$('.img_fileEmpVisaImage').hide(); 
+             //$('#fileEmpVisaImage').hide(); 
+             //$('#img_fileEmpVisaImage_View').show();   
+
+             $('.img_fileEmpImageAttach').hide(); 
+             $('#fileEmpImageAttach').hide(); 
+             $('#img_fileEmpImageAttachFront').hide();            
+             $('#img_fileEmpImageAttachBack').hide(); 
+             $('#img_fileEmpImageAttachFront_View').show();            
+             $('#img_fileEmpImageAttachBack_View').show();    
+
+              $('.img_fileEmpVisaImage').hide(); 
+             $('#fileEmpVisaImage').hide(); 
+             $('#img_fileEmpVisaImageFront').hide();            
+             $('#img_fileEmpVisaImageBack').hide(); 
+             $('#img_fileEmpVisaImageFront_View').show();            
+             $('#img_fileEmpVisaImageBack_View').show();     
+           
+        }
+        else{
+             $('.img_fileEmpPhoto').show(); 
+             $('#fileEmpPhoto').show(); 
+             $('#img_fileEmpPhoto_View').hide(); 
+
+             $('.img_fileEmpEIDImage').show(); 
+             $('#fileEmpEIDImage').show(); 
+             $('#img_fileEmpEIDImage_View').hide(); 
+             
+             $('.img_fileEmpVisaImage').show(); 
+             $('#fileEmpVisaImage').show(); 
+             $('#img_fileEmpVisaImage_View').hide();
+             
+             $('.img_fileEmpImageAttach').show(); 
+             $('#fileEmpImageAttach').show(); 
+             $('#img_fileEmpImageAttachFront').show();            
+             $('#img_fileEmpImageAttachBack').show();  
+             $('#img_fileEmpImageAttachFront_View').hide();            
+             $('#img_fileEmpImageAttachBack_View').hide();   
+             
+             $('.img_fileEmpVisaImage').show(); 
+             $('#fileEmpVisaImage').show(); 
+             $('#img_fileEmpVisaImageFront').show();            
+             $('#img_fileEmpVisaImageBack').show();  
+             $('#img_fileEmpVisaImageFront_View').hide();            
+             $('#img_fileEmpVisaImageBack_View').hide();         
+        }
+     }
+    async function _Edit(EmpId)
+    {
+        var url = '@Url.Action("BindGrid", "Employee_master")';
+        var data = {"EmpId":EmpId};
+        data = await callController(url, data);
+        await  GridShow(2);
+        Flag = 2;
+        empIdG = EmpId;
+        console.log(data.employeeMasterResponse);
+        data=data.employeeMasterResponse;
+        $("#imgEmpPhoto").css({'display':'block'});
+        $("#imgEmpPhotolable").css({'display':'none'});
+        $('h2.h3.mb-0.text-center').text('Employee Master - Edit');
+        $('#_btnSubmit').show();
+        EnableDisble(false,data);
+        $("#print").css({'display':'none'});
+    }
+    async function GridShow(Flag)
+    {
+        if(Flag==1)
+        {
+            $('.Gridtable').show();
+            $('.GridIUD').hide();
+            $('.GridView').hide();
+        }
+        else if(Flag==2)
+        {
+            $('.Gridtable').hide();
+            $('.GridIUD').show();
+            $('.GridView').hide();
+            $('#ddlCostCenter').find('option').remove().end().append('<option value="0">Select</option>');
+            await BindCostCenter();
+        }
+        else
+        {
+            $('.Gridtable').hide();
+            $('.GridIUD').hide();
+            $('.GridView').show();
+            $('#ddlCostCenter').find('option').remove().end().append('<option value="0">Select</option>');
+            await BindCostCenter();
+        }
+    }
+    async function BindCostCenter()
+    {
+           var url = '@Url.Action("BindGrid", "Cost_Center_Master")';
+        var data = {"csId":0};
+        data = await callController(url, data);
+        console.log(data)
+        $.each(data.costCenterResponse, function (res, value) {
+            $("#ddlCostCenter").append($("<option></option>").val(value.csId).html(value.csName));
+        })
+    }
+    function Gridappend(data)
+    {
+        debugger;
+        var item = '';
+        var Arr;
+        if (data!=undefined)
+        {
+            if (data.length > 0)
+            {
+                Arr = data;
+                for (var i = 0; i < Arr.length; i++)
+                {
+                    var sno=i+1;
+                    item += '<tr>';
+                    item += '<td>' + sno+ '</td>';
+                    item += '<td>' + Arr[i].empName + '</td>';
+                    item += '<td>' + Arr[i].empJobLocation + '</td>';
+                    item += '<td>' + Arr[i].empCode + '</td>';
+                    item += '<td>' + Arr[i].empCostCenterName + '</td>';
+                    item += '  <td>';
+                    item += ActionsButtons(Arr[i].empId)
+                    item += '</td>';
+                    item += ' </tr>';
+                }
+                $('#bodyData').html('').append(item);
+
+            }
+            else
+            {
+                $('#bodyData').html('').append('<tr><td colspan="10" style="text-align:center">No records found.</td></tr>');
+            }
+        }
+        else
+        {
+            $('#bodyData').html('').append('<tr><td colspan="10" style="text-align:center">No records found.</td></tr>');
+        }
+    }
+    async function IUDEmpDetails(empId)
+    {
+        debugger;
+        var empid=0;
+        var txtEmpName=$('#txtEmpName').val();
+        var txtEmpCode=$('#txtEmpCode').val();
+        var ddlGender=$('#ddlGender').val();
+        var ddlDesignation=$('#txtEmpDesignation').val();
+        var ddlEmpDept=$('#txtEmpDepartment').val();
+        var fileEmpPhoto=$('#fileEmpPhoto')[0].files.length ? $('#fileEmpPhoto')[0].files[0].name : "";
+        var txtEmpNation=$('#txtEmpNation').val();
+        var txtEmpJoinDate=$('#txtEmpJoinDate').val();
+        var txtEmpMonthSal=$('#txtEmpMonthSal').val();
+        var ddlEmpSalarypaidFrom=$('#txtEmpSlaPaidFrom').val();
+        var txtEmpDOB=$('#txtEmpDOB').val();
+        var txtEmpEmployer=$('#txtEmpEmployer').val();
+        var txtEmpJobLoc=$('#txtEmpJobLoc').val();
+        var txtEmpCostCenter=$('#ddlCostCenter').val();//$('#ddlCostCenter').val();
+        var txtEmpPPNo=$('#txtEmpPPNo').val();
+        var txtEmpPPIssuedDate=$('#txtEmpPPIssuedDate').val();
+        var txtEmpPPExpDate=$('#txtEmpPPExpDate').val();
+        var fileEmpImageAttach=$('#fileEmpImageAttach')[0].files.length ? $('#fileEmpImageAttach')[0].files[0].name : "";
+        var txtEmpVisaIssuDate=$('#txtEmpVisaIssuDate').val();
+        var txtEmpVisaNo=$('#txtEmpVisaNo').val();
+        var txtEmpVisaExpDate=$('#txtEmpVisaExpDate').val();
+        var fileEmpVisaImage=$('#fileEmpVisaImage')[0].files.length ? $('#fileEmpVisaImage')[0].files[0].name : "";
+        var txtEmpEIDNo=$('#txtEmpEIDNo').val();
+        var txtEmpEIDExpDate=$('#txtEmpEIDExpDate').val();
+        var fileEmpEIDImage= $('#fileEmpEIDImage')[0].files.length ? $('#fileEmpEIDImage')[0].files[0].name : "";
+        var txtEmpAssetGiven=$('#txtEmpAssetGiven').val();
+        var txtEmpHousDetails=$('#txtEmpHousDetails').val();
+        var txtEmpLoansGiven=$('#txtEmpLoansGiven').val();
+        var txtEmpMobileNo=$('#txtEmpMobileNo').val();
+        var txtEmpEmailId=$('#txtEmpEmailId').val();
+        var txtEmpPrevVactionDetails=$('#txtEmpPrevVactionDetails').val();
+        var txtEmpLeaveBalance=$('#txtEmpLeaveBalance').val();
+        var txtEmpAirTicket=$('#txtEmpAirTicket').val();
+        var txtEmpProbationPeriod=$('#txtEmpProbationPeriod').val();
+        var txtEmpEmploymentEndDate=$('#txtEmpEmploymentEndDate').val();
+        var txtEmpEmploymentStatus=$('#txtEmpEmploymentStatus').val();
+        var txtEmpEmployeeType=$('#txtEmpEmployeeType').val();
+        var txtEmpEmployeeOthers=$('#txtEmpEmployeeOthers').val();
+        if(txtEmpName=="")
+        {
+            toastr.warning("Please enter the employee name.");
+            return false;
+        }
+        if(txtEmpCode=="")
+        {
+            toastr.warning("Please enter the employee code.");
+            return false;
+        }
+        var data = {
+        "Empid": empIdG,
+        "EmpCode": txtEmpCode,
+        "EmpName": txtEmpName,
+        "EmpGenderId": ddlGender,
+        "EmpDesignation": ddlDesignation,
+        "EmpDepartment":ddlEmpDept,
+        "EmpNationality": txtEmpNation,
+        "EmpJoiningDate": txtEmpJoinDate,
+        "EmpMonthlySalary": txtEmpMonthSal,
+        "EmpSalaryPaid": ddlEmpSalarypaidFrom,
+        "EmpDob": txtEmpDOB,
+        "EmpEmployer": txtEmpEmployer,
+        "EmpJobLocation": txtEmpJobLoc,
+        "EmpCostCenter": $('#ddlCostCenter').val(),
+        "EmpPpNo": txtEmpPPNo,
+        "EmpPpIssuedDate": txtEmpPPIssuedDate,
+        "EmpPpExpirationDate": txtEmpPPExpDate,
+        "EmpPhoto":$('#lnk_fileEmpPhoto').attr('href'),
+        "EmpPpImageAttachment": $('#hdnfileEmpImageAttach').val(),
+        "EmpVisaIssuedFrom": txtEmpVisaIssuDate,
+        "EmpVisano": txtEmpVisaNo,
+        "EmpVisaExpDt": txtEmpVisaExpDate,
+        "EmpVisaImageAttachment": $('#hdnfileEmpVisaImage').val(),
+        "EmpEidno": txtEmpEIDNo,
+        "EmpEidexpDt": txtEmpEIDExpDate,
+        "EmpEidImageAttachment": $('#lnk_fileEmpEIDImage').attr('href'),
+        "EmpAssetsGiven": txtEmpAssetGiven,
+        "EmpHousingDetails": txtEmpHousDetails,
+        "EmpLoansGiven": txtEmpLoansGiven,
+        "EmpMobileNumber": txtEmpMobileNo,
+        "EmpEmailId": txtEmpEmailId,
+        "EmpEmploymentStatus": txtEmpEmploymentStatus,
+        "EmpPrevVacationDetails": txtEmpPrevVactionDetails,
+        "EmpLeaveBalance": txtEmpLeaveBalance,
+        "EmpAirTicket": txtEmpAirTicket,
+        "EmpProbationPeriod": txtEmpProbationPeriod,
+        "EmpEmploymentEndDate": txtEmpEmploymentEndDate,
+        "EmpType": txtEmpEmployeeType,
+        "EmpOthers1": txtEmpEmployeeOthers};
+        if(Flag==2)
+        {
+            url=  '@Url.Action("Update", "Employee_master")';
+            toastr.success('Employee master updated.');
+        }
+        else if(Flag==3)
+        {
+            url=  '@Url.Action("Delete", "Employee_master")';
+            toastr.success('Employee master deleted.');
+        }
+        else
+        {
+            var url = '@Url.Action("Add", "Employee_master")';
+            toastr.success('Employee master added.');
+        }
+        data = await callController(url, data);
+        console.log(data);
+        empIdG = 0;
+        setTimeout(function() {location.reload();}, 2000);
+    }
+    function clearAll()
+    {
+        GridShow(1);
+        $('input[type=text]').val('');
+        $('h2.h3.mb-0.text-center').text('Add - Employee Master');
+    }
+    function FileuploadsImage(obj)
+    {
+        var Image_ID = $(obj).attr("ImageID");
+        var link_ID = $(obj).attr("ID");
+        var data = new FormData();
+        data.append("formFile", $(obj)[0].files[0]);
+        data.append("formPath", "test");
+        var url = '@Url.Action("FileUpload", "Employee_Master")';
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            console.log(result);
+            if (result.status === "success")
+            {
+                $("#"+Image_ID).attr('src', result.fileName);
+                $("#lnk_"+link_ID).attr('href', result.fileName);
+                $("."+Image_ID).show();
+            }
+            else
+            {
+                    $("."+Image_ID).hide();
+            }
+        });
+    }
+    var _imgPassport="";
+     function FileuploadsPassportImage(obj)
+    {
+        if($(obj)[0].files.length == 2){
+            var j=0;
+        for(var i=0;i < $(obj)[0].files.length;i++ ){
+
+        
+        var Image_ID = $(obj).attr("ImageID");
+        var link_ID = $(obj).attr("ID");
+        var data = new FormData();
+        data.append("formFile", $(obj)[0].files[i]);
+        data.append("formPath", "test");
+        var url = '@Url.Action("FileUpload", "Employee_Master")';
+        
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            console.log(result);
+            if (result.status === "success")
+            {
+                debugger;
+                j=j+1;
+                if(j==1){
+                    $("#img_fileEmpImageAttachFront").attr('src', result.fileName);
+                    _imgPassport += result.fileName;
+                }                    
+                else{
+                    $("#img_fileEmpImageAttachBack").attr('src', result.fileName);
+                    _imgPassport +="&&"+result.fileName;
+                }
+                $('#hdnfileEmpImageAttach').val(_imgPassport);
+                $("#lnk_"+link_ID).attr('href', result.fileName);
+                $("."+Image_ID).show();
+            }
+            else
+            {
+                    $("."+Image_ID).hide();
+            }
+        });
+        }
+        }
+        else
+        {$(obj).val('');
+             toastr.error('Please choose 2 images passport Front&Back.');
+        }
+    } function FileuploadsVisaImage(obj)
+    {
+        if($(obj)[0].files.length == 2){
+            var j=0;
+        for(var i=0;i < $(obj)[0].files.length;i++ ){
+
+        
+        var Image_ID = $(obj).attr("ImageID");
+        var link_ID = $(obj).attr("ID");
+        var data = new FormData();
+        data.append("formFile", $(obj)[0].files[i]);
+        data.append("formPath", "test");
+        var url = '@Url.Action("FileUpload", "Employee_Master")';
+        
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            console.log(result);
+            if (result.status === "success")
+            {
+                debugger;
+                j=j+1;
+                if(j==1){
+                    $("#img_fileEmpVisaImageFront").attr('src', result.fileName);
+                    _imgPassport += result.fileName;
+                }                    
+                else{
+                    $("#img_fileEmpVisaImageBack").attr('src', result.fileName);
+                    _imgPassport +="&&"+result.fileName;
+                }
+                $('#hdnfileEmpVisaImage').val(_imgPassport);
+                $("#lnk_"+link_ID).attr('href', result.fileName);
+                $("."+Image_ID).show();
+            }
+            else
+            {
+                    $("."+Image_ID).hide();
+            }
+        });
+        }
+        }
+        else
+        {$(obj).val('');
+             toastr.error('Please choose 2 images passport Front&Back.');
+        }
+    }
+</script>

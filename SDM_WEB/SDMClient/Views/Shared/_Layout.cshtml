@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SDM Office</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome --> 
+  <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/theme/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="/theme/dist/css/adminlte.min.css"> 
+      <!-- Select2 -->
+  <link rel="stylesheet" href="/theme/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/theme/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <style>
+      [class*=sidebar-dark-] {
+    background-image: linear-gradient( 310deg, rgb(235, 228, 232), rgb(11, 134, 235));
+    color: #000 !important; 
+}
+aside p {
+    color: #000 !important;
+}
+span.brand-text.font-weight-light {
+    color: #000;
+    font-weight: 400 !important;
+}
+* {
+    color: #000;
+    font-size: 1.01rem;
+}
+.CommanImage{
+    width: 1072px;
+    height: 666px;
+    opacity: 1;
+    background-color: Black !important;
+    z-index: 10;
+}
+.Imgcontainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    color: yellow;
+    font-family: emoji;
+    font-size: 65px;
+}
+.Righttext {
+    position: absolute;
+    top: 10%;
+    left: 78%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    color: #000;
+    font-weight: bolder;
+    font-family: emoji;
+    font-size: 45px;
+    line-height: normal;
+}
+  #pageloader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('http://benzfishing.xlicon.com/Images/Dual_Ring.gif') 50% 50% no-repeat rgb(249, 249, 249);
+            opacity: .99;
+        }
+
+th {
+    background-color: rgb(11, 134, 235);
+    color: #fff;
+}
+.content-wrapper {
+    box-shadow: 5px -10px 6px -6px;
+    padding: 11px; 
+    background-color: #e1e4e9;
+}.GridIUD .card-body {
+    box-shadow: 0 0 5px 5px olive;}
+    .GridView .card-body {
+    box-shadow: 0 0 5px 5px olive;}
+    h2.h3.mb-0.text-center {
+    text-align: center;
+    padding-bottom: 25px;
+}
+}
+.GridView .card-body {
+    min-height: 680px !important;
+}
+.bottom-left1 {
+  position: absolute;
+  bottom: 8px;
+  left: 16px; opacity: 1;
+    color: yellow;
+    font-family: emoji;
+    font-size: 65px;
+}
+
+.top-left1 {
+  position: absolute;
+  top: 8px;
+  left: 16px; opacity: 1;
+    color: yellow;
+    font-family: emoji;
+    font-size: 65px;
+}
+
+.top-right1 {
+  position: absolute;
+  top: 8px;
+  right: 16px; opacity: 1;
+    color: "#000";
+    font-family: emoji;
+    font-size: 65px;
+}
+.top-rightWhite1 {
+  position: absolute;
+  top: 8px;
+  right: 16px; opacity: 1;
+    color: white;
+    font-family: emoji;
+    font-size: 65px;
+}
+.bottom-right1 {
+  position: absolute;
+  bottom: 8px;
+  right: 16px; opacity: 1;
+    color: yellow;
+    font-family: emoji;
+    font-size: 65px;
+}.select2-container .select2-selection--single { 
+    height: 38px;
+}
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+      <div id="pageloader"></div>
+<div class="wrapper">
+  
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/Home" class="brand-link">
+     
+      <span class="brand-text font-weight-light h2"><i class="fas fa-building"></i>SDM OFFICE</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          
+           
+       
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Master Entry
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" id="Menu_Parameter_master">
+              <li class="nav-item">
+                <a asp-controller="Parameter_Master" asp-action="Index" class="nav-link Parameter_Master">                
+                  <p>Parameter Master</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a asp-controller="Employee_Master" asp-action="Index" class="nav-link Employee_Master">                
+                  <p>Employee Master</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a asp-controller="Vehicle_Master" asp-action="Index" class="nav-link Vehicle_Master">                
+                  <p>Vehicle Master</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a asp-controller="Cost_Center_Master" asp-action="Index" class="nav-link Cost_Center_Master">                
+                  <p>Cost Center Master</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a asp-controller="Sub_Account_Master" asp-action="Index" class="nav-link Sub_Account_Master">                
+                  <p>Sub Account Master</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                <a asp-controller="Supplier" asp-action="Index" class="nav-link Supplier">                
+                  <p>Supplier Master</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a asp-controller="BankMaster" asp-action="Index" class="nav-link BankMaster">                
+                  <p>Bank Master</p>
+                </a>
+              </li>  
+              <li class="nav-item">
+                <a asp-controller="ExpenseCategory" asp-action="Index" class="nav-link ExpenseCategory">                
+                  <p>Expenses Category</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a asp-controller="Insurance" asp-action="Index" class="nav-link Insurance">                
+                  <p>Insurance Master</p>
+                </a>
+              </li>
+             
+             
+            </ul>
+             
+          </li>
+           <li class="nav-item">
+            <a asp-controller="Transactionentry" asp-action="Index"  class="nav-link Transactionentry">
+                <i class="nav-icon fas fa-file-signature"></i>
+              <p>
+                Transacion Entry
+              </p>
+            </a>
+          </li>
+             <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+                Reports
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a asp-controller="Summary" asp-action="Index" class="nav-link">                
+                  <p>Summary</p>
+                </a>
+              </li>
+            
+            </ul>
+          </li>
+         
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+       
+          <div class="col-12">
+  @RenderBody()
+  </div>
+         
+  </div>
+
+      
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+  <div  class="text-center"><a   href="https://oscorptech.com/" target="_blank">OSCORP TECHNOLOGY</a>&nbsp;
+      <a  href="http://www.seawaycomputer.com/index.php" traget="_blank">SEAWAY COMPUTER</a></div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/theme/plugins/jquery/jquery.min.js"></script>
+<!-- Select2 -->
+<script src="/theme/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/theme/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/theme/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/theme/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/theme/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/theme/plugins/jszip/jszip.min.js"></script>
+<script src="/theme/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/theme/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/theme/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/theme/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/theme/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/theme/dist/js/adminlte.min.js"></script> 
+<!-- Page specific script -->
+<script>
+    
+
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "columnDefs": [
+                {
+                    'searchable': false,
+                    'targets': [0]
+                },
+            ],
+    });
+     $('.select2').select2()
+  });
+  
+        $(window).on("load", function () {
+            $("#pageloader").fadeOut("slow");
+        });
+</script>
+<style>
+.form-row-field-input:focus~label, input:not(:placeholder-shown) ~label {
+    top: -5px;
+    font-size: 12px;
+    color: #000 !important;
+    font-weight: bold;
+}</style>
+</body>
+</html>

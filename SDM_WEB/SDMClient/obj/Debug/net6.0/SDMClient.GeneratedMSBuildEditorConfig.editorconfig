@@ -1,0 +1,132 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SDMClient
+build_property.RootNamespace = SDMClient
+build_property.ProjectDir = E:\src\SDM\SDM_WEB\SDMClient\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\src\SDM\SDM_WEB\SDMClient
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/BankMaster/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua01hc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Cost_Center_Master/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29zdF9DZW50ZXJfTWFzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Employee_Master/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVfTWFzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/ExpenseCategory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZUNhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Insurance/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJhbmNlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Insurance/InsuranceMaster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdXJhbmNlXEluc3VyYW5jZU1hc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Parameter_Master/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFyYW1ldGVyX01hc3RlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/BankPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcQmFua1BERi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/CostCenterPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcQ29zdENlbnRlclBERi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/EmployeePDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcRW1wbG95ZWVQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/ExpensesPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcRXhwZW5zZXNQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/InsurancePDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcSW5zdXJhbmNlUERGLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/ParameterPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcUGFyYW1ldGVyUERGLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/SubAccountPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcU3ViQWNjb3VudFBERi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/SupplierPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcU3VwcGxpZXJQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/TransactionPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcVHJhbnNhY3Rpb25QREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/PrintPDF/VehiclePDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbnRQREZcVmVoaWNsZVBERi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Sub_Account_Master/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViX0FjY291bnRfTWFzdGVyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Supplier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/TransactionEntry/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25FbnRyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Vehicle_Master/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZV9NYXN0ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/src/SDM/SDM_WEB/SDMClient/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kygzy0j9cs
