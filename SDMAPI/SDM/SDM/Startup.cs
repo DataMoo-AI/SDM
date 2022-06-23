@@ -27,10 +27,12 @@ using SDM.Repository.SubAccount;
 using SDM.Repository.SupplierMaster;
 using SDM.Repository.Transaction;
 using SDM.Repository.Vehicle;
+using SDM.Repository.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SDM.Controllers.Report;
 
 namespace SDM
 {
@@ -56,6 +58,7 @@ namespace SDM
             services.AddTransient<IBankMaster, BankMasterRepository>();
             services.AddTransient<IInsuranceMaster, InsuranceRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
+            services.AddTransient<IReport, ReportRepository>();
             services.AddTransient<BankController>();
             services.AddTransient<InsuranceMaserController>();
             services.AddTransient<CostCenterController>();
@@ -65,6 +68,7 @@ namespace SDM
             services.AddTransient<VehicleMasterController>();
             services.AddTransient<SupplierMasterController>();
             services.AddTransient<TransactionController>();
+            services.AddTransient<ReportController>();
             services.AddTransient<SDMContext>();
             services.AddTransient<EmployeeMasterResponse>();
             services.AddTransient<ToasterMessages>();

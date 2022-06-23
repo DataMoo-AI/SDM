@@ -1,0 +1,138 @@
+﻿
+<script src="~/lib/jquery/dist/jquery.min.js" />
+<script type="text/jscript">
+    BindGrid();
+      $(document).ready(function () {
+
+
+
+      })
+
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+    .form-inputs {
+        padding: 40px;
+        flex: 60%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .form-btn {
+        margin: 20px 0px;
+        background-color: #f6fe00;
+        color: black;
+        padding: 10px 40px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-row {
+        padding: 10px 0px;
+        position: relative;
+    }
+
+    .form-row-field {
+        color: #000000;
+        position: absolute;
+        pointer-events: none;
+        transition: 0.5s;
+        top: 10px;
+        margin-left: 2em;
+    }
+
+    .form-row-field-input {
+        background-color: inherit;
+        display: block;
+        top: 10px;
+        transition: 0.5s;
+        margin-left: 1.5em;
+    }
+
+        .form-row-field-input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            top: -5px;
+            font-size: 12px;
+            color: #9b91f5;
+            font-weight: bold;
+        }
+
+    .fileCss {
+        top: -11px;
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold;
+    }
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+        background-color : rgba(255,255,255,.9) !important;
+    }
+</style>
+<div class="col-12">
+    
+            <div class="row">
+            <div class="row align-items-center my-0">
+    <div class="col">
+                 <h2 class="display-4">Report</h2>
+
+    </div>
+
+    <div class="col-auto">
+        <div class="form-group">
+            <table>
+                <tbody><tr>
+                    <td>
+                        <input type="date" class="date1 form-control" id="txtfromdate">
+                    </td>
+                    <td>
+                        <input type="date" class="date1 form-control" id="txttodate">
+                    </td>
+                    <td>
+                        <button type="button" class="btn-primary btn" onclick="Report()"><span class="mr-2" aria-hidden="true">Go</span></button>
+
+                    </td>
+                </tr>
+            </tbody></table>
+
+        </div>
+
+    </div>
+</div>
+            </div>
+        </div>
+
+ 
+<script src="/js/CommonFunction.js"></script>       
+<script>
+
+   async function Report() {
+        var fromdate = document.getElementById("txtfromdate").value;
+        if (fromdate == "0" || fromdate== "") {
+            alert("please enter the from date")
+            return false;
+        }
+        var todate = document.getElementById("txttodate").value;
+        if (todate == "0" || todate == "") {
+            alert("please enter the to date")
+            return false;
+        }
+        //var url = '@Url.Action("getreport", "SummaryReport")';
+        var data = {
+             "FromDate": fromdate, "ToDate": todate,
+        };
+        var url = '@Url.Action("SummaryReportPDF", "PrintPDF")'; 
+    window.open(url + "?FromDate=" + fromdate+"&ToDate="+todate);
+        data = await callController(url, data);
+
+        console.log(data);
+       
+
+
+
+ 
+
+                     
+    }
+    </script>

@@ -16,20 +16,52 @@ namespace SDM.Common.Response
         public List<BankMasterEntry> BankResponse { get; set; }
         public List<ExpenseCategory> ExpenseCategoryResponse { get; set; }
         public List<InsuranceMaster> InsuranceMasterResponse { get; set; }
+        public List<InsuranceResponse> InsuranceMasterResp { get; set; }
         public List<TransactionEntryResponse> TransactionEntries { get; set; }
         public List<InsuranceReq> InsuranceMasterReq { get; set; }
+        public List<ReportResponses> ReportsResponse { get; set; }
+        public string? ReportResponse { get; set; }
         public string Message { get; set; }
     }
     public class TransactionAccount 
     {
         public int Id { get; set; }
         public string Value { get; set; }
+    }   
+    public class ReportResponses
+    { 
+        
+        public DateTime? TrnDate { get; set; }
+        public int? TransAmount { get; set; }
+        public string? Category { get; set; }
+        public string? ReportResponse { get; set; }
     }
     public class InsuranceReq
     {
 
         public int InsId { get; set; }
         public int? InsCostCenter { get; set; }
+        public string InsVehicleCode { get; set; }
+        public string InsVehicleName { get; set; }
+        public string InsPolicyNo { get; set; }
+        public DateTime? InsPurchaseDate { get; set; }
+        public string InsPurchaseAmount { get; set; }
+        public string InsCompany { get; set; }
+        public DateTime? InsExpDate { get; set; }
+        public string InsPremiumAmount { get; set; }
+        public string InsOthers1 { get; set; }
+        public int? InsCreatedBy { get; set; }
+        public DateTime? InsCreatedDate { get; set; }
+        public int? InsUpdatedBy { get; set; }
+        public DateTime? InsUpdatedDate { get; set; }
+        public int? InsDeletedBy { get; set; }
+        public DateTime? InsDeletedDate { get; set; }
+    }
+    public class InsuranceResponse
+    {
+        public int InsId { get; set; }
+        public int? InsCostCenter { get; set; }
+        public string InsCostCenterName { get; set; }
         public string InsVehicleCode { get; set; }
         public string InsVehicleName { get; set; }
         public string InsPolicyNo { get; set; }

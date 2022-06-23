@@ -45,6 +45,19 @@ namespace SDM.Repository.Transaction
                 _values.TrnVechile = transactionEntry.TrnVehicle;
                 _values.TrnEmployee = transactionEntry.TrnEmployee;
                 //_values.TrnBankAccountNumb = transactionEntry.TrnBankAccountNumb;
+                if (transactionEntry.TrnSubAccountStr.Contains("(VH)"))
+                {
+                    var vhMaster = _context.VehicleMaster.FirstOrDefault(a => a.VhId == _values.TrnVechile && a.VhDeletedBy == null);
+                    _values.TrnFlag = PascalCase(vhMaster.VhType);
+                }
+                else if (transactionEntry.TrnSubAccountStr.Contains("(EM)"))
+                {
+                    _values.TrnFlag = "EMP";
+                }
+                else if (transactionEntry.TrnSubAccountStr.Contains("(SA)"))
+                {
+                    _values.TrnFlag = "PRP";
+                }
                 _context.TransactionEntry.Add(_values);
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
@@ -87,7 +100,11 @@ namespace SDM.Repository.Transaction
                 }
                 else if(transactionEntry.TrnSubAccountStr.Contains("(EM)"))
                 {
-
+                    _values.TrnFlag = "EMP";
+                }
+                else if(transactionEntry.TrnSubAccountStr.Contains("(SA)"))
+                {
+                    _values.TrnFlag = "PRP";
                 }
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;

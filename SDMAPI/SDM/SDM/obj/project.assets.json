@@ -7313,11 +7313,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\src\\SDM\\SDMAPI\\SDM\\SDM\\SDM.csproj",
+      "projectUniqueName": "E:\\src\\SdmWebAndApi\\SDM\\SDMAPI\\SDM\\SDM\\SDM.csproj",
       "projectName": "SDM",
-      "projectPath": "E:\\src\\SDM\\SDMAPI\\SDM\\SDM\\SDM.csproj",
+      "projectPath": "E:\\src\\SdmWebAndApi\\SDM\\SDMAPI\\SDM\\SDM\\SDM.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "E:\\src\\SDM\\SDMAPI\\SDM\\SDM\\obj\\",
+      "outputPath": "E:\\src\\SdmWebAndApi\\SDM\\SDMAPI\\SDM\\SDM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",

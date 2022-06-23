@@ -65,6 +65,9 @@
         color: #000000;
         font-weight: bold;
     }
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+        background-color : rgba(255,255,255,.9) !important;
+    }
 </style>
 <div class="Gridtable">
     <section class="">
@@ -312,7 +315,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <input type="text" id="txttransactiontrnreguestby" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Trn.Request By </label>
+                                        <label for="POST-name" class="form-row-field">Request By </label>
                                     </div>
                                 </div>
 
@@ -490,11 +493,13 @@
 <script>
 
         $(document).ready(function () {
+           
       BindGrid();
        GridShow(1);
           BindEmployeemaster()
         BindVechilemaster()
      $('#Menu_Parameter_master').show();
+      $('a.nav-link.Transactionentry').addClass("active");
         })
         var trnId = 0;
     async function BindGrid() {
@@ -830,6 +835,6 @@
           GridShow(1);
            $('input[type=text]').val('');
 
-        $('h2.h3.mb-0.text-center').text('Add - Employee Master');
+        $('h2.h3.mb-0.text-center').text('Add - Transaction Master');
     }
 </script>
