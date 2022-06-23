@@ -30,6 +30,11 @@ namespace SDMClient.Controllers
             DataTable dt = ToDataTable(l1);
             return Result;
         }
+        public string Gettransactiontype(ReportRequest e)
+        {
+            string Result = Api.PostApi("Report/Gettransactiontype", e);  
+            return Result;
+        }
         public DataTable ToDataTable<T>(List<T> items)
         {
             DataTable dataTable = new DataTable(typeof(T).Name);

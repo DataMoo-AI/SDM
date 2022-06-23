@@ -37,7 +37,7 @@ namespace SDM.TModels
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-20Q2S9O;Initial Catalog=SDM;TrustServerCertificate = True; MultipleActiveResultSets=true;Trusted_Connection = True;Connection Timeout=30000;ConnectRetryCount=255;");
+                optionsBuilder.UseSqlServer("Server=LENOVO\\SQLEXPRESS;Initial Catalog=SDM;TrustServerCertificate = True; MultipleActiveResultSets=true;Trusted_Connection = True;Connection Timeout=30000;ConnectRetryCount=255;");
             }
         }
 

@@ -8,5 +8,6 @@ namespace SDM.Interfaces
     public interface IReport
     {
         public Task<Response> GetReport(ReportRequest g);
+        public Task<Response> Gettransactiontype();
     }
 }

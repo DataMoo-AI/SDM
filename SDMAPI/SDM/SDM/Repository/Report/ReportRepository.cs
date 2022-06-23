@@ -27,6 +27,21 @@ namespace SDM.Repository.Report
         {
          
              var _values =  _context.TransactionEntry.Where(t => t.TrnDeletedBy == null && t.TrnDate >= g.FromDate && t.TrnDate <= g.ToDate  ).ToList();
+           if(g.Currency != 0)
+            {
+                _values = _context.TransactionEntry.Where(t => t.TrnDeletedBy == null && t.TrnDate >= g.FromDate && t.TrnDate <= g.ToDate && t.TrnCurrency == g.Currency).ToList();
+            }
+            if (g.Type != "0")
+            {
+                _values = _context.TransactionEntry.Where(t => t.TrnDeletedBy == null && t.TrnDate >= g.FromDate && t.TrnDate <= g.ToDate && t.TrnFlag == g.Type).ToList();
+            }
+            if (g.Currency != 0 && g.Type != "0")
+            {
+                _values = _context.TransactionEntry.Where(t => t.TrnDeletedBy == null && t.TrnDate >= g.FromDate && t.TrnDate <= g.ToDate && t.TrnFlag == g.Type && t.TrnCurrency == g.Currency).ToList();
+
+            }
+
+
             if (_values != null)
             {
                 var transaction = (from a in _values
@@ -72,5 +87,21 @@ namespace SDM.Repository.Report
                 return _response;
             }
 }
-    }
+
+        public async Task<Response> Gettransactiontype()
+        {
+            var _values = _context.TransactionEntry.Where(t => t.TrnDeletedBy == null && t.TrnFlag != null).Select(o => o.TrnFlag).Distinct().ToList();
+            if (_values != null)
+            {
+            _response.ReportTemp = _values;
+            _response.Message = _toaster.Success;
+            return _response;
+             }
+            else
+            {
+                _response.Message = _toaster.NotExists;
+                return _response;
+            }
 }
+        }
+    }

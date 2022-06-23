@@ -1,0 +1,137 @@
+﻿<script src="~/lib/jquery/dist/jquery.min.js" />
+<script type="text/jscript">
+    BindGrid();
+      $(document).ready(function () {
+
+
+
+      })
+
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+    .form-inputs {
+        padding: 40px;
+        flex: 60%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .form-btn {
+        margin: 20px 0px;
+        background-color: #f6fe00;
+        color: black;
+        padding: 10px 40px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-row {
+        padding: 10px 0px;
+        position: relative;
+    }
+
+    .form-row-field {
+        color: #000000;
+        position: absolute;
+        pointer-events: none;
+        transition: 0.5s;
+        top: 10px;
+        margin-left: 2em;
+    }
+
+    .form-row-field-input {
+        background-color: inherit;
+        display: block;
+        top: 10px;
+        transition: 0.5s;
+        margin-left: 1.5em;
+    }
+
+        .form-row-field-input:focus ~ label, input:not(:placeholder-shown) ~ label {
+            top: -5px;
+            font-size: 12px;
+            color: #9b91f5;
+            font-weight: bold;
+        }
+
+    .fileCss {
+        top: -11px;
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold;
+    }
+</style>
+<div class="Gridtable">
+    <section class="">
+        <div class="">
+            <div class="Imgcontainer">
+                <img class="CommanImage" src="/Images/pay.jpg" />
+
+                <div class="top-rightWhite1">View Master</div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card" style="width: 100%;">
+
+                    <div class="card-body">
+                        <div class="row align-items-center my-0">
+                            <div class="col">
+
+                                <h2 class="">
+                                </h2>
+
+                            </div>
+                            <div class="">
+
+                                <button type="button" class="btn mb-2 btn-outline-primary btm_mnl" onclick="GridShow(2)"><span class="fas fa-plus mr-2" aria-hidden="true"></span>Add</button>
+
+                            </div>
+                        </div>
+                        <div class="table-responsive" width="100%">
+                            <table id="example2" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>View Number</th>
+                                        <th>RM Name</th>
+                                        <th>RM Email</th>
+                                        <th>RM Contact</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyData">
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>
+                                            Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td> 4</td>
+                                        <td> 4</td>
+                                        <td> 4</td>
+                                        <td>X</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+

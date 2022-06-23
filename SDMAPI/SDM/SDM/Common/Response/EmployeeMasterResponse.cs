@@ -21,6 +21,7 @@ namespace SDM.Common.Response
         public List<InsuranceReq> InsuranceMasterReq { get; set; }
         public List<ReportResponses> ReportsResponse { get; set; }
         public string? ReportResponse { get; set; }
+        public dynamic ReportTemp { get; set; }
         public string Message { get; set; }
     }
     public class TransactionAccount 

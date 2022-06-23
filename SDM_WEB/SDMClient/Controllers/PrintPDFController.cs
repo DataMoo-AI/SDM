@@ -188,6 +188,7 @@ namespace SDMClient.Controllers
             HttpContext.Session.SetString("_Summaryresponse", JsonConvert.SerializeObject(l1));
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(HttpContext.Session.GetString("_Summaryresponse")); ;
              dt = GenerateTransposedTable(dt);
+            if (dt.Rows.Count > 0) { 
             string[] columnNames = dt.Columns.Cast<DataColumn>()
                                  .Select(x => x.ColumnName)
                                  .ToArray();
@@ -202,14 +203,16 @@ namespace SDMClient.Controllers
                 }
 
             }
-            dt.Columns.Add("Total", typeof(Double));
-            dt.Columns["Total"].Expression = _cname;
+            }
+            //dt.Columns.Add("Total", typeof(Double));
+            //dt.Columns["Total"].Expression = _cname;
             HttpContext.Session.SetString("_Summarydatatable", JsonConvert.SerializeObject(dt));
             ViewData["Message"] = "Your application description page.";
             return new ViewAsPdf("SummaryReportPDF", ViewData)
             {
                 PageMargins = { Left = 2, Bottom = 2, Right = 2, Top = 2 },
-                PageOrientation = Rotativa.NetCore.Options.Orientation.Portrait,
+                PageOrientation = Rotativa.NetCore.Options.Orientation.Landscape,
+                Password="Hi",
                 CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12",
                 
             };

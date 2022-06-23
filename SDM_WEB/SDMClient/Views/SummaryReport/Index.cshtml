@@ -70,45 +70,77 @@
         background-color : rgba(255,255,255,.9) !important;
     }
 </style>
-<div class="col-12">
-    
-            <div class="row">
-            <div class="row align-items-center my-0">
-    <div class="col">
-                 <h2 class="display-4">Report</h2>
-
-    </div>
-
-    <div class="col-auto">
-        <div class="form-group">
-            <table>
-                <tbody><tr>
-                    <td>
-                        <input type="date" class="date1 form-control" id="txtfromdate">
-                    </td>
-                    <td>
-                        <input type="date" class="date1 form-control" id="txttodate">
-                    </td>
-                    <td>
-                        <button type="button" class="btn-primary btn" onclick="Report()"><span class="mr-2" aria-hidden="true">Go</span></button>
-
-                    </td>
-                </tr>
-            </tbody></table>
-
-        </div>
-
-    </div>
-</div>
-            </div>
-        </div>
-
  
+
+ <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Summary Report</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="form-horizontal">
+                <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-3">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>From Date</label>
+                        <input type="date" class="form-control" id="txtfromdate" placeholder="" />
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>To Date</label>
+                        <input  type="date" class="form-control" id="txttodate" placeholder="" />
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>SubAccount</label>
+                        <select id="ddlVehicle" class="form-control">
+                          <option selected value = "0">Select</option> 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Currency</label>
+                        <select id="ddlCurrency"  class="form-control"> 
+                                            <option value="1">AED</option>
+                                            <option value="2">USD</option>
+                        </select>
+                      </div>
+                       
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer text-center">
+                  <button   class="btn btn-info" onclick="Report()">Go</button> 
+                </div>
+                <!-- /.card-footer -->
+              </div>
+            </div>
 <script src="/js/CommonFunction.js"></script>       
 <script>
+     $(document).ready(function () { 
+        BindVechilemaster() 
+  })
+   async function BindVechilemaster()
+        {
+   var url = '@Url.Action("Gettransactiontype", "SummaryReport")'; 
+            var data = await callController(url, data);
+            console.log(data.ReportTemp) 
+            $.each(data.reportTemp, function (res, value) {
+                $("#ddlVehicle").append($("<option></option>").val(value).html(value));
+            })
+            
+        } 
 
    async function Report() {
         var fromdate = document.getElementById("txtfromdate").value;
+        var Type = document.getElementById("ddlVehicle").value;
+        var Currency = document.getElementById("ddlCurrency").value;
         if (fromdate == "0" || fromdate== "") {
             alert("please enter the from date")
             return false;
@@ -118,12 +150,16 @@
             alert("please enter the to date")
             return false;
         }
+        if (Currency == "0" || Currency == "") {
+            alert("please choose currency")
+            return false;
+        }
         //var url = '@Url.Action("getreport", "SummaryReport")';
         var data = {
-             "FromDate": fromdate, "ToDate": todate,
+             "FromDate": fromdate, "ToDate": todate,"Type":Type,"Currency":Currency
         };
         var url = '@Url.Action("SummaryReportPDF", "PrintPDF")'; 
-    window.open(url + "?FromDate=" + fromdate+"&ToDate="+todate);
+    window.open(url + "?FromDate=" + fromdate+"&ToDate="+todate+"&Type="+Type+"&Currency="+Currency);
         data = await callController(url, data);
 
         console.log(data);

@@ -29,6 +29,21 @@ namespace SDM.Controllers.Report
             {
                 return BadRequest(e);
             }
+        } 
+        [Route("Gettransactiontype")]
+        [HttpPost]
+        public async Task<ActionResult> Gettransactiontype()
+        {
+            try
+            {
+                Response response1 = await _iReport.Gettransactiontype();
+                if (response1.Message.ToLower() == "success") { return Ok(response1); }
+                else { return BadRequest(response1); }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
     }
 }
