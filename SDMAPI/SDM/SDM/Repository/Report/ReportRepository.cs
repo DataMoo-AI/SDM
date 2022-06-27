@@ -65,14 +65,14 @@ namespace SDM.Repository.Report
                         Mar = g.Where(c => c.TrnDate?.Month == 3).Sum(c => c.TransAmount),
                         Apr = g.Where(c => c.TrnDate?.Month == 4).Sum(c => c.TransAmount),
                         May = g.Where(c => c.TrnDate?.Month == 5).Sum(c => c.TransAmount),
-                        Jun = g.Where(c => c.TrnDate?.Month == 1).Sum(c => c.TransAmount),
-                        Jul = g.Where(c => c.TrnDate?.Month == 2).Sum(c => c.TransAmount),
-                        Aug = g.Where(c => c.TrnDate?.Month == 3).Sum(c => c.TransAmount),
-                        Sep = g.Where(c => c.TrnDate?.Month == 4).Sum(c => c.TransAmount),
-                        Oct = g.Where(c => c.TrnDate?.Month == 5).Sum(c => c.TransAmount),
-                        Nov = g.Where(c => c.TrnDate?.Month == 5).Sum(c => c.TransAmount),
-                        Dec = g.Where(c => c.TrnDate?.Month == 5).Sum(c => c.TransAmount),
-                        sum=0,
+                        Jun = g.Where(c => c.TrnDate?.Month == 6).Sum(c => c.TransAmount),
+                        Jul = g.Where(c => c.TrnDate?.Month == 7).Sum(c => c.TransAmount),
+                        Aug = g.Where(c => c.TrnDate?.Month == 8).Sum(c => c.TransAmount),
+                        Sep = g.Where(c => c.TrnDate?.Month == 9).Sum(c => c.TransAmount),
+                        Oct = g.Where(c => c.TrnDate?.Month == 10).Sum(c => c.TransAmount),
+                        Nov = g.Where(c => c.TrnDate?.Month == 11).Sum(c => c.TransAmount),
+                        Dec = g.Where(c => c.TrnDate?.Month == 12).Sum(c => c.TransAmount),
+                        Average=0,
                     });
                
                 //_response.ReportsResponse = transaction;

@@ -98,7 +98,7 @@ namespace SDM.Repository.Transaction
                     var vhMaster = _context.VehicleMaster.FirstOrDefault(a => a.VhId == _values.TrnVechile && a.VhDeletedBy == null);
                     _values.TrnFlag = PascalCase(vhMaster.VhType);
                 }
-                else if(transactionEntry.TrnSubAccountStr.Contains("(EM)"))
+                else if(transactionEntry.TrnSubAccountStr.Contains("(Em)"))
                 {
                     _values.TrnFlag = "EMP";
                 }

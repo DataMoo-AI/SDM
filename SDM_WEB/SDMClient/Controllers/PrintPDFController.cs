@@ -180,7 +180,7 @@ namespace SDMClient.Controllers
         public IActionResult SummaryReportPDF(ReportRequest e)
         {
             string Result = Api.PostApi("Report/GetReport", e);
-
+            //HttpContext.Session.SetString("_Summaryyear", e.FromDate.ToString("YYYY"));
             dynamic l = JsonConvert.DeserializeObject<dynamic>(Result);
             List<dynamic> l1 = JsonConvert.DeserializeObject<List<dynamic>>(l["reportResponse"].Value);  
             ViewData["Print"] = l1;

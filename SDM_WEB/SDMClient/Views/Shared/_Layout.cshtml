@@ -247,10 +247,14 @@ th {
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview" id="Menu_report">
               <li class="nav-item">
-                <a asp-controller="SummaryReport" asp-action="Index" class="nav-link">                
-                  <p>Summary</p>
+                <a asp-controller="SummaryReport" asp-action="Index" class="nav-link Monthwise_Summary">                
+                  <p>Monthwise Summary</p>
+                </a>
+              </li> <li class="nav-item">
+                <a asp-controller="CardReport" asp-action="Index" class="nav-link Card_Summary">                
+                  <p>Card</p>
                 </a>
               </li>
             

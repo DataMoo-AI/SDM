@@ -74,7 +74,7 @@
 
  <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Summary Report</h3>
+                <h3 class="card-title">Monthwise Summary Report</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -125,6 +125,8 @@
 <script>
      $(document).ready(function () { 
         BindVechilemaster() 
+        $('#Menu_report').show();
+      $('a.nav-link.Monthwise_Summary').addClass("active");
   })
    async function BindVechilemaster()
         {

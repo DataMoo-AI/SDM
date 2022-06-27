@@ -1,0 +1,274 @@
+﻿
+<script src="~/lib/jquery/dist/jquery.min.js" />
+<script type="text/jscript">
+    BindGrid();
+      $(document).ready(function () {
+
+
+
+      })
+
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+    .form-inputs {
+        padding: 40px;
+        flex: 60%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .form-btn {
+        margin: 20px 0px;
+        background-color: #f6fe00;
+        color: black;
+        padding: 10px 40px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-row {
+        padding: 10px 0px;
+        position: relative;
+    }
+
+    .form-row-field {
+        color: #000000;
+        position: absolute;
+        pointer-events: none;
+        transition: 0.5s;
+        top: 10px;
+        margin-left: 2em;
+    }
+
+    .form-row-field-input {
+        background-color: inherit;
+        display: block;
+        top: 10px;
+        transition: 0.5s;
+        margin-left: 1.5em;
+    }
+
+        .form-row-field-input:focus  label, input:not(:placeholder-shown)  label {
+            top: -5px;
+            font-size: 12px;
+            color: #9b91f5;
+            font-weight: bold;
+        }
+
+    .fileCss {
+        top: -11px;
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold;
+    }
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+        background-color : rgba(255,255,255,.9) !important;
+    }
+</style>
+ 
+
+ <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Card Report</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="form-horizontal">
+                <div class="card-body">
+                   <div class="row">
+
+                    <div class="col-sm-3">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>From Date</label>
+                        <input type="date" class="form-control" id="txtfromdate" placeholder="" />
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>To Date</label>
+                        <input  type="date" class="form-control" id="txttodate" placeholder="" />
+                      </div>
+                    </div>
+ 
+
+                     <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Currency</label>
+                        <select id="ddlCurrency"  class="form-control"> 
+                         <option value="1">AED</option>
+                        <option value="2">USD</option>
+                        </select>
+                      </div>
+                        </div>
+
+                    
+
+                    <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Credit/Debit</label>
+                        <select id="ddlVehicle"  class="form-control">
+                        <option value="0">Select</option> 
+                        <option value="1">Credit</option>
+                        <option value="2">Debit</option>
+                        </select>
+                      </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Cost Center</label>
+                        <select id="ddlCostCenter"  class="form-control"> 
+                         <option value="0">Select</option> 
+                        </select>
+                      </div>
+                        </div>
+                   
+
+                           <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Category</label>
+                        <select id="ddlCategory"  class="form-control"> 
+                         <option value="0">Select</option> 
+                        </select>
+                      </div>
+                        </div>
+                            
+                          
+                           <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Account</label>
+                        <select id="ddlSubAccount"  class="form-control"> 
+                         <option value="0">Select</option> 
+                        </select>
+                      </div>
+                        </div>           
+                                
+                               <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Account</label>
+                        <select id="ddlSupplier"  class="form-control"> 
+                         <option value="0">Select</option> 
+                        </select>
+                      </div>
+                        </div> 
+                                
+
+                                        <div class="col-sm-3">
+                     <div class="form-group">
+                        <label>Bank Account Number</label>
+                        <select id="ddlBankAccNumber"  class="form-control"> 
+                         <option value="0">Select</option> 
+                        </select>
+                      </div>
+                        </div> 
+
+
+                                 
+                    
+                   
+
+                 
+
+
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer text-center">
+                  <button   class="btn btn-info" onclick="Report()">Go</button> 
+                </div>
+                <!-- /.card-footer -->
+              </div>
+            </div>
+
+            <script src="/js/CommonFunction.js"></script>
+
+            <script>
+            
+            
+        $(document).ready(function () {
+               BindCostCenter();
+             BindCategory();
+             BindSubAccounntMaster();
+             BindSupplier();
+             BindBank();
+   $('#Menu_report').show();
+      $('a.nav-link.Card_Summary').addClass("active");
+        })
+        var trnId = 0;
+    async function BindGrid() {
+        var url = '@Url.Action("BindGrid", "TransactionEntry")';
+        var data = {};
+        data = await callController(url, data);
+
+        console.log(data);
+        Gridappend(data.transactionEntries);
+    }
+
+
+              async function BindCostCenter()
+        {
+            var url = '@Url.Action("BindCostCenter", "Employee_master")';
+            var data = {"CsId":0};
+            data = await callController(url, data);
+            $.each(data.costCenterResponse, function (res, value) {
+                $("#ddlCostCenter").append($("<option></option>").val(value.csId).html(value.csName));
+            })
+        }
+
+            async function BindExpenseCategory()
+        {
+          var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+            var data = {"CsId":0};
+            data = await callController(url, data);
+            $("#ddlCategory").html('');
+            $.each(data.expenseCategoryResponse, function (res, value) {
+                $("#ddlCategory").append($("<option></option>").val(value.trnId).html(value.TrnCategory));
+            })
+        } 
+
+           async function BindSubAccounntMaster()
+        {
+            var url = '@Url.Action("BindGridForTransactionEntry", "Sub_Account_Master")';
+            var data = {"prpId":0};
+            data = await callController(url, data);
+            $.each(data.transactionAccounts, function (res, value) {
+                $("#ddlSubAccount").append($("<option></option>").val(value.id).html(value.value));
+            })
+        }
+          async function BindCategory()
+        {
+            var url = '@Url.Action("BindGrid", "ExpenseCategory")';
+            var data = {"TrnId":0};
+            data = await callController(url, data);
+            $.each(data.expenseCategoryResponse, function (res, value) {
+                $("#ddlCategory").append($("<option></option>").val(value.trnId).html(value.trnCategory));
+            })
+        }
+          async function BindSupplier()
+        {
+            var url = '@Url.Action("BindGrid", "Supplier")';
+            var data = {"supId":0};
+            data = await callController(url, data);
+            $.each(data.supplierResponse, function (res, value) {
+                $("#ddlSupplier").append($("<option></option>").val(value.supId).html(value.supCompanyName));
+            })
+        }
+
+         async function BindBank()
+        {
+            var url = '@Url.Action("BindGrid", "BankMaster")';
+            var data = {"CustId":0};
+            data = await callController(url, data);
+            $.each(data.bankResponse, function (res, value) {
+                $("#ddlBankAccNumber").append($("<option></option>").val(value.bnkId).html(value.bnkAccNo));
+            })
+        }
+
+            </script>
