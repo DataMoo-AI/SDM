@@ -27,16 +27,16 @@ namespace SDM.Repository.InsuranceMaster
             if (cC == null)
             {
                 SDM.TModels.InsuranceMaster cC1 = new SDM.TModels.InsuranceMaster();
-                cC1.InsCompany = costCenter.InsCompany;
-                cC1.InsExpDate = costCenter.InsExpDate;
-                cC1.InsOthers1 = costCenter.InsOthers1;
-                cC1.InsPolicyNo = costCenter.InsPolicyNo;
-                cC1.InsPremiumAmount = costCenter.InsPremiumAmount;
-                cC1.InsPurchaseDate = costCenter.InsPurchaseDate;
-                cC1.InsPurchaseAmount = costCenter.InsPurchaseAmount;
-                cC1.InsVehicleCode = costCenter.InsVehicleCode;
-                cC1.InsVehicleName = costCenter.InsVehicleName;
-                cC1.InsCostCenter = costCenter.InsCostCenter;
+                cC1.InsCompany = costCenter.InsCompany ?? "" ;
+                cC1.InsExpDate = costCenter.InsExpDate ;
+                cC1.InsOthers1 = costCenter.InsOthers1 ?? "" ;
+                cC1.InsPolicyNo = costCenter.InsPolicyNo ?? "" ;
+                cC1.InsPremiumAmount = costCenter.InsPremiumAmount ?? "" ;
+                cC1.InsPurchaseDate = costCenter.InsPurchaseDate ;
+                cC1.InsPurchaseAmount = costCenter.InsPurchaseAmount ?? "" ;
+                cC1.InsVehicleCode = costCenter.InsVehicleCode ?? "" ;
+                cC1.InsVehicleName = costCenter.InsVehicleName ?? "" ;
+                cC1.InsCostCenter = costCenter.InsCostCenter ;
                 _context.InsuranceMaster.Add(cC1);
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
@@ -52,16 +52,16 @@ namespace SDM.Repository.InsuranceMaster
             var cC = _context.InsuranceMaster.FirstOrDefault(a => a.InsId == costCenter.InsId && a.InsDeletedBy == null);
             if (cC != null)
             {
-                cC.InsCompany = costCenter.InsCompany;
+                cC.InsCompany = costCenter.InsCompany ?? "" ;
                 cC.InsExpDate = costCenter.InsExpDate;
-                cC.InsOthers1 = costCenter.InsOthers1;
-                cC.InsPolicyNo = costCenter.InsPolicyNo;
-                cC.InsPremiumAmount = costCenter.InsPremiumAmount;
-                cC.InsPurchaseDate = costCenter.InsPurchaseDate;
-                cC.InsVehicleCode = costCenter.InsVehicleCode;
-                cC.InsVehicleName = costCenter.InsVehicleName;
-                cC.InsCostCenter = costCenter.InsCostCenter;
-                cC.InsPurchaseAmount = costCenter.InsPurchaseAmount;
+                cC.InsOthers1 = costCenter.InsOthers1 ?? "" ;
+                cC.InsPolicyNo = costCenter.InsPolicyNo ?? "" ;
+                cC.InsPremiumAmount = costCenter.InsPremiumAmount ?? "" ;
+                cC.InsPurchaseDate = costCenter.InsPurchaseDate  ;
+                cC.InsVehicleCode = costCenter.InsVehicleCode ?? "" ;
+                cC.InsVehicleName = costCenter.InsVehicleName ?? "" ;
+                cC.InsCostCenter = costCenter.InsCostCenter ;
+                cC.InsPurchaseAmount = costCenter.InsPurchaseAmount ?? "" ;
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
             }

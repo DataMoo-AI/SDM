@@ -664,7 +664,25 @@
     {
         debugger;
          var data1= {};
+         
+if($('#txtbankname').val()==""||$('#txtbankname').val()==null){
+    toastr.warning("Please enter bank name")
+    return false;
+}      
+if($('#txtrmname').val()==""||$('#txtrmname').val()==null){
+    toastr.warning("Please enter RM name")
+    return false;
+}  
 
+if($('#txtbankcode').val()==""||$('#txtbankcode').val()==null){
+    toastr.warning("Please enter bank code")
+    return false;
+}
+if($('#txtrmcontact').val()==""||$('#txtrmcontact').val()==null){
+    toastr.warning("Please enter rm contact")
+    return false;
+}
+ 
         data1 =
         {
             "BnkId":cCId,
@@ -673,7 +691,7 @@
             "BnkCode": $('#txtbankcode').val(),
             "RmContact": $('#txtrmcontact').val(),
             "BnkAccName":$('#txtbankaccountname').val(),
-            "RmEmail": $('#txtrmemail').val(),
+            "RmEmail": $('#txtrmemail').val() ?? "",
             "BnkCreditOrDebit": $('#txtbankcreditdebit').val(),
             "BnkCreditOrDebit2": $('#txtbankcreditdebit2').val(),
             "BnkCreditOrDebit3": $('#txtbankcreditdebit3').val(),

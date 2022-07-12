@@ -28,16 +28,16 @@ namespace SDM.Repository.CustomerMaster
                 if (customer == null)
                 {
                     SDM.TModels.CustomerMaster customerMaster = new SDM.TModels.CustomerMaster();
-                    customerMaster.CustAddress = customerMasterRequest.CustAddress;
-                    customerMaster.CustContact = customerMasterRequest.CustContact;
-                    customerMaster.CustOthers1 = customerMasterRequest.CustOthers1;
-                    customerMaster.CustContactMobile = customerMasterRequest.CustContactMobile;
-                    customerMaster.CustFax = customerMasterRequest.CustFax;
-                    customerMaster.CustName = customerMasterRequest.CustName;
-                    customerMaster.CustPhone = customerMasterRequest.CustPhone;
-                    customerMaster.CustEmail = customerMasterRequest.CustEmail;
-                    customerMaster.CustLandLine = customerMasterRequest.CustLandLine;
-                    customerMaster.CustTrnOrVatNo = customerMasterRequest.CustTrnOrVatNo;
+                    customerMaster.CustAddress = customerMasterRequest.CustAddress ?? "";
+                    customerMaster.CustContact = customerMasterRequest.CustContact ?? "";
+                    customerMaster.CustOthers1 = customerMasterRequest.CustOthers1 ?? "";
+                    customerMaster.CustContactMobile = customerMasterRequest.CustContactMobile ?? "";
+                    customerMaster.CustFax = customerMasterRequest.CustFax ?? "";
+                    customerMaster.CustName = customerMasterRequest.CustName ?? "";
+                    customerMaster.CustPhone = customerMasterRequest.CustPhone ?? "";
+                    customerMaster.CustEmail = customerMasterRequest.CustEmail ?? "";
+                    customerMaster.CustLandLine = customerMasterRequest.CustLandLine ?? "";
+                    customerMaster.CustTrnOrVatNo = customerMasterRequest.CustTrnOrVatNo ?? "";
                     _context.CustomerMaster.Add(customerMaster);
                     await _context.SaveChangesAsync();
                     _response.Message = _toaster.Success;
@@ -62,16 +62,16 @@ namespace SDM.Repository.CustomerMaster
                 var customer = _context.CustomerMaster.FirstOrDefault(a => a.CustId == customerMasterRequest.CustId && a.CustDeletedBy == null);
                 if (customer != null)
                 {
-                    customer.CustAddress = customerMasterRequest.CustAddress;
-                    customer.CustContact = customerMasterRequest.CustContact;
-                    customer.CustOthers1 = customerMasterRequest.CustOthers1;
-                    customer.CustContactMobile = customerMasterRequest.CustContactMobile;
-                    customer.CustFax = customerMasterRequest.CustFax;
-                    customer.CustName = customerMasterRequest.CustName;
-                    customer.CustPhone = customerMasterRequest.CustPhone;
-                    customer.CustEmail = customerMasterRequest.CustEmail;
-                    customer.CustLandLine = customerMasterRequest.CustLandLine;
-                    customer.CustTrnOrVatNo = customerMasterRequest.CustTrnOrVatNo;
+                    customer.CustAddress = customerMasterRequest.CustAddress ?? "";
+                    customer.CustContact = customerMasterRequest.CustContact ?? "";
+                    customer.CustOthers1 = customerMasterRequest.CustOthers1 ?? "";
+                    customer.CustContactMobile = customerMasterRequest.CustContactMobile ?? "";
+                    customer.CustFax = customerMasterRequest.CustFax ?? "";
+                    customer.CustName = customerMasterRequest.CustName ?? "";
+                    customer.CustPhone = customerMasterRequest.CustPhone ?? "";
+                    customer.CustEmail = customerMasterRequest.CustEmail ?? "";
+                    customer.CustLandLine = customerMasterRequest.CustLandLine ?? "";
+                    customer.CustTrnOrVatNo = customerMasterRequest.CustTrnOrVatNo ?? "";
                     await _context.SaveChangesAsync();
                     _response.Message = _toaster.Success;
                     return _response;

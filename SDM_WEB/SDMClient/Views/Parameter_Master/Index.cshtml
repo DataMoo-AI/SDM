@@ -297,6 +297,7 @@
         cCId = data['customerMasterResponse'][0].custId;
         assignValues(data, false);
         $("#_btnSubmit").show();
+          $("#print").css({'display':'none'});
     }
         function printPage(obj) {
     var url = '@Url.Action("ParameterPDF", "PrintPDF")'; 
@@ -337,7 +338,7 @@
         $('h2.h3.mb-0.text-center').text('Parameter Master - Delete');
        cCId = data['customerMasterResponse'][0].custId;
         assignValues(data, true);
-       
+         $("#print").css({'display':'none'});
         $("#_btnSubmit").show();
     }
     async function _View(csId){
@@ -415,6 +416,32 @@
     toastr.warning("Please enter the customer email.");
     return false;
     }
+    
+if($('#txtCustomerContact').val()==""||$('#txtCustomerContact').val()==null){
+    toastr.warning("Please enter contact");
+    $('#txtCustomerContact').focus()
+    return false;
+}
+if($('#txtCustomerMobile').val()==""||$('#txtCustomerMobile').val()==null){
+    toastr.warning("Please enter Mobile");
+    $('#txtCustomerMobile').focus()
+    return false;
+}
+if($('#txtCustomerFax').val()==""||$('#txtCustomerFax').val()==null){
+    toastr.warning("Please enter fax");
+    $('#txtCustomerFax').focus()
+    return false;
+}
+if($('#txtTrnVatNumber').val()==""||$('#txtTrnVatNumber').val()==null){
+    toastr.warning("Please enter VAT Number");
+    $('#txtTrnVatNumber').focus()
+    return false;
+}
+if($('#txtCustomerLandline').val()==""||$('#txtCustomerLandline').val()==null){
+    toastr.warning("Please enter landline");
+    $('#txtCustomerLandline').focus()
+    return false;
+}
         var data =
         {
             "custId":cCId,

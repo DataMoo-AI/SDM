@@ -783,12 +783,27 @@
     async function IUDEmpDetails(Flag,ID){
     debugger;
     if($('#txttransactiondate').val()==""){
-    alert("Please enter the transaction date.");
+     toastr.warning("Please enter the transaction date.");
     return false;
     }
-
-    if($('#txttransactioncreditdebit').val()==""){
-    alert("Please enter the credit or debit.");
+    if($('#txttransactioncreditdebit').val()==""||$('#txttransactioncreditdebit').val()=="0"){
+     toastr.warning("Please enter the credit or debit.");
+    return false;
+    }
+    if($('#txttransactiontype').val()==""){
+     toastr.warning("Please enter Trasaction type.");
+    return false;
+    }
+    if($('#ddlCostCenter').val()==""||$('#ddlCostCenter').val()=="0"){
+     toastr.warning("Please enter cost center.");
+    return false;
+    }
+    if($('#txttransactiondetails').val()==""||$('#txttransactiondetails').val()=="0"){
+     toastr.warning("Please enter transaction details.");
+    return false;
+    }
+    if($('#transactioninvnumber').val()==""||$('#transactioninvnumber').val()=="0"){
+     toastr.warning("Please enter transaction details.");
     return false;
     }
     debugger;

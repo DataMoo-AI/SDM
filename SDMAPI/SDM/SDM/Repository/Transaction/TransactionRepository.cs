@@ -25,25 +25,25 @@ namespace SDM.Repository.Transaction
             if (_values1 == null)
             {
                 TransactionEntry _values = new TransactionEntry();
-                _values.TrnDate = transactionEntry.TrnDate;
-                _values.TrnCreditDebit = transactionEntry.TrnCreditDebit;
-                _values.TrnType = transactionEntry.TrnType;
-                _values.TrnCategory = transactionEntry.TrnCategory;
-                _values.TrnSubAccount = transactionEntry.TrnSubAccount;
-                _values.TrnCostCentre = transactionEntry.TrnCostCentre;
-                _values.TrnDetails = transactionEntry.TrnDetails;
-                _values.TrnInvNo = transactionEntry.TrnInvNo;
+                _values.TrnDate = transactionEntry.TrnDate  ;
+                _values.TrnCreditDebit = transactionEntry.TrnCreditDebit ;
+                _values.TrnType = transactionEntry.TrnType  ;
+                _values.TrnCategory = transactionEntry.TrnCategory  ;
+                _values.TrnSubAccount = transactionEntry.TrnSubAccount  ;
+                _values.TrnCostCentre = transactionEntry.TrnCostCentre  ;
+                _values.TrnDetails = transactionEntry.TrnDetails ?? "" ;
+                _values.TrnInvNo = transactionEntry.TrnInvNo ?? "" ;
                 _values.TrnSupplier = transactionEntry.TrnSupplier;
-                _values.TrnCurrency = transactionEntry.TrnCurrency;
-                _values.TrnAmount = transactionEntry.TrnAmount;
-                _values.TrnInstrumentType = transactionEntry.TrnInstrumentType;
-                _values.TrnInstrumentNo = transactionEntry.TrnInstrumentNo;
-                _values.TrnBankAccountNo = transactionEntry.TrnBankAccountNo;
-                _values.TrnRemarks = transactionEntry.TrnRemarks;
-                _values.TrnRequestBy = transactionEntry.TrnRequestBy;
-                _values.TrnAccountnumber = transactionEntry.TrnAccountnumber;
-                _values.TrnVechile = transactionEntry.TrnVehicle;
-                _values.TrnEmployee = transactionEntry.TrnEmployee;
+                _values.TrnCurrency = transactionEntry.TrnCurrency  ;
+                _values.TrnAmount = transactionEntry.TrnAmount ?? "" ;
+                _values.TrnInstrumentType = transactionEntry.TrnInstrumentType  ;
+                _values.TrnInstrumentNo = transactionEntry.TrnInstrumentNo ?? "" ;
+                _values.TrnBankAccountNo = transactionEntry.TrnBankAccountNo ;
+                _values.TrnRemarks = transactionEntry.TrnRemarks ?? "" ;
+                _values.TrnRequestBy = transactionEntry.TrnRequestBy ?? "" ;
+                _values.TrnAccountnumber = transactionEntry.TrnAccountnumber ?? "" ;
+                _values.TrnVechile = transactionEntry.TrnVehicle ;
+                _values.TrnEmployee = transactionEntry.TrnEmployee ;
                 //_values.TrnBankAccountNumb = transactionEntry.TrnBankAccountNumb;
                 if (transactionEntry.TrnSubAccountStr.Contains("(VH)"))
                 {
@@ -75,24 +75,24 @@ namespace SDM.Repository.Transaction
             if (_values != null)
             {
                 _values.TrnDate = transactionEntry.TrnDate;
-                _values.TrnCreditDebit = transactionEntry.TrnCreditDebit;
-                _values.TrnType = transactionEntry.TrnType;
-                _values.TrnCategory = transactionEntry.TrnCategory;
-                _values.TrnSubAccount = transactionEntry.TrnSubAccount;
-                _values.TrnCostCentre = transactionEntry.TrnCostCentre;
-                _values.TrnDetails = transactionEntry.TrnDetails;
-                _values.TrnInvNo = transactionEntry.TrnInvNo;
+                _values.TrnCreditDebit = transactionEntry.TrnCreditDebit  ;
+                _values.TrnType = transactionEntry.TrnType ;
+                _values.TrnCategory = transactionEntry.TrnCategory ;
+                _values.TrnSubAccount = transactionEntry.TrnSubAccount ;
+                _values.TrnCostCentre = transactionEntry.TrnCostCentre  ;
+                _values.TrnDetails = transactionEntry.TrnDetails ?? "" ;
+                _values.TrnInvNo = transactionEntry.TrnInvNo ?? "" ;
                 _values.TrnSupplier = transactionEntry.TrnSupplier;
-                _values.TrnCurrency = transactionEntry.TrnCurrency;
-                _values.TrnAmount = transactionEntry.TrnAmount;
-                _values.TrnInstrumentType = transactionEntry.TrnInstrumentType;
-                _values.TrnInstrumentNo = transactionEntry.TrnInstrumentNo;
-                _values.TrnBankAccountNo = transactionEntry.TrnBankAccountNo;
-                _values.TrnAccountnumber = transactionEntry.TrnAccountnumber;
-                _values.TrnRemarks = transactionEntry.TrnRemarks;
-                _values.TrnRequestBy = transactionEntry.TrnRequestBy;
-                _values.TrnVechile = transactionEntry.TrnVehicle;
-                _values.TrnEmployee = transactionEntry.TrnEmployee;
+                _values.TrnCurrency = transactionEntry.TrnCurrency  ;
+                _values.TrnAmount = transactionEntry.TrnAmount ?? "" ;
+                _values.TrnInstrumentType = transactionEntry.TrnInstrumentType  ;
+                _values.TrnInstrumentNo = transactionEntry.TrnInstrumentNo ?? "" ;
+                _values.TrnBankAccountNo = transactionEntry.TrnBankAccountNo ;
+                _values.TrnAccountnumber = transactionEntry.TrnAccountnumber ?? "" ;
+                _values.TrnRemarks = transactionEntry.TrnRemarks ?? "" ;
+                _values.TrnRequestBy = transactionEntry.TrnRequestBy ?? "" ;
+                _values.TrnVechile = transactionEntry.TrnVehicle ;
+                _values.TrnEmployee = transactionEntry.TrnEmployee  ;
                 if(transactionEntry.TrnSubAccountStr.Contains("(VH)"))
                 {
                     var vhMaster = _context.VehicleMaster.FirstOrDefault(a => a.VhId == _values.TrnVechile && a.VhDeletedBy == null);

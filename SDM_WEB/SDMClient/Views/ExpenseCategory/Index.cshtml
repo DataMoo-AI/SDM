@@ -291,8 +291,10 @@ function Gridappend(data) {
 
 async function IUDEmpDetails(){
 debugger;
+
 if($('#txttransactioncategory').val()==""||$('#txttransactioncategory').val()==null){
     toastr.warning("Please enter expenses category")
+    $('#txttransactioncategory').focus();
     return false;
 }
 

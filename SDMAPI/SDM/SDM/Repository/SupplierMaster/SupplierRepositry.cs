@@ -39,16 +39,16 @@ namespace SDM.Repository.SupplierMaster
             var _values = _context.SupplierMaster.FirstOrDefault(a => a.SupId == supplierRequest.SupId && a.SupDeletedBy == null);
             if (_values != null)
             {
-                _values.SupCode = supplierRequest.SupCode;
-                _values.SupCompanyName = supplierRequest.SupCompanyName;
-                _values.SupAddress = supplierRequest.SupAddress;
-                _values.SupContactPerson = supplierRequest.SupContactPerson;
-                _values.SupLandline = supplierRequest.SupLandline;
-                _values.SupContactMobile = supplierRequest.SupContactMobile;
-                _values.SupEmail = supplierRequest.SupEmail;
-                _values.SupDetails = supplierRequest.SupDetails;
-                _values.SupVatNumb = supplierRequest.SupVatNumb;
-                _values.SupOthers1 = supplierRequest.SupOthers1;
+                _values.SupCode = supplierRequest.SupCode ?? "" ;
+                _values.SupCompanyName = supplierRequest.SupCompanyName ?? "" ;
+                _values.SupAddress = supplierRequest.SupAddress ?? "" ;
+                _values.SupContactPerson = supplierRequest.SupContactPerson ?? "" ;
+                _values.SupLandline = supplierRequest.SupLandline ?? "" ;
+                _values.SupContactMobile = supplierRequest.SupContactMobile ?? "" ;
+                _values.SupEmail = supplierRequest.SupEmail ?? "" ;
+                _values.SupDetails = supplierRequest.SupDetails ?? "" ;
+                _values.SupVatNumb = supplierRequest.SupVatNumb ?? "" ;
+                _values.SupOthers1 = supplierRequest.SupOthers1 ?? "" ;
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
                 return _response;

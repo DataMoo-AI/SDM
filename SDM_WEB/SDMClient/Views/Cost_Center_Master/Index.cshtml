@@ -333,15 +333,13 @@
         var CostCenterName=$('#txtCostCenterName').val();
         var CostCenterLocation=$('#txtCostCenterLocation').val();
         var CostCenterCountry=$('#txtCostCenterCountry').val();
-        if(CostCenterCode == ""){
-            toastr.warning("Please enter the cost center code.");
-            return false;
-        }
-        if(CostCenterName == "")
-        {
-            toastr.warning("Please enter the cost center name.");
-             return false;
-        }
+      
+        
+if($('#txtCostCenterCode').val()==""||$('#txtCostCenterCode').val()==null){
+    toastr.warning("Please enter cost center")
+    $('#txtCostCenterCode').focus();
+    return false;
+}
         var data =
         {
             "CsId":cCId,
