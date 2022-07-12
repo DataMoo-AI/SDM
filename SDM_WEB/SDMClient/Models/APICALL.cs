@@ -44,7 +44,7 @@ namespace SDMClient.Models
                 HttpContent stream = Response.Content;
                 var data = stream.ReadAsStringAsync();
                 dataString = data.Result.ToString();
-                dataString = "Api Return Error. Please contact our team";
+                //dataString = "Api Return Error. Please contact our team";
                 return dataString; ;
             }
         }

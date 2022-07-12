@@ -92,6 +92,21 @@ namespace SDM.Controllers.Transaction
                 return BadRequest(e);
             }
         }
-        
+        [Route("GetCardNumber")]
+        [HttpPost]
+        public ActionResult GetCardNumber([FromBody] TransactionEntry transactionEntry)
+        {
+            try
+            {
+                var response = _iTransaction.GetCardNumber(transactionEntry);
+                if (response.Message.ToLower() == "success") { return Ok(response); }
+                else { return BadRequest(response); }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
+
     }
 }

@@ -70,7 +70,7 @@
     <section class="">
         <div class="">
             <div class="Imgcontainer">
-                <img class="CommanImage" src="/Images/28.jpg" />
+                <img class="CommanImage" src="~/Images/28.jpg" />
 
                 <div class="top-rightWhite1">Sub Account Master</div>
             </div>
@@ -144,14 +144,14 @@
                       <div class="row align-items-center my-0">
             <div class="row col-12">
                         <div class="col-2">
-                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="~/Images/BackButton.png">
                         
                         </div>
                         <div class="col-8">
                         <h2 class="h3 mb-0 text-center">Sub Account Master - Add</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="/Images/Print.jpg">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -229,7 +229,7 @@
                             </div>
                             <div class="text-center mt-5 mb-3">
                                 <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
-                                <a href="#" class="btn btn-md btn-primary" onclick="clearAll()">Back</a>
+                                <a href="#" class="btn btn-md btn-primary" id="back1"   onclick="clearAll()">Back</a>
                             </div>
                         </div>
                         <!--end-->
@@ -241,7 +241,7 @@
     </section>
 </div>
 
-<script src="/js/CommonFunction.js"></script>
+<script src="~/js/CommonFunction.js"></script>
 <script>
 
         $(document).ready(function () {
@@ -505,5 +505,8 @@
            $('input[type=text]').val('');
         $('h2.h3.mb-0.text-center').text('Sub Account Master - Add');
     }
+        $('#back').click(function() {
+    location.reload();
+});
 
 </script>

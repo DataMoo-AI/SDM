@@ -23,7 +23,7 @@ namespace SDMClient.Controllers
         string dataString = "";
         public IActionResult Index()
         {
-            return View();
+            return new ViewAsPdf();
         }
         public IActionResult EmployeePDF(int ID)
         {
@@ -31,6 +31,10 @@ namespace SDMClient.Controllers
             e.EmpId = ID;
             string Result = Api.PostApi("EmployeeMaster/GetEmployee", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -46,6 +50,10 @@ namespace SDMClient.Controllers
             e.VhId = ID;
             string Result = Api.PostApi("VehicleMaster/Get", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -76,6 +84,8 @@ namespace SDMClient.Controllers
             e.PrpId = ID;
             string Result = Api.PostApi("SubAccountMaster/GetSubAccountMaster", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -91,6 +101,10 @@ namespace SDMClient.Controllers
             e.SupId = ID;
             string Result = Api.PostApi("SupplierMaster/Get", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -122,6 +136,10 @@ namespace SDMClient.Controllers
             e.BnkId = ID;
             string Result = Api.PostApi("BankMaster/Get", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -153,6 +171,9 @@ namespace SDMClient.Controllers
             e.TrnId = ID;
             string Result = Api.PostApi("Transaction/Get", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -168,6 +189,9 @@ namespace SDMClient.Controllers
             e.CustId = ID;
             string Result = Api.PostApi("CustomereMaster/GetCustomereMaster", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -181,6 +205,10 @@ namespace SDMClient.Controllers
         {
             string Result = Api.PostApi("Report/GetReport", e);
             //HttpContext.Session.SetString("_Summaryyear", e.FromDate.ToString("YYYY"));
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
+
             dynamic l = JsonConvert.DeserializeObject<dynamic>(Result);
             List<dynamic> l1 = JsonConvert.DeserializeObject<List<dynamic>>(l["reportResponse"].Value);  
             ViewData["Print"] = l1;
@@ -188,6 +216,41 @@ namespace SDMClient.Controllers
             HttpContext.Session.SetString("_Summaryresponse", JsonConvert.SerializeObject(l1));
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(HttpContext.Session.GetString("_Summaryresponse")); ;
              dt = GenerateTransposedTable(dt);
+            
+            DataRow totalsRow = dt.NewRow();
+            foreach (DataColumn col in dt.Columns)
+            {
+                int colTotal = 0;
+                foreach (DataRow row in col.Table.Rows)
+                {
+                    try { colTotal += Int32.Parse(row[col].ToString()); }
+                    catch { colTotal += 0; }
+                }
+                totalsRow[col.ColumnName] = colTotal;
+            }
+            totalsRow[0] = "Total";
+            DataRow AvgRow = dt.NewRow();
+            foreach (DataColumn col in dt.Columns)
+            {
+                int colTotal = 0;
+                int AvgTotal = 0;
+                foreach (DataRow row in col.Table.Rows)
+                {
+
+                    try
+                    {
+                        colTotal += Int32.Parse(row[col].ToString());
+                        if (row[col].ToString() != "0")
+                            AvgTotal += 1;
+                    }
+                    catch { colTotal += 0; }
+                }
+                if (AvgTotal != 0)
+                    AvgRow[col.ColumnName] = Convert.ToDouble(colTotal / AvgTotal);
+            }
+            AvgRow[0] = "Average";
+            dt.Rows.Add(AvgRow);
+            dt.Rows.Add(totalsRow); 
             if (dt.Rows.Count > 0) { 
             string[] columnNames = dt.Columns.Cast<DataColumn>()
                                  .Select(x => x.ColumnName)
@@ -211,10 +274,27 @@ namespace SDMClient.Controllers
             return new ViewAsPdf("SummaryReportPDF", ViewData)
             {
                 PageMargins = { Left = 2, Bottom = 2, Right = 2, Top = 2 },
-                PageOrientation = Rotativa.NetCore.Options.Orientation.Landscape,
-                Password="Hi",
+                PageOrientation = Rotativa.NetCore.Options.Orientation.Landscape, 
                 CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12",
                 
+            };
+        }
+
+        public IActionResult CardReportPDF(ReportCardRequest e)
+        {
+            string Result = Api.PostApi("Report/GetCardReport", e);
+            var _response = JsonConvert.DeserializeObject<Response>(Result);
+            ViewData["Print"] = _response;
+            HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
+            ViewData["Message"] = "Your application description page.";
+
+            //List<dynamic> _response1 = JsonConvert.DeserializeObject<List<dynamic>>(_response.ReportResponse);
+            //ViewData["Print"] = _response1;
+            //HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response1));
+            return new ViewAsPdf("CardReportPDF", ViewData)
+            { 
+                PageOrientation = Rotativa.NetCore.Options.Orientation.Landscape,
+                CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12",
             };
         }
         public DataTable ToDataTable<T>(List<T> items)

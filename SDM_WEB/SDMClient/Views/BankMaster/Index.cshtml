@@ -70,7 +70,7 @@
     <section class="">
         <div class="">
             <div class="Imgcontainer">
-                <img class="CommanImage" src="/Images/pay.jpg" />
+                <img class="CommanImage" src="~/Images/pay.jpg" />
 
                 <div class="top-rightWhite1">Bank Master</div>
             </div>
@@ -147,14 +147,14 @@
                                 <div class="row align-items-center my-0">
             <div class="row col-12">
                         <div class="col-2">
-                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="~/Images/BackButton.png">
                         
                         </div>
                         <div class="col-8">
                         <h2 class="h3 mb-0 text-center">Bank Master - Add</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="/Images/Print.jpg">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -344,7 +344,7 @@
                             </div>
                             <div class="text-center mt-5 mb-3">
                                 <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
-                                <a href="#" class="btn btn-md btn-primary" onclick="clearAll()">Back</a>
+                                <a href="#" class="btn btn-md btn-primary" id="back1"   onclick="clearAll()">Back</a>
                             </div>
                         </div>
                         <!--end-->
@@ -356,7 +356,7 @@
     </section>
 </div>
 
-<script src="/js/CommonFunction.js"></script>
+<script src="~/js/CommonFunction.js"></script>
 <script>
 
         $(document).ready(function () {
@@ -377,11 +377,11 @@
         $('h2.h3.mb-0.text-center').text('Bank Master - Add');
         Gridappend(data.bankResponse);
     }
-    async function _View(csId) {
+    async function _View(CustId) {
         debugger
-        cCId = csId;;
+        cCId = CustId;;
         var url = '@Url.Action("BindGrid", "BankMaster")';
-        var data = {"bnkId":csId};
+        var data = {"bnkId":CustId};
         data = await callController(url, data);
         console.log(data.bankResponse);
         data=data.bankResponse;
@@ -482,15 +482,15 @@
         $('#bankibannumber').prop('disabled', false);
         $("#_btnSubmit").show();
     }
-    async function _Delete(csId)
+    async function _Delete(CustId)
     {
         var url = '@Url.Action("BindGrid", "BankMaster")';
-        var data = {"bnkId":csId};
+        var data = {"bnkId":CustId};
 
         data = await callController(url, data);
         GridShow(2);
         type = 'delete';
-        cCId = csId;
+        cCId = CustId;
         $('h2.h3.mb-0.text-center').text('Bank Master - Delete');
 
         cCId = data['bankResponse'][0].bnkId;
@@ -542,17 +542,17 @@
         $('#bankibannumber').prop('disabled', true);
         $("#_btnSubmit").show();
     }
-    async function _View(csId)
+    async function _View(CustId)
     {
         var url = '@Url.Action("BindGrid", "BankMaster")';
-        var data = {"custId":csId};
+        var data = {"BnkId":CustId};
 
         data = await callController(url, data);
         GridShow(2);
         type = 'delete';
         
-        $('#print').attr("_PrintID",csId);
-        cCId = csId;
+        $('#print').attr("_PrintID",CustId);
+        cCId = CustId;
         $('h2.h3.mb-0.text-center').text('Bank Master - View');
           $("#print").css({'display':'block'});
         $('#txtbankname').val('');
@@ -742,5 +742,9 @@
         $('#rm2contact').prop('disabled', false);
         $('#bankibannumber').prop('disabled', false);
     }
+    $('#back').click(function() {
+    location.reload();
+});
+
 
 </script>

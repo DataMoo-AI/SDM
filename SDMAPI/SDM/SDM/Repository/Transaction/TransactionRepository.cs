@@ -245,6 +245,8 @@ namespace SDM.Repository.Transaction
                 }
                 _response.TransactionEntries = transaction;
                 _response.Message = _toaster.Success;
+                _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
+
                 return _response;
             }
             else
@@ -292,6 +294,25 @@ namespace SDM.Repository.Transaction
             _response.TransactionAccounts = transactionAccounts;
             _response.Message = _toaster.Success;
             return _response;
+        }
+        public Response GetCardNumber(TransactionEntry transactionEntry)
+        {
+            var _values = new List<BankMasterEntry>();
+            if (transactionEntry.TrnBankAccountNo != 0)
+                _values = _context.BankMasterEntry.Where(a => a.BnkId == transactionEntry.TrnBankAccountNo && a.BnkDeletedBy == null).ToList();
+            else
+                _values = _context.BankMasterEntry.Where(a => a.BnkDeletedBy == null).ToList();
+            if (_values != null)
+            {
+                _response.BankResponse = _values;
+                _response.Message = _toaster.Success;
+                return _response;
+            }
+            else
+            {
+                _response.Message = _toaster.NotExists;
+                return _response;
+            }
         }
     }
 }

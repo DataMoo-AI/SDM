@@ -71,7 +71,7 @@
   <section class="">
       <div class="">
         <div class="Imgcontainer"> 
-            <img class="CommanImage" src="/Images/26.jpg" />
+            <img class="CommanImage" src="~/Images/26.jpg" />
             
             <div class="centered">Insurance_Master</div>
         </div> 
@@ -148,9 +148,9 @@
         </div>
    
     </div>
-                        <img class="" id="back" style="width:5%; margin-left:5%" onclick="clearAll()" src="/Images/BackButton.png" />
+                        <img class="" id="back" style="width:5%; margin-left:5%" onclick="clearAll()" src="~/Images/BackButton.png" />
                         
-                        <img class="Righttext" id="print" style="width:10%; top:5%; left:90%; display:none;" onclick="printResult()" src="/Images/Print.jpg" />
+                        <img class="Righttext" id="print" style="width:10%; top:5%; left:90%; display:none;" onclick="printResult()" src="~/Images/Print.jpg" />
    <div class="form-inputs">
         <div class="row">
 		
@@ -203,7 +203,7 @@
         </div>
         <div class="text-center mt-5 mb-3">
                 <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
-                <a href="#" class="btn btn-md btn-primary"  onclick="clearAll()">Back</a>
+                <a href="#" class="btn btn-md btn-primary"  id="back1"   onclick="clearAll()">Back</a>
               </div> 
     </div>
     <!--end-->
@@ -215,7 +215,7 @@
     </section>
 </div> 
 
-<script src="/js/CommonFunction.js"></script> 
+<script src="~/js/CommonFunction.js"></script> 
 <script> 
     $(document).ready(function () {
   BindGrid();  

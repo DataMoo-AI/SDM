@@ -33,6 +33,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SDM.Controllers.Report;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace SDM
 {
@@ -49,6 +51,7 @@ namespace SDM
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<IConfigurationRoot>(provider => (IConfigurationRoot)Configuration);
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<ICostCenterRepository, CostCenterRepository>();
@@ -78,7 +81,17 @@ namespace SDM
              .AddJsonOptions(options => {
                  options.JsonSerializerOptions.IgnoreNullValues = false;
              });
-           services.AddCors();
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
+            services.AddDbContext<SDMContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddCors();
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

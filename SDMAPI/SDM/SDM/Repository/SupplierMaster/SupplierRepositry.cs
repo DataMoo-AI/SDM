@@ -87,6 +87,8 @@ namespace SDM.Repository.SupplierMaster
             {
                 _response.SupplierResponse = _values;
                 _response.Message = _toaster.Success;
+                _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
+
                 return _response;
             }
             else

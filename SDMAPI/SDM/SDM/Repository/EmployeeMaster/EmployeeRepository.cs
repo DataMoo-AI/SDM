@@ -312,6 +312,8 @@ namespace SDM.Repository
                     }
                     _employeeResponse.EmployeeMasterResponse = employeeMastert;
                     _employeeResponse.Message = _toaster.Success;
+                    _employeeResponse.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
+
                     return _employeeResponse;
                 }
                 else

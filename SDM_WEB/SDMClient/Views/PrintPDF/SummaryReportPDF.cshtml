@@ -3,6 +3,7 @@
 @using System.Data
 @{
     var _response = JsonConvert.DeserializeObject<dynamic>(Context.Session.GetString("_Summaryresponse"));
+    var _Headingresponse = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_Headingresponse"));
     var DT = JsonConvert.DeserializeObject<DataTable>(Context.Session.GetString("_Summarydatatable"));
     var Bew = "";
 }
@@ -31,9 +32,49 @@
   
  </head>
  <style>
+         th, td {
+            padding: 5px;
+            text-align: left;
+            vertical-align: middle;
+        } 
+        .table {
+            color: BLACK;
+            FONT-WEIGHT: 600;
+        }
+           .table td {
+            color: BLACK;
+            FONT-WEIGHT: 500;
+        }
+        .headcontent {
+            color: BLACK;
+            FONT-WEIGHT: 400;
+            font-size: 18px;
+        }  table th {
+            border: 1.5px solid #000000 !important;
+        } table td {
+            border: 1.5px solid #000000;
+        }tr, td {
+            page-break-inside: avoid !important;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-transform: uppercase;
+        }
+        .table th, .table td {
+            padding: 0.25rem;
+        }
+        .breakhere {
+            page-break-after: always
+        }
+        .table thead th {
+            font-weight: 600;
+            color: #001a4e;
+        }   body {
+            background-color: white;
+        }
+         
 table, td, th {
   border: 2px solid;
-  font-size:12.5px !important;
+  font-size:16px !important;
 }
  </style>
  <body>
@@ -41,9 +82,10 @@ table, td, th {
      <div>
          <div class="p-3 mb-3">
               <!-- title row -->
-              <div class="row">
+             <div class="row">
                 <div class="col-12">
                   <h4>
+                   @* <i class="fas fa-globe"></i> @_response.CustomerMasterResponse[0].CustName*@
                     <small class="float-right">Date: @DateTime.Now</small>
                   </h4>
                 </div>
@@ -52,11 +94,11 @@ table, td, th {
               <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
+                   
                   <address>
-                    <strong>SDM Office,.</strong><br>
-                    Dubai<br> 
-                    Phone: (123) 123-123<br>
-                    Email: info@sdm.com
+                    <strong>@_Headingresponse.CustomerMasterResponse[0].CustAddress,.</strong><br> 
+                    Phone: @_Headingresponse.CustomerMasterResponse[0].CustContactMobile<br>
+                    Email: @_Headingresponse.CustomerMasterResponse[0].CustEmail
                   </address>
                 </div> 
               </div>
@@ -75,7 +117,7 @@ table, td, th {
                         <th>Month:</th>
                         @foreach (dynamic i in @_response)
                         {
-                        <th>@i["Category"]</th>
+                        <th class="text-center">@i["Category"]</th>
                         }  
                       
                       </tr>
@@ -83,8 +125,18 @@ table, td, th {
     {
         <tr>
             @foreach (DataColumn col in DT.Columns)
-            {                
-                <td>@row[col.ColumnName]</td> 
+                                        {
+                                            try
+                                            {
+                                                var _value = string.Format("{0:n}", Convert.ToDouble(@row[col.ColumnName]));
+                                                <td class="text-right">@_value</td> 
+                                                
+                                            }
+                                            catch
+                                            {
+                                            <td>@row[col.ColumnName]</td> 
+                                                
+                                            }
             } 
         </tr>
     }

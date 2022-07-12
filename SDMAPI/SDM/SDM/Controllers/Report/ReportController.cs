@@ -45,5 +45,20 @@ namespace SDM.Controllers.Report
                 return BadRequest(e);
             }
         }
+        [Route("GetCardReport")]
+        [HttpPost]
+        public async Task<ActionResult> GetCardReport(ReportCardRequest g)
+        {
+            try
+            {
+                Response response1 = await _iReport.GetCardReport(g);
+                if (response1.Message.ToLower() == "success") { return Ok(response1); }
+                else { return BadRequest(response1); }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace SDM.Interfaces
     {
         public Task<Response> GetReport(ReportRequest g);
         public Task<Response> Gettransactiontype();
+        public Task<Response> GetCardReport(ReportCardRequest g);
     }
 }

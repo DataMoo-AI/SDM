@@ -79,7 +79,7 @@
     <section class="">
         <div class="">
             <div class="Imgcontainer">
-                <img class="CommanImage" src="/Images/24.jpg" />
+                <img class="CommanImage" src="~/Images/24.jpg" />
 
                 <div class="top-right1">Parameter Master</div>
             </div>
@@ -155,14 +155,14 @@
                         <div class="row align-items-center my-0">
             <div class="row col-12">
                         <div class="col-2">
-                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="~/Images/BackButton.png">
                         
                         </div>
                         <div class="col-8">
                         <h2 class="h3 mb-0 text-center">Parameter Master - View</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="/Images/Print.jpg">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: none;" onclick="printPage(this)" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -228,7 +228,7 @@
                             </div>
                             <div class="text-center mt-5 mb-3">
                                 <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
-                                <a href="#" class="btn btn-md btn-primary"  onclick="clearAll()">Back</a>
+                                <a href="#" class="btn btn-md btn-primary" id="back1"  onclick="clearAll()">Back</a>
                             </div>
                         </div>
                         <!--end-->
@@ -240,7 +240,7 @@
     </section>
 </div>
 
-<script src="/js/CommonFunction.js"></script>
+<script src="~/js/CommonFunction.js"></script>
 <script>
 
         $(document).ready(function () {
@@ -301,7 +301,7 @@
         function printPage(obj) {
     var url = '@Url.Action("ParameterPDF", "PrintPDF")'; 
     var _id = $(obj).attr("_PrintID");
-    window.open(url + "?ID=" + 1);
+    window.open(url + "?ID=" + _id);
 }
     function assignValues(data, type)
     {
@@ -374,7 +374,7 @@
                 item += '<td>' + Arr[i].custTrnOrVatNo + '</td>';
                 item += '<td>' + Arr[i].custEmail + '</td>';
                 item += '  <td>';
-                item += ActionsButtons(Arr[i].csId)
+                item += ActionsButtons(Arr[i].custId)
                 item += '</td>';
                 item += ' </tr>';
             }
@@ -457,5 +457,7 @@
              $("#print").css({'display':'none'});
         $('h2.h3.mb-0.text-center').text('Add - Parameter Master');
     }
-
+        $('#back').click(function() {
+    location.reload();
+});
 </script>

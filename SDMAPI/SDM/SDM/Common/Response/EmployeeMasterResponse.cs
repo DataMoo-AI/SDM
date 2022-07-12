@@ -28,6 +28,7 @@ namespace SDM.Common.Response
     {
         public int Id { get; set; }
         public string Value { get; set; }
+        public string Type { get; set; }
     }   
     public class ReportResponses
     { 
@@ -202,6 +203,8 @@ namespace SDM.Common.Response
     {
         public int TrnId { get; set; }
         public DateTime? TrnDate { get; set; }
+        public string? TrnDateFormat { get; set; }
+        public string? TrnMonthFormat { get; set; }
         public int? TrnCreditDebit { get; set; }
         public int? TrnType { get; set; }
         public int? TrnCategory { get; set; }
@@ -228,6 +231,7 @@ namespace SDM.Common.Response
         public int? TrnEmployee { get; set; }
         public string? TrnVehicleName { get; set; }
         public string? TrnEmployeeName { get; set; }
+        public string? TrnCommonSubAccount{ get; set; }
         public string TrnBankAccountName { get; set; }
         public int? TrnCreatedBy { get; set; }
         public DateTime? TrnCreatedDate { get; set; }

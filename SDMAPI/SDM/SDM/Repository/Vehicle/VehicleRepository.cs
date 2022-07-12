@@ -160,6 +160,8 @@ namespace SDM.Repository.Vehicle
                             }).ToList();
                 _response.VechileResponse = _val;
                 _response.Message = _toaster.Success;
+                _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
+
                 return _response;
             }
             else

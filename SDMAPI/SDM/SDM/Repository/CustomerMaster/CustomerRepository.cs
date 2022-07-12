@@ -137,9 +137,9 @@ namespace SDM.Repository.CustomerMaster
                     return _response;
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                _response.Message = "Failed";
+                _response.Message = ex.InnerException.ToString() +" ## "+ ex.Message;
                 return _response;
             }
         }

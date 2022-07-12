@@ -1,10 +1,11 @@
 ﻿@using Newtonsoft.Json;
 @using SDM.Common.Response;
 @{
+    //var _response1 = JsonConvert.DeserializeObject<List<dynamic>>(Context.Session.GetString("_response"));
     var _response = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_response"));
     var CheckMonth = "";
     var TotalAmount = "0";
-
+    int j = 0;
 }
 
 <!DOCTYPE html>
@@ -35,129 +36,48 @@
 
 </style>
 <style>
-           th, td {
+         th, td {
             padding: 5px;
             text-align: left;
             vertical-align: middle;
-        }
-
-        table.center {
-            margin-left: 10%;
-            margin-right: 10%;
-            width: 80%;
-            table-layout: fixed;
-            border-collapse: collapse;
-        }
-
-        table.PreBlastreport {
-            /*table-layout: fixed;*/
-            border-collapse: collapse;
-            margin-left: auto;
-            margin-right: auto;
-            overflow: hidden;
-            font-size: 18px;
-        }
-
-        table.PreBlastreport1 {
-            table-layout: fixed;
-            border-collapse: collapse;
-            margin-left: 10%;
-            margin-right: 10%;
-            overflow: hidden;
-        }
-
+        } 
         .table {
             color: BLACK;
             FONT-WEIGHT: 600;
         }
-
+           .table td {
+            color: BLACK;
+            FONT-WEIGHT: 500;
+        }
         .headcontent {
             color: BLACK;
             FONT-WEIGHT: 400;
             font-size: 18px;
-        }
-
-        table th {
+        }  table th {
             border: 1.5px solid #000000 !important;
-        }
-
-        table td {
+        } table td {
             border: 1.5px solid #000000;
-        }
-
-        * {
-            /* background: #ffffff !important; */
-            /* font-family: 'helvetica neue', arial, verdana, sans-serif; */
-            font-family: "Calibri (Body)";
-        }
-
-
-        .firstimg {
-            padding-left: 1rem !important;
-            background-image: /* the gradient on top, adjust color and opacity to your taste */
-            url( '../../Content/DataFiles/Images/Capture2.PNG');
-            color: white;
-            background-size: 1250px;
-            height: 650px;
-            background-repeat: no-repeat;
-        }
-
-
-        .P_Image {
-            width: 147px !important;
-            height: 97px !important;
-        }
-
-        tr, td {
+        }tr, td {
             page-break-inside: avoid !important;
         }
-
         h1, h2, h3, h4, h5, h6 {
             text-transform: uppercase;
         }
-
-        .table tbody tr th {
-            font-size: 18px;
-        }
-
-        a {
-            color: #1014dc !important;
-            text-decoration: underline;
-        }
-
-        img.navbar-brand-img.mx-auto.mb-4 {
-            width: 3rem;
-        }
-
         .table th, .table td {
             padding: 0.25rem;
         }
-
-
         .breakhere {
             page-break-after: always
         }
-
         .table thead th {
             font-weight: 600;
             color: #001a4e;
-        }
-
-      
- 
-
-        
-
-        body {
+        }   body {
             background-color: white;
-        }
-
-        .img1 {
-            margin-left: 150px;
         }
 table, td, th {
   border: 1.5px solid #000000 !important;
-  font-size:12.5px !important;
+  font-size:16px !important;
   
     border-top: 1.5px solid #000000 !important;
     border-right: 1.5px solid #000000 !important;
@@ -203,7 +123,7 @@ td{
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-globe"></i> SDM.
+                   @* <i class="fas fa-globe"></i> @_response.CustomerMasterResponse[0].CustName*@
                     <small class="float-right">Date: @DateTime.Now</small>
                   </h4>
                 </div>
@@ -212,12 +132,11 @@ td{
               <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                  From
+        
                   <address>
-                    <strong>SDM Office,.</strong><br>
-                    Dubai<br> 
-                    Phone: (123) 123-123<br>
-                    Email: info@sdm.com
+                    <strong>@_response.CustomerMasterResponse[0].CustAddress,.</strong><br> 
+                    Phone: @_response.CustomerMasterResponse[0].CustContactMobile<br>
+                    Email: @_response.CustomerMasterResponse[0].CustEmail
                   </address>
                 </div> 
               </div>
@@ -230,8 +149,25 @@ td{
                        <div class="row col-md-12">
                   <h3 class="text-center">Card Report</h3>
 </div>
- 
+  
+             <table class="table" style="margin-left:20% !important;margin-right:20% !important;width:60% !important">
+        <tr>
+            <th width="5%">Name</th>
+            <td width="25%">AXIS</td>
+            <th width="5%">A/C No</th>
+            <td width="25%">AX0032</td>
+        </tr> 
+        <tr>
+            <th width="5%">Card No</th>
+            <td width="25%">524323423</td>
+            <th width="5%">IBAN</th>
+            <td width="25%">23232</td>
+        </tr>
+        </table> 
+   
+       
                         <div class="table-responsive">
+
                     <table class="table" width="100%">
                          @foreach (var i in @_response.ReportTemp)
                         { 
@@ -239,7 +175,7 @@ td{
                                 {
                                             <tr class="">
                                 <td colspan="8"></td>
-                                <td>@TotalAmount</td>
+                                    <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
                                           </tr>
                                 }
                          @if(CheckMonth!= Convert.ToString(@i["trnMonthFormat"]))
@@ -251,15 +187,15 @@ td{
                                           </tr>
                                  
                                         <tr>
-                                            <th>Date</th>
-                                            <th>SubAccount</th>
-                                            <th>Category Name</th>
-                                            <th>Inv.No</th>
-                                            <th>Supplier Name</th>
-                                            <th>Details</th>
-                                            <th>RequestBy</th>
-                                            <th>Amount</th>
-                                            <th>Total</th>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">SubAccount</th>
+                                            <th class="text-center">Category Name</th>
+                                            <th class="text-center">Inv.No</th>
+                                            <th class="text-center">Supplier Name</th>
+                                            <th class="text-center">Details</th>
+                                            <th class="text-center">RequestBy</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Total</th>
                                         </tr>
                                   
                                    
@@ -269,23 +205,30 @@ td{
                 
                          
                        <tr>
-                            <td>@i["trnDateFormat"]</td>
+                            <td class="text-center">@i["trnDateFormat"]</td>
                             <td>@i["trnCommonSubAccount"]</td>
                             <td>@i["trnCategoryName"]</td>
                             <td>@i["trnInvNo"]</td>
                             <td>@i["trnSupplierName"]</td>
                             <td>@i["trnDetails"]</td>
                             <td>@i["trnRequestBy"]</td>
-                            <td>@i["trnAmount"]</td>
+                            <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@i["trnAmount"]))</td>
                             <td></td>
 
-                             </tr>
-                        
+                                </tr>
+
                                 {
                                     TotalAmount = Convert.ToString(Convert.ToDouble(TotalAmount)+Convert.ToDouble(@i["trnAmount"]=="" ?"0":@i["trnAmount"]));
                                     CheckMonth = Convert.ToString(@i["trnMonthFormat"]);
-                               }  
-                  
+                                    j++;
+                                }  
+                       @if(@j==@_response.ReportTemp.Count)
+                                {
+                                            <tr class="">
+                                <td colspan="8"></td>
+                                    <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
+                                          </tr>
+                                }
              
                 }
                    </table>

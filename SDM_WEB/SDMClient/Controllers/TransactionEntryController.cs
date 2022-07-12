@@ -39,5 +39,10 @@ namespace SDMClient.Controllers
             string Result = Api.PostApi("Transaction/Delete", e);
             return Result;
         }
+        public string GetCardNumber(TransactionEntry e)
+        {
+            string Result = Api.PostApi("Transaction/GetCardNumber", e);
+            return Result;
+        }
     }
 }

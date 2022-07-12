@@ -73,7 +73,7 @@
     <section class="">
         <div class="">
             <div class="Imgcontainer">
-                <img class="CommanImage" src="/Images/pay.jpg" />
+                <img class="CommanImage" src="~/Images/pay.jpg" />
 
                 <div class="top-rightWhite1">Transaction Entry</div>
             </div>
@@ -142,14 +142,14 @@
                                     <div class="row align-items-center my-0">
             <div class="row col-12">
                         <div class="col-2">
-                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="/Images/BackButton.png">
+                         <img class="" id="back" style="width: 25%;margin-left: 36%; top:5px" onclick="clearAll()" src="~/Images/BackButton.png">
                         
                         </div>
                         <div class="col-8">
                         <h2 class="h3 mb-0 text-center">Transaction Entry -Add</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="printb" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="/Images/Print.jpg">
+                         <img class="Righttext" id="printb" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -206,11 +206,23 @@
                                         <label for="POST-name" class="fileCss form-row-field"> Account</label>
                                     </div>
                                 </div>
+
+                                <div class="col-sm-6">
+                                  <div class="form-row form-group">
+          
+                                        <select id="ddlBankAccNumber" onchange="BindCardnumber()"  class="form-row-field-input form-control">
+                                        <option value="0">Select</option> 
+                                        </select>
+                                        <label for="POST-name" class="fileCss form-row-field">Bank Account Number</label>
+                                    </div>
+                                    </div>
                                 
                                  <div class="col-sm-6">
                                         <div class="form-row form-group">
-                                        <input type="text" id="txttransactionaccountnumber" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Account Number</label>
+                                        <select  id="txttransactionaccountnumber" class="form-row-field-input form-control">
+                                        <option  selected value="0" >select</option>
+                                        </select>
+                                        <label for="POST-name" class="fileCss form-row-field">Card Number</label>
                                     </div>
                                 </div>
 
@@ -273,15 +285,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                  <div class="form-row form-group">
-          
-                                        <select id="ddlBankAccNumber" class="form-row-field-input form-control">
-                                        <option value="0">Select</option> 
-                                        </select>
-                                        <label for="POST-name" class="fileCss form-row-field">Bank Account Number</label>
-                                    </div>
-                                    </div>
+                                
 
                               <!-- <div class="col-sm-6">
                                   <div class="form-row form-group">
@@ -320,7 +324,7 @@
                                 </div>
                             <div class="text-center mt-5 mb-3">
                                 <a href="#" class="btn btn-md btn-primary" id="_btnSubmit" onclick="IUDEmpDetails(1,0)">Submit</a>
-                                <a href="#" class="btn btn-md btn-primary" onclick="clearAll()">Back</a>
+                                <a href="#" class="btn btn-md btn-primary" id="back1"   onclick="clearAll()">Back</a>
                             </div>
                         </div>
                         <!--end-->
@@ -487,7 +491,7 @@
     </section>
 </div>
 
-<script src="/js/CommonFunction.js"></script>
+<script src="~/js/CommonFunction.js"></script>
 <script>
 
         $(document).ready(function () {
@@ -560,6 +564,7 @@
         $('#_btnSubmit').hide();
     }
     async function AppendData(data, type){
+        debugger;
         // $('#txttransactiondate').val('');
         //$('#txttransactioncreditdebit').val('');
         //$('#txttransactiontype').val('');
@@ -580,6 +585,7 @@
          $('#ddlSubAccount').find('option').remove().end().append('<option value="0">Select</option>');
          $('#ddlBankAccNumber').find('option').remove().end().append('<option value="0">Select</option>');
          $('#ddlSupplier').find('option').remove().end().append('<option value="0">Select</option>');
+          $('#txttransactionaccountnumber').find('option').remove().end().append('<option value="0">Select</option>');
         $('#txttransactiondate').val(data[0].trnDate);
         if(data[0].trnDate!=null &&  data[0].trnDate!="")
             $('#txttransactiondate').val(data[0].trnDate.slice(0,10));
@@ -593,6 +599,7 @@
         await BindSupplier();
         await BindBank();
         
+        
          $('#txttransactioncreditdebit option[value="'+(data[0].trnCreditDebit+'"]')).attr("selected", "selected");
         $('#ddlCostCenter option[value="'+(data[0].trnCostCentre+'"]')).attr("selected", "selected");
         $('#ddlCategory option[value="'+data[0].trnCategory+'"]').attr("selected", "selected");
@@ -600,12 +607,14 @@
         $('#ddlSupplier option[value="'+data[0].trnSupplier+'"]').attr("selected", "selected");
         $('#ddlCurrency option[value="'+data[0].trnCurrency+'"]').attr("selected", "selected");
         $('#ddlBankAccNumber option[value="'+data[0].trnBankAccountNumb+'"]').attr("selected", "selected");
+        await BindCardnumber();
         $('#ddlemployee option[value="'+data[0].trnEmployee+'"]').attr("selected", "selected");
         $('#ddlVehicle option[value="'+data[0].trnVehicle+'"]').attr("selected", "selected"); 
         $('#txttransactiondetails').val(data[0].trnDetails);
         $('#transactioninvnumber').val(data[0].trnInvNo);
         $('#txttransactionamount').val(data[0].trnAmount);
-        $('#txttransactionaccountnumber').val(data[0].trnAccountnumber);
+        $('#txttransactionaccountnumber option[value="'+(data[0].trnAccountnumber+'"]')).attr("selected", "selected");
+       // $('#txttransactionaccountnumber').val(data[0].trnAccountnumber);
         $('#txttransactioninstrumenttype').val(data[0].trnInstrumentType);
         $('#txttransactioninstrumentnumber').val(data[0].trnInstrumentNumb);
         $('#txttransactionremarks').val(data[0].trnRemarks);
@@ -650,7 +659,9 @@
             })
         }
         async function BindSubAccounntMaster()
+        
         {
+            debugger
             var url = '@Url.Action("BindGridForTransactionEntry", "Sub_Account_Master")';
             var data = {"prpId":0};
             data = await callController(url, data);
@@ -828,6 +839,34 @@
     }
 
 
+     async function BindCardnumber()
+        {
+            debugger;
+            var TrnBankAccountNo=$('#ddlBankAccNumber').val();
+            var url = '@Url.Action("GetCardNumber", "TransactionEntry")';
+            var data = {"TrnBankAccountNo":TrnBankAccountNo};
+            data = await callController(url, data);
+            debugger;
+            if(data.bankResponse.length > 0){ 
+                $("#txttransactionaccountnumber").empty();
+                var str="<option  selected value='0' >select</option>";
+                 $("#txttransactionaccountnumber").append(str);
+
+                 if(data.bankResponse[0].bnkCreditOrDebit !="" && data.bankResponse[0].bnkCreditOrDebit !=null){
+                 $("#txttransactionaccountnumber").append($("<option></option>").val(data.bankResponse[0].bnkCreditOrDebit).html(data.bankResponse[0].bnkCreditOrDebit));
+                  }
+
+                for(var i=2;i<5;i++){
+                    
+                    if((data.bankResponse[0]["bnkCreditOrDebit"+i]) !="" && (data.bankResponse[0]["bnkCreditOrDebit"+i]) !=null)
+                    $("#txttransactionaccountnumber").append($("<option></option>").val(data.bankResponse[0]["bnkCreditOrDebit"+i]).html(data.bankResponse[0]["bnkCreditOrDebit"+i]));
+                }
+            }
+            //$.each(data.BankResponse, function (res, value) {
+
+            //    $("#ddlCategory").append($("<option></option>").val(value.trnId).html(value.trnCategory));
+            //})
+        }
 
     function clearAll(){
           GridShow(1);
@@ -835,4 +874,7 @@
 
         $('h2.h3.mb-0.text-center').text('Add - Transaction Master');
     }
+        $('#back').click(function() {
+    location.reload();
+});
 </script>

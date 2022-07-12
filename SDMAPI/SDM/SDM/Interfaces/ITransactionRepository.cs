@@ -12,5 +12,6 @@ namespace SDM.Interfaces
         public Task<Response> Delete(TransactionEntry transactionEntry);
         public Response Get(TransactionEntry transactionEntry);
         public Response GetAccountForTransaction(TransactionEntry transactionEntry);
+        public Response GetCardNumber(TransactionEntry transactionEntry);
     }
 }
