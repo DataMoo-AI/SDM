@@ -255,6 +255,7 @@
     var type ='';
     async function _Edit(csId){
         debugger;
+        $('#print').hide();
           var url = '@Url.Action("BindGrid", "Cost_Center_Master")';
         var data = {"csId":csId};
         data = await callController(url, data);
@@ -308,7 +309,7 @@
                 var sno=i+1;
                 item += '<tr>';
                 item += '<td>' + sno+ '</td>';
-                item += '<td>' + Arr[i].csCode + '</td>';
+                item += '<td>' + Arr[i].csCode+ '</td>';
                 item += '<td>' + Arr[i].csName + '</td>';
                 item += '<td>' + Arr[i].csLocation + '</td>';
                 item += '<td>' + Arr[i].csCountry + '</td>';
@@ -336,7 +337,22 @@
       
         
 if($('#txtCostCenterCode').val()==""||$('#txtCostCenterCode').val()==null){
-    toastr.warning("Please enter cost center")
+    toastr.warning("Please enter code")
+    $('#txtCostCenterCode').focus();
+    return false;
+}
+if($('#txtCostCenterName').val()==""||$('#txtCostCenterCode').val()==null){
+    toastr.warning("Please enter name")
+    $('#txtCostCenterCode').focus();
+    return false;
+}
+if($('#txtCostCenterLocation').val()==""||$('#txtCostCenterCode').val()==null){
+    toastr.warning("Please enter location")
+    $('#txtCostCenterCode').focus();
+    return false;
+}
+if($('#txtCostCenterCountry').val()==""||$('#txtCostCenterCode').val()==null){
+    toastr.warning("Please enter country")
     $('#txtCostCenterCode').focus();
     return false;
 }

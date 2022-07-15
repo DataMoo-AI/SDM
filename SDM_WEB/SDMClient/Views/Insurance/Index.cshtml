@@ -376,13 +376,13 @@
                 var sno=i+1;
                 item += '<tr>';
                 item += '<td>' + sno+ '</td>';
-                item += '<td>' + Arr[i].insVehicleCode + '</td>';
-                item += '<td>' + Arr[i].insPolicyNo + '</td>';
+                item += '<td>' + Arr[i].insVehicleCode  + '</td>';
+                item += '<td>' + Arr[i].insPolicyNo  + '</td>';
                 if(Arr[i].insExpDate != null &&  Arr[i].insExpDate != "")
                     item += '<td>' + Arr[i].insExpDate.slice(0,10) + '</td>';
                 else
                     item += '<td></td>';
-                item += '<td>' + Arr[i].insPremiumAmount + '</td>';
+                item += '<td>' + Arr[i].insPremiumAmount  + '</td>';
 
                 item += '  <td>';
                 item += ActionsButtons(Arr[i].insId)
@@ -417,6 +417,58 @@
         }
     async function IUDEmpDetails(){
     debugger;
+    var insurancecostcenter =$("#txtinsurancecostcenter").val();
+    if(insurancecostcenter=="0")
+    {
+        toastr.warning("please select cost center");
+        return false;
+    }
+    var insurancevehiclename=$('#txtinsurancevehiclename').val();
+    if(insurancevehiclename==""){
+    toastr.warning("Please enter the insurance vehicle name.");
+    return false;
+    } 
+       var insurancevehiclecode=$('#txtinsurancevehiclecode').val();
+    if(insurancevehiclecode==""){
+    toastr.warning("Please enter the insurance vehicle code.");
+    return false;
+    } 
+       var insurancepolicynumber=$('#insurancepolicynumber').val();
+    if(insurancepolicynumber==""){
+    toastr.warning("Please enter the insurance policy number.");
+    return false;
+    } 
+    //   var insurancepurchasedate=$('#insurancepurchasedate').val();
+    //if(insurancepurchasedate==""){
+    //toastr.warning("Please enter the insurance purchase date.");
+    //return false;
+    //}
+    //} 
+    //   var insurancecompany=$('#insurancecompany').val();
+    //if(insurancecompany==""){
+    //toastr.warning("Please enter the insurance company.");
+    //return false;
+    //}
+    //   var insuranceexperiencedate=$('#insuranceexperiencedate').val();
+    //if(insuranceexperiencedate==""){
+    //toastr.warning("Please enter the insurance experience date.");
+    //return false;
+    //}
+    //   var insurancepremiumamount=$('#insurancepremiumamount').val();
+    //if(insurancepremiumamount==""){
+    //toastr.warning("Please enter the insurance premium amount.");
+    //return false;
+    //}
+    //   var insurancepurchaseAmount=$('#insurancepurchaseAmount').val();
+    //if(insurancepurchaseAmount==""){
+    //toastr.warning("Please enter the insuranc epurchase Amount.");
+    //return false;
+    //}
+    //   var insuranceothers1=$('#insuranceothers1').val();
+    //if(insuranceothers1==""){
+    //toastr.warning("Please enter the insurance others1.");
+    //return false;
+    //}
         var data =
         {
             "InsId":cCId,

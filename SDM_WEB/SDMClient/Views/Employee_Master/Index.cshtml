@@ -997,15 +997,203 @@
         var txtEmpEmploymentStatus=$('#txtEmpEmploymentStatus').val();
         var txtEmpEmployeeType=$('#txtEmpEmployeeType').val();
         var txtEmpEmployeeOthers=$('#txtEmpEmployeeOthers').val();
+
+           if(txtEmpCostCenter=="0")
+        {
+            toastr.warning("Please select the  cost center .");
+            return false;
+        }
         if(txtEmpName=="")        {
             toastr.warning("Please enter the employee name.");
             return false;
         }
         if(txtEmpCode=="")
         {
-            toastr.warning("Please enter the employee code.");
+            toastr.warning("Please enter the employee code.")
             return false;
         }
+         if(ddlGender=="")
+        {
+            toastr.warning("Please enter the gender.");
+            return false;
+        }
+        // if(ddlDesignation=="")
+        //{
+        //    toastr.warning("Please enter the designation.");
+        //    return false;
+        //}
+        // if(ddlEmpDept=="")
+        //{
+        //    toastr.warning("Please enter the department.");
+        //    return false;
+        //}
+        //  if(fileEmpPhoto=="")
+        //{
+        //    toastr.warning("Please Upload the Employee Photo.");
+        //    return false;
+        //}
+        //   if(txtEmpNation=="")
+        //{
+        //    toastr.warning("Please enter the  Nationality  .");
+        //    return false;
+        //}
+        //   if(txtEmpJoinDate=="")
+        //{
+        //    toastr.warning("Please enter the  join date  .");
+        //    return false;
+        //}
+        //  if(txtEmpJoinDate=="")
+        //{
+        //    toastr.warning("Please enter the  join date  .");
+        //    return false;
+        //}
+        // if(txtEmpMonthSal=="")
+        //{
+        //    toastr.warning("Please enter the  monthsalary  .");
+        //    return false;
+        //}
+        //if(ddlEmpSalarypaidFrom=="")
+        //{
+        //    toastr.warning("Please enter the  salary paid from  .");
+        //    return false;
+        //}
+        //if(txtEmpDOB=="")
+        //{
+        //    toastr.warning("Please enter the  date of birth .");
+        //    return false;
+        //}
+        // if(txtEmpEmployer=="")
+        //{
+        //    toastr.warning("Please enter the  Employer .");
+        //    return false;
+        //}
+        //if(txtEmpJobLoc=="")
+        //{
+        //    toastr.warning("Please enter the  job location .");
+        //    return false;
+        //}
+       
+        //   if(txtEmpPPNo=="")
+        //{
+        //    toastr.warning("Please enter the passport number .");
+        //    return false;
+        //}
+        //   if(txtEmpPPIssuedDate=="")
+        //{
+        //    toastr.warning("Please enter the passport issued date .");
+        //    return false;
+        //}
+        //    if(txtEmpPPExpDate=="")
+        //{
+        //    toastr.warning("Please enter the passport expiry date .");
+        //    return false;
+        //}
+        //   if(fileEmpImageAttach=="")
+        //{
+        //    toastr.warning("Please update the image attachment .");
+        //    return false;
+        //}
+        //   if(txtEmpVisaIssuDate=="")
+        //{
+        //    toastr.warning("Please enter the issued date .");
+        //    return false;
+        //}
+        //     if(txtEmpVisaNo=="")
+        //{
+        //    toastr.warning("Please enter the visa no .");
+        //    return false;
+        //}
+        //    if(txtEmpVisaExpDate=="")
+        //{
+        //    toastr.warning("Please enter the visa expiry date .");
+        //    return false;
+        //}
+        //   if(fileEmpVisaImage=="")
+        //{
+        //    toastr.warning("Please upload the visa image .");
+        //    return false;
+        //}
+        // if(txtEmpEIDNo=="")
+        //{
+        //    toastr.warning("Please enter the Eid No .");
+        //    return false;
+        //}
+        // if(txtEmpEIDExpDate=="")
+        //{
+        //    toastr.warning("Please enter the Eid expiry date .");
+        //    return false;
+        //}
+        //if(fileEmpEIDImage=="")
+        //{
+        //    toastr.warning("Please enter the Eid image .");
+        //    return false;
+        //}
+        // if(txtEmpAssetGiven=="")
+        //{
+        //    toastr.warning("Please enter the assert given .");
+        //    return false;
+        //}
+        // if(txtEmpHousDetails=="")
+        //{
+        //    toastr.warning("Please enter the house details .");
+        //    return false;
+        //}
+        // if(txtEmpLoansGiven=="")
+        //{
+        //    toastr.warning("Please enter the house details .");
+        //    return false;
+        //}
+        //  if(txtEmpMobileNo=="")
+        //{
+        //    toastr.warning("Please enter the mobile no .");
+        //    return false;
+        //}
+        //  if(txtEmpEmailId=="")
+        //{
+        //    toastr.warning("Please enter the email id .");
+        //    return false;
+        //}
+        //  if(txtEmpPrevVactionDetails=="")
+        //{
+        //    toastr.warning("Please enter the vacation details .");
+        //    return false;
+        //}
+        //   if(txtEmpLeaveBalance=="")
+        //{
+        //    toastr.warning("Please enter the leave balance .");
+        //    return false;
+        //}
+        //  if(txtEmpAirTicket=="")
+        //{
+        //    toastr.warning("Please enter the air ticket .");
+        //    return false;
+        //}
+        //  if(txtEmpProbationPeriod=="")
+        //{
+        //    toastr.warning("Please enter the probation period .");
+        //    return false;
+        //}
+        // if(txtEmpEmploymentEndDate=="")
+        //{
+        //    toastr.warning("Please enter the employment end date.");
+        //    return false;
+        //}
+        //if(txtEmpEmploymentStatus=="")
+        //{
+        //    toastr.warning("Please enter the employment  status.");
+        //    return false;
+        //}
+        // if(txtEmpEmployeeType=="")
+        //{
+        //    toastr.warning("Please enter the employee  type.");
+        //    return false;
+        //}
+        // if(txtEmpEmployeeOthers=="")
+        //{
+        //    toastr.warning("Please enter the employee  others.");
+        //    return false;
+        //}
+
         var data = {
         "Empid": empIdG,
         "EmpCode": txtEmpCode,
@@ -1088,7 +1276,7 @@
             contentType: false
         }).done(function (result) {
             console.log(result);
-            if (result.status === "success")
+            if (result.status == "success")
             {
                 $("#"+Image_ID).attr('src', result.fileName);
                 $("#lnk_"+link_ID).attr('href', result.fileName);
@@ -1123,7 +1311,7 @@
             contentType: false
         }).done(function (result) {
             console.log(result);
-            if (result.status === "success")
+            if (result.status == "success")
             {
                 debugger;
                 j=j+1;
@@ -1172,7 +1360,7 @@
             contentType: false
         }).done(function (result) {
             console.log(result);
-            if (result.status === "success")
+            if (result.status == "success")
             {
                 debugger;
                 j=j+1;

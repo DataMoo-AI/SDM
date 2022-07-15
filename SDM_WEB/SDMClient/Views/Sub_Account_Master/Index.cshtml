@@ -426,10 +426,10 @@
                 var sno=i+1;
                 item += '<tr>';
                 item += '<td>' + sno+ '</td>';
-                item += '<td>' + Arr[i].prpShrtName + '</td>';
-                item += '<td>' + Arr[i].prpName + '</td>';
-                item += '<td>' + Arr[i].prpDetails + '</td>';
-                item += '<td>' + Arr[i].prpCostCentreName + '</td>';
+                item += '<td>' + Arr[i].prpShrtName  + '</td>';
+                item += '<td>' + Arr[i].prpName  + '</td>';
+                item += '<td>' + Arr[i].prpDetails  + '</td>';
+                item += '<td>' + Arr[i].prpCostCentreName  + '</td>';
 
                 item += '  <td>';
                 item += ActionsButtons(Arr[i].prpId)
@@ -461,7 +461,57 @@
         }
     async function IUDEmpDetails(){
     debugger;
+    var costcenter=$("ddlCostCenter").val();
+    if(costcenter=="Select") 
+    {
+      toastr.warning("please enter the costcenter")  
 
+    }
+     var Shortname=$('#prpshortname').val();
+        if(Shortname==""){
+        toastr.warning("Please enter the short name.");
+        return false;
+        }
+         var Name=$('#prpname').val();
+        if(Name==""){
+        toastr.warning("Please enter the name.");
+        return false;
+        }
+         var Details=$('#prpdetails').val();
+        if(Details==""){
+        toastr.warning("Please enter the details.");
+        return false;
+        }
+         var location=$('#prplocation').val();
+        if(location==""){
+        toastr.warning("Please enter the location.");
+        return false;
+        }
+        // var contactPerson=$('#prpcontactPerson').val();
+        //if(contactPerson==""){
+        //toastr.warning("Please enter the contactPerson.");
+        //return false;
+        //}
+        //  var ContacPersonNo=$('#prpContacPersonNo').val();
+        //if(ContacPersonNo==""){
+        //toastr.warning("Please enter the ContacPersonNo.");
+        //return false;
+        //}
+        //   var others1=$('#prpothers1').val();
+        //if(others1==""){
+        //toastr.warning("Please enter the others1.");
+        //return false;
+        //}
+        //  var others2=$('#prpothers2').val();
+        //if(others2==""){
+        //toastr.warning("Please enter the others2.");
+        //return false;
+        //}
+        // var others3=$('#prpothers3').val();
+        //if(others3==""){
+        //toastr.warning("Please enter the others3.");
+        //return false;
+        //}
         var data =
         {
             "prpId":cCId,
@@ -496,7 +546,7 @@
             }
         }
         console.log(data);
-        setTimeout(function() {location.reload();}, 3000);
+    setTimeout(function() {location.reload();}, 3000);
     }
 
     function clearAll(){

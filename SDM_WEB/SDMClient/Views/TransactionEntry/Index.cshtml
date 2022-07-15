@@ -149,7 +149,7 @@
                         <h2 class="h3 mb-0 text-center">Transaction Entry -Add</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="printb" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printPage(this)" src="~/Images/Print.jpg">
+                         <img class="Righttext" id="printb" style="width: 123px;top: 32%;left: 55%;display: none;" onclick="printPage(this)" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -273,8 +273,15 @@
                                 
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="number" id="txttransactioninstrumenttype" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Instrument Type</label>
+                                     <select id="txttransactioninstrumenttype" class="form-row-field-input form-control">
+                                          
+                                            <option value="1">Cheque</option>
+                                            <option value="2">Cash</option>
+                                            <option value="3">Telex Trans</option>
+                                            <option value="4">Swift</option>
+                                            <option value="5">Credit card</option>
+                                        </select>
+                                          <label for="POST-name" class="form-row-field">Instrument Type</label>
                                     </div>
                                 </div>
 
@@ -553,7 +560,7 @@
         $('h2.h3.mb-0.text-center').text('Transaction Entry - View');
         var url = '@Url.Action("BindGrid", "TransactionEntry")';
         var data = {"TrnId":EmpId};
-        
+                $('#printb').show();
         $('#printb').attr("_PrintID",EmpId);
         GridShow(2);
         trnId = EmpId;
@@ -756,9 +763,9 @@
                     item += '<td>' + Arr[i].trnDate.slice(0,10) + '</td>';//$('#txttransactiondate').val(data[0].trnDate.slice(0,10));
                 else
                     item += '<td></td>';
-                item += '<td>' + Arr[i].trnCategoryName + '</td>';
+                item += '<td>' + Arr[i].trnCategoryName  + '</td>';
                 //item += '<td>' + Arr[i].trnSubAccountName + '</td>';
-                item += '<td>' + Arr[i].trnCostCentreName + '</td>';
+                item += '<td>' + Arr[i].trnCostCentreName  + '</td>';
 
                 item += '  <td>';
                 item += ActionsButtons(Arr[i].trnId)
@@ -782,6 +789,11 @@
 
     async function IUDEmpDetails(Flag,ID){
     debugger;
+     if($('#ddlCostCenter').val()==""||$('#ddlCostCenter').val()=="0")
+     {
+     toastr.warning("Please select cost center.");
+    return false;
+    }
     if($('#txttransactiondate').val()==""){
      toastr.warning("Please enter the transaction date.");
     return false;

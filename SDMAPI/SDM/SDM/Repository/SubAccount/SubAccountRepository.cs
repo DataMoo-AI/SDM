@@ -39,16 +39,16 @@ namespace SDM.Repository.SubAccount
             if (subAcc != null)
             {
                 subAcc.PrpCostCentre = subAccountMasterRequest.PrpCostCentre ;
-                subAcc.PrpContactPerson = subAccountMasterRequest.PrpContactPerson ?? "" ;
-                subAcc.PrpContactPersonNumber = subAccountMasterRequest.PrpContactPersonNumber ?? "" ;
-                subAcc.PrpOthers1 = subAccountMasterRequest.PrpOthers1 ?? "" ;
-                subAcc.PrpOthers2 = subAccountMasterRequest.PrpOthers2 ?? "" ;
-                subAcc.PrpOthers3 = subAccountMasterRequest.PrpOthers3 ?? "" ;
-                subAcc.PrpDetails = subAccountMasterRequest.PrpDetails ?? "" ;
+                subAcc.PrpContactPerson = subAccountMasterRequest.PrpContactPerson  ;
+                subAcc.PrpContactPersonNumber = subAccountMasterRequest.PrpContactPersonNumber  ;
+                subAcc.PrpOthers1 = subAccountMasterRequest.PrpOthers1  ;
+                subAcc.PrpOthers2 = subAccountMasterRequest.PrpOthers2  ;
+                subAcc.PrpOthers3 = subAccountMasterRequest.PrpOthers3  ;
+                subAcc.PrpDetails = subAccountMasterRequest.PrpDetails  ;
                 subAcc.PrpCostCentre = subAccountMasterRequest.PrpCostCentre ;
-                subAcc.PrpLocation = subAccountMasterRequest.PrpLocation ?? "" ;
-                subAcc.PrpName = subAccountMasterRequest.PrpName ?? "" ;
-                subAcc.PrpShortName = subAccountMasterRequest.PrpShortName ?? "" ;
+                subAcc.PrpLocation = subAccountMasterRequest.PrpLocation  ;
+                subAcc.PrpName = subAccountMasterRequest.PrpName  ;
+                subAcc.PrpShortName = subAccountMasterRequest.PrpShortName  ;
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
                 return _response;

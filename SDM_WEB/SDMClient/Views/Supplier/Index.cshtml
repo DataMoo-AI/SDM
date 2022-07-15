@@ -351,8 +351,8 @@
                 var sno=i+1;
                 item += '<tr>';
                 item += '<td>' + sno+ '</td>';
-                item += '<td>' + Arr[i].supCode + '</td>';
-                item += '<td>' + Arr[i].supCompanyName + '</td>';
+                item += '<td>' + Arr[i].supCode  + '</td>';
+                item += '<td>' + Arr[i].supCompanyName  + '</td>';
                 item += '<td>' + Arr[i].supContactMobile + '</td>';
                 item += '<td>' + Arr[i].supEmail + '</td>'; 
 
@@ -378,11 +378,56 @@
 
     async function IUDEmpDetails(){
     debugger;
-    var VehicleCode=$('#txtsuppliercode').val();
-    if(VehicleCode==""){
-    toastr.warning("Please enter the Suppier name.");
+    var Sppliercode=$('#txtsuppliercode').val();
+    if(Sppliercode==""){
+    toastr.warning("Please enter the Suppier code.");
     return false;
     } 
+    var Suppliercompanyname=$('#txtsuppliercompanyname').val();
+    if(Suppliercompanyname==""){
+    toastr.warning("Please enter the supplier name.");
+    return false;
+    } 
+       var Supplieraddress=$('#txtsupplieraddress').val();
+    if(Supplieraddress==""){
+    toastr.warning("Please enter the supplier Address.");
+    return false;
+    } 
+        var Suppliercontactperson=$('#txtsuppliercontactperson').val();
+    if(Suppliercontactperson==""){
+    toastr.warning("Please enter the contact person.");
+    return false;
+    }
+    //     var Supplierlandline=$('#txtsupplierlandline').val();
+    //if(Supplierlandline==""){
+    //toastr.warning("Please enter the landline.");
+    //return false;
+    //}
+    //      var Suppliercontactmobile=$('#txtsuppliercontactmobile').val();
+    //if(Suppliercontactmobile==""){
+    //toastr.warning("Please enter the contact/mob no.");
+    //return false;
+    //}
+    //        var Supplieremail=$('#txtsupplieremail').val();
+    //if(Supplieremail==""){
+    //toastr.warning("Please enter the Email.");
+    //return false;
+    //}
+    //       var Supplierdetails=$('#txtsupplierdetails').val();
+    //if(Supplierdetails==""){
+    //toastr.warning("Please enter the details.");
+    //return false;
+    //}
+    //        var Suppliervatnumber=$('#txtsuppliervatnumber').val();
+    //if(Suppliervatnumber==""){
+    //toastr.warning("Please enter the VAT no.");
+    //return false;
+    //}
+    //      var Supplierothers=$('#txtsupplierothers').val();
+    //if(Supplierothers==""){
+    //toastr.warning("Please enter the others.");
+    //return false;
+    //}
         var data = 
     {
             "supId": cCId,

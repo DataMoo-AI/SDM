@@ -1,6 +1,7 @@
 ﻿using SDM.Common.Response;
 using SDM.Interfaces;
 using SDM.TModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -107,6 +108,7 @@ namespace SDM.Repository.Vehicle
         }
         public Response Get(VehicleMaster vehicleRequest)
         {
+            try {
             var _values = new List<VehicleMaster>();
             if(vehicleRequest.VhId != 0)
                 _values = _context.VehicleMaster.Where(a => a.VhId == vehicleRequest.VhId && a.VhDeletedBy == null).ToList();
@@ -158,13 +160,34 @@ namespace SDM.Repository.Vehicle
                                 VhOthers3 = V.VhOthers3,
                                 VhOthers4 = V.VhOthers4,
                             }).ToList();
-                _response.VechileResponse = _val;
+                    if (_val.Any())
+                    {
+                        foreach (var emp in _val)
+                        {
+                            var empCostCentre = _context.CostCenterMaster.FirstOrDefault(a => a.CsId == emp.VhCostCentre && a.CsDeletedBy == null);
+                            if (empCostCentre != null)
+                            {
+                                emp.VhCostCentreName = empCostCentre.CsName;
+                            }
+                            else
+                            {
+                                emp.VhCostCentreName = "0";
+                            }
+                        }
+                    }
+                    _response.VechileResponse = _val;
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 
                 return _response;
             }
             else
+            {
+                _response.Message = _toaster.NotExists;
+                return _response;
+            }
+            }
+            catch (Exception e)
             {
                 _response.Message = _toaster.NotExists;
                 return _response;

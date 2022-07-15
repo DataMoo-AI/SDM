@@ -39,11 +39,11 @@ namespace SDM.Repository.CostCenter
             var cC = _context.CostCenterMaster.FirstOrDefault(a => a.CsId == costCenter.CsId && a.CsDeletedBy == null);
             if (cC != null)
             {
-                cC.CsOthers1 = costCenter.CsOthers1 ?? "";
-                cC.CsCode = costCenter.CsCode ?? "";
-                cC.CsLocation = costCenter.CsLocation ?? "";
-                cC.CsCountry = costCenter.CsCountry ?? "";
-                cC.CsName = costCenter.CsName ?? "";
+                cC.CsOthers1 = costCenter.CsOthers1 ;
+                cC.CsCode = costCenter.CsCode ;
+                cC.CsLocation = costCenter.CsLocation ;
+                cC.CsCountry = costCenter.CsCountry ;
+                cC.CsName = costCenter.CsName ;
                 await _context.SaveChangesAsync();
                 _response.Message = _toaster.Success;
             }

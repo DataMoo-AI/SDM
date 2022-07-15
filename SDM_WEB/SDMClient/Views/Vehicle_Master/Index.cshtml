@@ -588,10 +588,10 @@
                     var sno=i+1;
                     item += '<tr>';
                     item += '<td>' + sno+ '</td>';
-                    item += '<td>' + Arr[i].vhRegNo + '</td>';
-                    item += '<td>' + Arr[i].vhName + '</td>';
-                    item += '<td>' + Arr[i].vhCostCentreName + '</td>';
-                    item += '<td>' + Arr[i].vhVehicleOn + '</td>';
+                    item += '<td>' + Arr[i].vhRegNo  + '</td>';
+                    item += '<td>' + Arr[i].vhName  + '</td>';
+                    item += '<td>' + Arr[i].vhCostCentreName  + '</td>';
+                    item += '<td>' + Arr[i].vhVehicleOn  + '</td>';
 
                     item += '  <td>';
                     item += ActionsButtons(Arr[i].vhId)
@@ -619,11 +619,193 @@
 }
         async function IUDEmpDetails(){
         debugger;
-        var VehicleCode=$('#txtvehiclecode').val();
-        if(VehicleCode==""){
-        toastr.warning("Please enter the customer name.");
+         var CostCenter=$('#ddlCostCenter').val();
+        if(CostCenter==""){
+        toastr.warning("Please select the cost center.");
         return false;
         }
+        var VehicleCode=$('#txtvehiclecode').val();
+        if(VehicleCode==""){
+        toastr.warning("Please enter the customer code.");
+        return false;
+        }
+
+            var VehicleType=$('#txtvehicletype').val();
+        if(VehicleType==""){
+        toastr.warning("Please enter the vehicle type.");
+        return false;
+        }
+           var VehicleRegno=$('#txtvehicleregno').val();
+        if(VehicleRegno==""){
+        toastr.warning("Please enter the Registration NO.");
+        return false;
+        }
+         var Vehiclename=$('#txtvehiclename').val();
+        if(Vehiclename==""){
+        toastr.warning("Please enter the Vehicle name.");
+        return false;
+        }
+           var Vehiclebrandname=$('#txtvehiclebrandname').val();
+        if(Vehiclebrandname==""){
+        toastr.warning("Please enter the Vehicle Brand name.");
+        return false;
+        }
+            var Vehiclemodelyear=$('#txtvehiclemodelyear').val();
+        if(Vehiclemodelyear==""){
+        toastr.warning("Please enter the Vehicle Model year.");
+        return false;
+        }
+             var Vehiclepurchasedate=$('#txtvehiclepurchasedate').val();
+        if(Vehiclepurchasedate==""){
+        toastr.warning("Please enter the Vehicle purchase date.");
+        return false;
+        }
+        //    var Vehiclenumber=$('#txtvehiclenumber').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the  Vehicle number.");
+        //return false;
+        //}     
+        //     var Vehicleregistrationexp=$('#txtvehicleregistrationexp').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the  Registration  Expire.");
+        //return false;
+        //}
+        //       var Vehicletypeofpurchase=$('#txtvehicletypeofpurchase').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the  vehicle type of purchase.");
+        //return false;
+        //}
+        //      var Vehiclesizecapacity=$('#txtvehiclesizecapacity').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the  vehicle size capacity.");
+        //return false;
+        //}
+        //    var Vehicledrivenby=$('#txtvehicledrivenby').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle driven by.");
+        //return false;
+        //}
+        //   var Vehiclelocation=$('#txtvehiclelocation').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle location.");
+        //return false;
+        //}  
+        //    var Vehiclepurchasevalue=$('#txtvehiclepurchasevalue').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle Purchase Value.");
+        //return false;
+        //}
+        //  var Vehiclepurchasefrom=$('#txtvehiclepurchasefrom').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle Purchase from.");
+        //return false;
+        //}
+        //   var Purchasecolor=$('#txtpurchasecolor').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle Purchase color.");
+        //return false;
+        //}
+        // var Enginecolor=$('#txtenginecolor').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the vehicle color.");
+        //return false;
+        //}
+        //  var Enginepower=$('#txtenginepower').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the Engine power.");
+        //return false;
+        //}
+        //  var Numberofengin=$('#tetnumberofengine').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the Number of engine.");
+        //return false;
+        //}
+        //  var Engineserialno=$('#txtengineserialno').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the engine serial number.");
+        //return false;
+        //}
+        //   var Enginename=$('#txtenginename').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter the engine make.");
+        //return false;
+        //}
+        //    var Typeofhull=$('#txttypeofhull').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Type of hull.");
+        //return false;
+        //}
+        //   var Chassisno=$('#txtchassisno').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Chassis no.");
+        //return false;
+        //}
+        //   var Weight=$('#txtweight').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Weight.");
+        //return false;
+        //}
+        //  var Orginplace=$('#txtorginplace').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Orginplace.");
+        //return false;
+        //}
+        //  var Noofpassengersplace=$('#txtnoofpassengersplace').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter No of passenger splace.");
+        //return false;
+        //}
+        //   var Numberofcrew=$('#txtnumberofcrew').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter No of  Number of crew.");
+        //return false;
+        //}
+        //   var Radiodevicename=$('#txtradiodevicename').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter No of  Radio device name.");
+        //return false;
+        //}
+        //  var Radiodevicesno=$('#txtradiodevicesno').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter No of  Radio device s no.");
+        //return false;
+        //}
+        //   var Radiodevicestype=$('#txtradiodevicestype').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter No of  Radio device Type.");
+        //return false;
+        //}
+        //   var EmpPhoto=$('#fileEmpPhoto').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please upload photo.");
+        //return false;
+        //}
+        //    var Status=$('#txtstatus').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter status.");
+        //return false;
+        //}
+        //    var Others1=$('#txtothers1').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Others1.");
+        //return false;
+        //}
+        //    var Others=$('#txtothers2').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Others.");
+        //return false;
+        //}
+        //    var Others3=$('#txtothers3').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Others3.");
+        //return false;
+        //}
+        //    var Others4=$('#txtothers4').val();
+        //if(VehicleCode==""){
+        //toastr.warning("Please enter Others4.");
+        //return false;
+        //}
+       
             var data =     {
                 "vhId": cCId,
                 "vhCode": $('#txtvehiclecode').val(),

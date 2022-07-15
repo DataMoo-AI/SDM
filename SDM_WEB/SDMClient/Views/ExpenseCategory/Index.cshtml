@@ -221,6 +221,7 @@ var cCId = 0;
 var type ='';
 async function _Edit(CustId){
     debugger;
+    $('#print').hide();
       var url = '@Url.Action("BindGrid", "ExpenseCategory")';
     var data = {"trnId":CustId};
     data = await callController(url, data);
