@@ -275,6 +275,7 @@
         $("#txtCostCenterCountry").prop('disabled', false);
     }
     async function _Delete(csId){
+        $('#print').hide();
         var url = '@Url.Action("BindGrid", "Cost_Center_Master")';
         var data = {"csId":csId};
         data = await callController(url, data);

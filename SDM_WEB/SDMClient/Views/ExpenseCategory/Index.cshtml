@@ -234,6 +234,7 @@ async function _Edit(CustId){
     $("#_btnSubmit").show(); 
 }
 async function _Delete(csId){
+    $('#print').hide;
      var url = '@Url.Action("BindGrid", "ExpenseCategory")';
     var data = {"trnId":csId};
     data = await callController(url, data);
@@ -245,6 +246,7 @@ async function _Delete(csId){
     $('#txttransactioncategory').val(data['expenseCategoryResponse'][0].trnCategory);
     $("#txttransactioncategory").prop('disabled', true); 
     $("#_btnSubmit").show(); 
+    $("#_btnsubmit").text('Delete');
 }
 async function _View(csId){
      var url = '@Url.Action("BindGrid", "ExpenseCategory")';
@@ -258,7 +260,6 @@ async function _View(csId){
     $('#txttransactioncategory').val('');
     $('#txttransactioncategory').val(data['expenseCategoryResponse'][0].trnCategory);
     $("#txttransactioncategory").prop('disabled', true); 
-    $("#_btnSubmit").hide(); 
 }
 function Gridappend(data) {
     debugger;

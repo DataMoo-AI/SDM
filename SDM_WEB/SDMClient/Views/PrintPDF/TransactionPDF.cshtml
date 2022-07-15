@@ -136,8 +136,7 @@ border-top:0px !important;
                       <th style="width:25%">Amount :</th>
                         <td>@_response.TransactionEntries[0].TrnAmount</td>
 
-                         <th style="width:25%">Instrument Type :</th>
-                        <td>@_response.TransactionEntries[0].TrnInstrumentType</td>
+                         <th style="width:25%">Instrument Type :</th> 
                           @if (@_response.TransactionEntries[0].TrnInstrumentType == 1)
                                     {
                                          <td>Cheque</td>
