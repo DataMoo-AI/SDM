@@ -126,7 +126,7 @@ namespace SDM.Repository.CustomerMaster
                 if (customer != null)
                 {
                    var customerMaster = (from a in customer orderby -a.CustId
-                                         select a).ToList();
+                                         select a).OrderByDescending(a => a.CustId).ToList();
                     _response.CustomerMasterResponse = customerMaster;
                     _response.Message = _toaster.Success;
                     return _response;

@@ -349,7 +349,7 @@ namespace SDM.Repository
                             }
                         }
                     }
-                    _employeeResponse.EmployeeMasterResponse = employeeMastert;
+                    _employeeResponse.EmployeeMasterResponse = employeeMastert.OrderByDescending(a => a.EmpId).ToList();
                     _employeeResponse.Message = _toaster.Success;
                     _employeeResponse.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

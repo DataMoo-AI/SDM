@@ -243,7 +243,7 @@ namespace SDM.Repository.Transaction
                         }
                     }
                 }
-                _response.TransactionEntries = transaction;
+                _response.TransactionEntries = transaction.OrderByDescending(a => a.TrnId).ToList();
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

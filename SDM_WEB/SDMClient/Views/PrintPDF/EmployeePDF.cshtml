@@ -1,9 +1,10 @@
 ﻿@using Newtonsoft.Json;
 @using SDM.Common.Response;
+@using Microsoft.Extensions.Configuration;
 @{
     var _response = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_response"));
     var _Headingresponse = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_Headingresponse"));
-
+    var AppHostName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MySettings:ApiPath").Value;
     var Bew = "";
 }
 
@@ -111,7 +112,10 @@ border-top:0px !important;
                     </tr>
                         <tr>
                            <th style="width:25%">Photo:</th>
-                        <td> <img   src="@_response.EmployeeMasterResponse[0].EmpPhoto" height="50px"/>  </td>
+                           @{
+                           var FirstImage = AppHostName + @_response.EmployeeMasterResponse[0].EmpPhoto;
+                           }
+                        <td> <img  src="@FirstImage" height="50px"/>  </td>
                         
                         <th style="width:25%">Nationality:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpNationality</td>
@@ -153,9 +157,13 @@ border-top:0px !important;
                                         }
                                         else{
                                             var a = @_response.EmployeeMasterResponse[0].EmpPpImageAttachment.Split("&&");
+                                           
+                                                var FirstImage1 = AppHostName + @a[0];
+                                                var SecondImage1 = AppHostName + @a[1];
+                                       
                                             <td><div class="row">
-                                               <img  class="float-left" src="@a[0]" height="50px" style="max-width:75px !important"/>  &nbsp; &nbsp; 
-                                               <img  class="float-left" src="@a[1]" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div>
+                                               <img  class="float-left" src="@FirstImage1" height="50px" style="max-width:75px !important"/>  &nbsp; &nbsp; 
+                                               <img  class="float-left" src="@SecondImage1" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div>
                                             </td>
                                             }
                        
@@ -192,10 +200,12 @@ border-top:0px !important;
                                         }
                                         else{
                                             var a = @_response.EmployeeMasterResponse[0].EmpVisaImageAttachment.Split("&&");
+                                            var FirstImage2 = AppHostName + @a[0];
+                                            var SecondImage2 = AppHostName + @a[1];
                                             <td>
                                               <div class="row">
-                                               <img  class="float-left" src="@a[0]" height="50px"  style="max-width:75px !important;margin-left:5px !important"/> &nbsp; &nbsp; 
-                                               <img  class="float-left" src="@a[1]" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div> 
+                                               <img  class="float-left" src="@FirstImage2" height="50px"  style="max-width:75px !important;margin-left:5px !important"/> &nbsp; &nbsp; 
+                                               <img  class="float-left" src="@SecondImage2" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div> 
                                             </td>
                                             }
                        
@@ -216,7 +226,9 @@ border-top:0px !important;
                         <td>@_response.EmployeeMasterResponse[0].EmpAssetsGiven</td>
                         
                         <th style="width:25%"> Eid Image Attachment:</th>
-                        <td>      <img src="@_response.EmployeeMasterResponse[0].EmpEidImageAttachment" height="50px"/>  </td>
+                        <td>  @{
+                               var FirstImage4 = AppHostName + @_response.EmployeeMasterResponse[0].EmpEidImageAttachment;
+                        }    <img src="@FirstImage4" height="50px"/>  </td>
                     </tr>
 
                         <tr>
@@ -277,9 +289,7 @@ border-top:0px !important;
               </div>
             </div>
 
-            <div class="text-center">
-                Thank you
-                  </div>
+            
 
      
 

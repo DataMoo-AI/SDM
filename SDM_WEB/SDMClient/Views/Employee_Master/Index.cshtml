@@ -1,4 +1,10 @@
-﻿<script src="~/lib/jquery/dist/jquery.min.js" />
+﻿
+@using Microsoft.Extensions.Configuration;
+@{
+    var AppHostName =  new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MySettings:ApiPath").Value;
+   
+}
+<script src="~/lib/jquery/dist/jquery.min.js" />
 <script type="text/jscript">
     BindGrid();
       $(document).ready(function () {

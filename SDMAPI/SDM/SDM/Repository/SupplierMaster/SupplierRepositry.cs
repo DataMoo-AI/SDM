@@ -85,7 +85,7 @@ namespace SDM.Repository.SupplierMaster
                 _values = _context.SupplierMaster.Where(a => a.SupDeletedBy == null).ToList();
             if (_values != null)
             {
-                _response.SupplierResponse = _values;
+                _response.SupplierResponse = _values.OrderByDescending(a => a.SupId).ToList();
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

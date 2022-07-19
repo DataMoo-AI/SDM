@@ -234,7 +234,8 @@ namespace SDM.Repository.Report
                                        TrnAccountnumber = a.TrnAccountnumber,
                                        TrnVehicle = a.TrnVechile,
                                        TrnEmployee = a.TrnEmployee,
-                                       TrnCommonSubAccount= transactionAccounts.Where(x => x.Type.Contains(a.TrnFlag)&& x.Id==a.TrnSubAccount).Select(x=>x.Value).FirstOrDefault(),
+                                       TrnFlag = a.TrnFlag,
+                                       //TrnCommonSubAccount= transactionAccounts.FirstOrDefault(x => x.Type.Contains(a.TrnFlag)&& x.Id==a.TrnSubAccount).Value,
                                        // TrnBankAccountName = _context.BankMasterEntry.FirstOrDefault(s => s.BnkId == a.TrnBankAccountNumb && s.BnkDeletedBy == null).BnkAccName ?? "",
                                    }).Where(t => t.TrnDeletedBy == null &&
                 t.TrnDate >= g.FromDate && t.TrnDate <= g.ToDate
@@ -255,6 +256,7 @@ namespace SDM.Repository.Report
                         var bm = _context.BankMasterEntry.FirstOrDefault(s => s.BnkId == a.TrnBankAccountNumb && s.BnkDeletedBy == null);
                         var em = _context.EmployeeMaster.FirstOrDefault(s => s.EmpId == a.TrnEmployee && s.EmpDeletedBy == null);
                         var vn = _context.VehicleMaster.FirstOrDefault(s => s.VhId == a.TrnVehicle && s.VhDeletedBy == null);
+                        var trn = transactionAccounts.FirstOrDefault(x => x.Type.Contains(a.TrnFlag??"") && x.Id == a.TrnSubAccount);
 
                         if (em != null)
                         {
@@ -305,6 +307,14 @@ namespace SDM.Repository.Report
                         else
                         {
                             a.TrnBankAccountName = "";
+                        }
+                        if (trn != null)
+                        {
+                            a.TrnCommonSubAccount = trn.Value;
+                        }
+                        else
+                        {
+                            a.TrnCommonSubAccount = "";
                         }
                     }
                 }   //_response.ReportsResponse = transaction;

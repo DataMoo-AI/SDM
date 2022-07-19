@@ -94,9 +94,12 @@ namespace SDM.Repository.InsuranceMaster
                 cC = _context.InsuranceMaster.Where(a => a.InsDeletedBy == null).ToList();
             else
                 cC = _context.InsuranceMaster.Where(a => a.InsDeletedBy == null && a.InsId == costCenter.InsId).ToList();
+
+
+         
             if (cC != null)
             {
-                _response.InsuranceMasterResponse = cC;
+                _response.InsuranceMasterResponse = cC.OrderByDescending(a => a.InsId).ToList();
                 _response.Message = _toaster.Success;
             }
             else

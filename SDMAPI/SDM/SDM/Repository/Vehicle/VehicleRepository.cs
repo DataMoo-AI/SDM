@@ -124,7 +124,6 @@ namespace SDM.Repository.Vehicle
                                 VhCode = V.VhCode,
                                 VhType = V.VhType,
                                 VhVehicleOn = V.VhVehicleOn,
-                                VhCostCentreName = _context.CostCenterMaster.FirstOrDefault(a => a.CsDeletedBy == null && a.CsId == V.VhCostCentre).CsName ?? "",
                                 VhName = V.VhName,
                                 VhMakeBrand = V.VhMakeBrand,
                                 VhModelYear = V.VhModelYear,
@@ -175,7 +174,7 @@ namespace SDM.Repository.Vehicle
                             }
                         }
                     }
-                    _response.VechileResponse = _val;
+                    _response.VechileResponse = _val.OrderByDescending(a => a.VhId).ToList();
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

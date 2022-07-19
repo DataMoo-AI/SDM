@@ -142,7 +142,7 @@ namespace SDM.Repository.CostCenter
                 cC = _context.ExpenseCategory.Where(a => a.TrnId == costCenter.TrnId && a.TrnDeletedBy == null).ToList();
             if (cC != null)
             {
-                _response.ExpenseCategoryResponse = cC;
+                _response.ExpenseCategoryResponse = cC.OrderByDescending(a => a.TrnId).ToList();
                 _response.Message = _toaster.Success;
             }
             else

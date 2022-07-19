@@ -98,7 +98,7 @@ namespace SDM.Repository.BankMaster
                 _values = _context.BankMasterEntry.Where(a => a.BnkDeletedBy == null).ToList();
             if (_values != null)
             {
-                _response.BankResponse = _values;
+                _response.BankResponse = _values.OrderByDescending(a => a.BnkId).ToList();
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

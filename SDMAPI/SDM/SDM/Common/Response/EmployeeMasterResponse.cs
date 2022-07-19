@@ -239,5 +239,6 @@ namespace SDM.Common.Response
         public DateTime? TrnUpdatedDate { get; set; }
         public int? TrnDeletedBy { get; set; }
         public DateTime? TrnDeletedDate { get; set; }
+        public string TrnFlag { get; set; }
     }
 }

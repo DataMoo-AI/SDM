@@ -142,7 +142,7 @@
                         <h2 class="h3 mb-0 text-center">Expense Master - Add</h2>
                         </div>
                         <div class="col-2">
-                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: block;" onclick="printResult()" src="~/Images/Print.jpg">
+                         <img class="Righttext" id="print" style="width: 123px;top: 32%;left: 55%;display: none;" onclick="printResult()" src="~/Images/Print.jpg">
                         
                         </div>
                         </div>
@@ -200,6 +200,7 @@ async function BindGrid() {
 }
 async function _View(csId) {         
     debugger;
+    $('#print').hide();
     var url = '@Url.Action("BindGrid", "ExpenseCategory")';
     var data = {"trnId":csId};
      cCId = csId;
@@ -234,7 +235,7 @@ async function _Edit(CustId){
     $("#_btnSubmit").show(); 
 }
 async function _Delete(csId){
-    $('#print').hide;
+    $('#print').hide();
      var url = '@Url.Action("BindGrid", "ExpenseCategory")';
     var data = {"trnId":csId};
     data = await callController(url, data);

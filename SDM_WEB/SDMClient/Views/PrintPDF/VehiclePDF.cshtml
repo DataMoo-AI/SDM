@@ -1,8 +1,10 @@
 ﻿@using Newtonsoft.Json;
 @using SDM.Common.Response;
+@using Microsoft.Extensions.Configuration;
 @{
     var _response = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_response"));
     var _Headingresponse = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_Headingresponse"));
+    var AppHostName = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("MySettings:ApiPath").Value;
 
     var Bew = "";
 }
@@ -196,7 +198,11 @@ border-top:0px !important;
                         <td>@_response.VechileResponse[0].VhRadioDeviceType</td>
 
                         <th style="width:25%">Photo:</th>
-                        <td><img   src=" @_response.VechileResponse[0].VhImage" height="50px"/></td>
+                        @{
+                         var FirstImage = AppHostName + @_response.VechileResponse[0].VhImage;
+ 
+                        }
+                        <td><img   src=" @FirstImage" height="50px"/></td>
                       </tr>
 
                       <tr>
@@ -232,9 +238,6 @@ border-top:0px !important;
               </div>
             </div>
 
-            <div class="text-center">
-                Thank you
-                  </div>
 
      </div>
 

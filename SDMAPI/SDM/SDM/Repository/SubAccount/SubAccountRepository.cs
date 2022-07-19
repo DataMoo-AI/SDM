@@ -115,7 +115,7 @@ namespace SDM.Repository.SubAccount
                         }
                     }
                 }
-                _response.SubAccountResponse = SA;
+                _response.SubAccountResponse = SA.OrderByDescending(a => a.PrpId).ToList();
                 _response.Message = _toaster.Success;
                 _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
 

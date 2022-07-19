@@ -698,7 +698,7 @@
     async function _Delete(EmpId) 
     {
          var data = {"TrnId":EmpId};
-        var url = '@Url.Action("BindGrid", "TransactionEntry")';
+        var url = '@Url.Action("Delete", "TransactionEntry")';
         data = await callController(url, data);
        debugger;
        trnId = EmpId;
