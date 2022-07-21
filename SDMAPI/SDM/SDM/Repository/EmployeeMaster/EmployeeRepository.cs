@@ -44,6 +44,11 @@ namespace SDM.Repository
                     employee.EmpVisaIssuedFrom = employeeMasterRequest.EmpVisaIssuedFrom  ;
                     employee.EmpGenderId = employeeMasterRequest.EmpGenderId ;
                     employee.EmpEmailId = employeeMasterRequest.EmpEmailId  ;
+                    employee.EmpPassPortBackImage = employeeMasterRequest.EmpPassPortBackImage  ;
+                    employee.EmpPassPortFrontImage = employeeMasterRequest.EmpPassPortFrontImage  ;
+                    employee.EmpVisaFrontImage = employeeMasterRequest.EmpVisaFrontImage;
+                    employee.EmpVisaBackImage = employeeMasterRequest.EmpVisaBackImage;
+
                     employee.EmpPhoto = employeeMasterRequest.EmpPhoto  ;
                     employee.EmpHousingDetails = employeeMasterRequest.EmpHousingDetails  ;
                     employee.EmpId = employeeMasterRequest.EmpId ;
@@ -109,6 +114,12 @@ namespace SDM.Repository
                     employee.EmpGenderId = employeeMasterRequest.EmpGenderId ;
                     employee.EmpEmailId = employeeMasterRequest.EmpEmailId  ;
                     employee.EmpPhoto = employeeMasterRequest.EmpPhoto  ;
+
+                    employee.EmpPassPortBackImage = employeeMasterRequest.EmpPassPortBackImage;
+                    employee.EmpPassPortFrontImage = employeeMasterRequest.EmpPassPortFrontImage;
+                    employee.EmpVisaFrontImage = employeeMasterRequest.EmpVisaFrontImage;
+                    employee.EmpVisaBackImage = employeeMasterRequest.EmpVisaBackImage;
+
                     employee.EmpHousingDetails = employeeMasterRequest.EmpHousingDetails  ;
                     employee.EmpId = employeeMasterRequest.EmpId  ;
                     employee.EmpJobLocation = employeeMasterRequest.EmpJobLocation  ;

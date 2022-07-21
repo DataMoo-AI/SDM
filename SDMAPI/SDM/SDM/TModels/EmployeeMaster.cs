@@ -12,6 +12,7 @@ namespace SDM.TModels
         public string EmpDesignation { get; set; }
         public string EmpDepartment { get; set; }
         public string EmpPhoto { get; set; }
+
         public string EmpNationality { get; set; }
         public DateTime? EmpJoiningDate { get; set; }
         public string EmpMonthlySalary { get; set; }
@@ -50,5 +51,10 @@ namespace SDM.TModels
         public DateTime? EmpUpdatedDate { get; set; }
         public int? EmpDeletedBy { get; set; }
         public DateTime? EmpDeletedDate { get; set; }
+        public string? EmpPassPortFrontImage { get; set; }
+        public string? EmpPassPortBackImage { get; set; }
+        public string? EmpVisaFrontImage { get; set; }
+        public string? EmpVisaBackImage { get; set; }
+
     }
 }

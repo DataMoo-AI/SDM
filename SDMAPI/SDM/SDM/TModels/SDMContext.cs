@@ -537,6 +537,8 @@ namespace SDM.TModels
                     .HasColumnName("emp_EID_Image_Attachment")
                     .IsUnicode(false);
 
+               
+
                 entity.Property(e => e.EmpEidNo)
                     .HasColumnName("emp_EID_No")
                     .HasMaxLength(250)
@@ -567,6 +569,24 @@ namespace SDM.TModels
                     .HasColumnName("emp_Housing_Details")
                     .HasMaxLength(100)
                     .IsUnicode(false);
+
+                entity.Property(e => e.EmpPassPortFrontImage)
+                    .HasColumnName("emp_PassPort_Front_Image")
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EmpPassPortBackImage)
+                   .HasColumnName("emp_PassPort_Back_Image")
+                   .HasMaxLength(1000)
+                   .IsUnicode(false);
+
+                entity.Property(e => e.EmpVisaFrontImage)
+                   .HasColumnName("emp_Visa_front_Image")
+                   .IsUnicode(false);
+
+                entity.Property(e => e.EmpVisaBackImage)
+                   .HasColumnName("emp_Visa_Back_Image")
+                   .IsUnicode(false);
 
                 entity.Property(e => e.EmpJobLocation)
                     .HasColumnName("emp_Job_Location")
