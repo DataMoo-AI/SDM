@@ -56,9 +56,7 @@ border-top:0px !important;
                 <div class="col-sm-4 invoice-col">
                    
                   <address>
-                    <strong>@_Headingresponse.CustomerMasterResponse[0].CustAddress,.</strong><br> 
-                    Phone: @_Headingresponse.CustomerMasterResponse[0].CustContactMobile<br>
-                    Email: @_Headingresponse.CustomerMasterResponse[0].CustEmail
+        <strong>@_Headingresponse.CustomerMasterResponse[0].CustName.</strong><br> 
                   </address>
                 </div> 
               </div>
@@ -202,7 +200,7 @@ border-top:0px !important;
                          var FirstImage = AppHostName + @_response.VechileResponse[0].VhImage;
  
                         }
-                        <td><img   src=" @FirstImage" height="50px"/></td>
+                        <td><img   src=" @FirstImage" height="100px"/></td>
                       </tr>
 
                       <tr>

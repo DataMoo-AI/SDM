@@ -3,6 +3,7 @@ using SDM.Common.Request;
 using SDM.Common.Response;
 using SDM.Interfaces;
 using SDM.TModels;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -314,11 +315,11 @@ namespace SDM.Repository
                                           //SalaryPaid = (_context.SalaryPaidMaster.FirstOrDefault(a => a.SalId == emp.EmpSalaryPaidId)),
                                          // EmpGenderMaster = (_context.GenderMaster.FirstOrDefault(a => a.GenId == emp.EmpGenderId)),
                                           EmpDob = emp.EmpDob,
-                                          EmpEidExpDt = emp.EmpEidExpDt,
+                                          EmpEidExpDt = emp.EmpEidExpDt ?? "",
                                           EmpPpIssuedDate = emp.EmpPpIssuedDate,
                                           EmpPpExpirationDate = emp.EmpPpExpirationDate,
                                           EmpEidImageAttachment = emp.EmpEidImageAttachment ?? "",
-                                          EmpEidNo = emp.EmpEidNo,
+                                          EmpEidNo = emp.EmpEidNo ?? "",
                                           EmpEmailId = emp.EmpEmailId ?? "",
                                           EmpEmployer = emp.EmpEmployer ?? "",
                                           EmpEmploymentEndDate = emp.EmpEmploymentEndDate,
@@ -335,12 +336,17 @@ namespace SDM.Repository
                                           EmpNationality = emp.EmpNationality ?? "",
                                           EmpOthers1 = emp.EmpOthers1 ?? "",
                                           EmpPhoto = emp.EmpPhoto ?? "",
+                                          EmpPassPortFrontImage = emp.EmpPassPortFrontImage ?? "",
+                                          EmpVisaFrontImage = emp.EmpVisaFrontImage ?? "",
+                                          EmpPassPortBackImage = emp.EmpPassPortBackImage ?? "",
+                                          EmpVisaBackImage = emp.EmpVisaBackImage ?? "",
                                           EmpPpImageAttachment = emp.EmpPpImageAttachment ?? "",
                                           EmpPpNo = emp.EmpPpNo ?? "",
                                           EmpPrevVacationDetails = emp.EmpPrevVacationDetails ?? "",
                                           EmpProbationPeriod = emp.EmpProbationPeriod ?? "",
                                           EmpType = emp.EmpType ?? "",
-                                          EmpVisaExpDt = emp.EmpVisaExpDt,
+                                          EmpVisaExpDt = emp.EmpVisaExpDt== null ? "" : Convert.ToDateTime(emp.EmpVisaExpDt).ToString("yyyy-MM-dd") ,
+                                       
                                           EmpVisaImageAttachment = emp.EmpVisaImageAttachment ?? "",
                                           EmpVisaIssuedFrom = emp.EmpVisaIssuedFrom ?? "",
                                           EmpVisaNo = emp.EmpVisaNo,                                          
@@ -388,6 +394,12 @@ namespace SDM.Repository
             employee.EmpPpIssuedDate = employeeMasterRequest.EmpPpIssuedDate;
             employee.EmpCode = employeeMasterRequest.EmpCode;
             employee.EmpProbationPeriod = employeeMasterRequest.EmpProbationPeriod;
+
+            employee.EmpPassPortBackImage = employeeMasterRequest.EmpPassPortBackImage;
+            employee.EmpPassPortFrontImage = employeeMasterRequest.EmpPassPortFrontImage;
+            employee.EmpVisaFrontImage = employeeMasterRequest.EmpVisaFrontImage;
+            employee.EmpVisaBackImage = employeeMasterRequest.EmpVisaBackImage;
+
             employee.EmpAirTicket = employeeMasterRequest.EmpAirTicket;
             employee.EmpAssetsGiven = employeeMasterRequest.EmpAssetsGiven;
             employee.EmpLoansGiven = employeeMasterRequest.EmpLoansGiven;

@@ -104,6 +104,7 @@
                                         <th>Policy No</th>
                                         <th>Policy Date</th>
                                         <th>Premium Amount</th>                                        
+                                        <th>Cost Center</th>                                        
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -383,6 +384,7 @@
                 else
                     item += '<td></td>';
                 item += '<td>' + Arr[i].insPremiumAmount  + '</td>';
+                item += '<td>' + Arr[i].insCostCenterName  + '</td>';
 
                 item += '  <td>';
                 item += ActionsButtons(Arr[i].insId)
@@ -488,19 +490,19 @@
         {
             var url = '@Url.Action("Add", "Insurance")';
             data = await callController(url, data);
-            toastr.success('Sub account master added.');
+            toastr.success('Insurance master added.');
         }
         else
         {
             if(type == 'update'){
                 var url = '@Url.Action("Update", "Insurance")';
                 data = await callController(url, data);
-                toastr.success('Sub account master added.');
+                toastr.success('Insurance master Update.');
             }
             else{
                 var url = '@Url.Action("Delete", "Insurance")';
                 data = await callController(url, data);
-                toastr.success('Sub account master added.');
+                toastr.success('Insurance master Deleted.');
             }
         }
         console.log(data);

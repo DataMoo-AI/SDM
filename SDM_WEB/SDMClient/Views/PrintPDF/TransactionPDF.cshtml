@@ -54,9 +54,7 @@ border-top:0px !important;
                 <div class="col-sm-4 invoice-col">
                    
                   <address>
-                    <strong>@_Headingresponse.CustomerMasterResponse[0].CustAddress,.</strong><br> 
-                    Phone: @_Headingresponse.CustomerMasterResponse[0].CustContactMobile<br>
-                    Email: @_Headingresponse.CustomerMasterResponse[0].CustEmail
+<strong>@_Headingresponse.CustomerMasterResponse[0].CustName.</strong><br> 
                   </address>
                 </div> 
               </div>
@@ -100,28 +98,35 @@ border-top:0px !important;
                        <th style="width:25%">Account :</th>
                         <td>@_response.TransactionEntries[0].TrnSubAccountName</td>
 
-                       <th style="width:25%">Account Number:</th>
+                          <th style="width:25%">Bank Account Number :</th>
+                        <td>@_response.TransactionEntries[0].TrnBankAccountName</td>
+                      </tr>
+                       
+                      <tr>
+                          <th style="width:25%">Card Number:</th>
                         <td>@_response.TransactionEntries[0].TrnAccountnumber</td>
 
-                      </tr> 
-                      <tr>
                       <th style="width:25%">Details :</th>
                         <td>@_response.TransactionEntries[0].TrnDetails</td>
 
+                        </tr>
+                        <tr>
                          <th style="width:25%">Invoice Number:</th>
                         <td>@_response.TransactionEntries[0].TrnInvNo</td>
-                      </tr>
+                      
 
-                         <tr>
+                      
                       <th style="width:25%">Supplier :</th>
                         <td>@_response.TransactionEntries[0].TrnSupplierName</td>
+                        </tr>
 
+                        <tr>
                          <th style="width:25%">Currency :</th>
                           @if (@_response.TransactionEntries[0].TrnCurrency == 1)
                                     {
                                          <td>AED</td>
                                     }
-                                     @if (@_response.TransactionEntries[0].TrnCurrency == 2)
+                                     else if (@_response.TransactionEntries[0].TrnCurrency == 2)
                                     {
                                         <td>USA</td>
                                     }
@@ -130,30 +135,34 @@ border-top:0px !important;
                                          <td></td>
                                     }
                          
-                      </tr>
+                   
 
-                      <tr>
+                     
                       <th style="width:25%">Amount :</th>
                         <td>@_response.TransactionEntries[0].TrnAmount</td>
+
+                        </tr>
+
+                        <tr>
 
                          <th style="width:25%">Instrument Type :</th> 
                           @if (@_response.TransactionEntries[0].TrnInstrumentType == 1)
                                     {
                                          <td>Cheque</td>
                                     }
-                                     @if (@_response.TransactionEntries[0].TrnInstrumentType == 2)
+                                    else if (@_response.TransactionEntries[0].TrnInstrumentType == 2)
                                     {
                                         <td>Cash</td>
                                     } 
-                                    @if (@_response.TransactionEntries[0].TrnInstrumentType == 3)
+                                     else if (@_response.TransactionEntries[0].TrnInstrumentType == 3)
                                     {
                                         <td>Telex Trans</td>
                                     }
-                                     @if (@_response.TransactionEntries[0].TrnInstrumentType == 4)
+                                      else if (@_response.TransactionEntries[0].TrnInstrumentType == 4)
                                     {
                                         <td>Swift</td>
                                     }
-                                     @if (@_response.TransactionEntries[0].TrnInstrumentType == 5)
+                                      else if (@_response.TransactionEntries[0].TrnInstrumentType == 5)
                                     {
                                         <td>Credit card</td>
                                     }
@@ -161,15 +170,13 @@ border-top:0px !important;
                                     {
                                          <td></td>
                                     }
-                      </tr>
+                      
 
-                       <tr>
+                       
                       <th style="width:25%">Instrument Number :</th>
                         <td>@_response.TransactionEntries[0].TrnInstrumentNumb</td>
 
-                         <th style="width:25%">Bank Account Number :</th>
-                        <td>@_response.TransactionEntries[0].TrnBankAccountName</td>
-                      </tr>
+                     </tr>
                        
                         <tr>
                       <th style="width:25%">Remarks :</th>

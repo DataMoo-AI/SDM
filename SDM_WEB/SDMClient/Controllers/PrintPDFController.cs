@@ -40,7 +40,7 @@ namespace SDMClient.Controllers
             ViewData["Message"] = "Your application description page.";
             return new ViewAsPdf("EmployeePDF", ViewData)
             {
-                PageMargins = { Left = 2, Bottom = 2, Right = 2, Top = 2 },
+                PageMargins = { Left = 2, Bottom = 2, Right = 2, Top = 0 },
                 CustomSwitches = "--page-offset 0 --footer-center [page] --footer-font-size 12",
             };
         }
@@ -69,7 +69,11 @@ namespace SDMClient.Controllers
             e.CsId = ID;
             string Result = Api.PostApi("CostCenterMaster/GetCostCenter", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
             ViewData["Print"] = _response;
+
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page."; 
             return new ViewAsPdf("CostCenterPDF", ViewData)
@@ -155,6 +159,8 @@ namespace SDMClient.Controllers
             e.InsId = ID;
             string Result = Api.PostApi("Insurance/Get", e);
             Response _response = JsonConvert.DeserializeObject<Response>(Result);
+            var _Headingresponse = JsonConvert.DeserializeObject<Response>(Result);
+            HttpContext.Session.SetString("_Headingresponse", Result);
             ViewData["Print"] = _response;
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
@@ -288,7 +294,7 @@ namespace SDMClient.Controllers
             HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response));
             ViewData["Message"] = "Your application description page.";
 
-            //List<dynamic> _response1 = JsonConvert.DeserializeObject<List<dynamic>>(_response.ReportResponse);
+           // List<dynamic> _response1 = JsonConvert.DeserializeObject<List<dynamic>>(_response.ReportResponse);
             //ViewData["Print"] = _response1;
             //HttpContext.Session.SetString("_response", JsonConvert.SerializeObject(_response1));
             return new ViewAsPdf("CardReportPDF", ViewData)

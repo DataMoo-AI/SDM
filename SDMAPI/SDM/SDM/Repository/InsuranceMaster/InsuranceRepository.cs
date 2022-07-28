@@ -95,11 +95,43 @@ namespace SDM.Repository.InsuranceMaster
             else
                 cC = _context.InsuranceMaster.Where(a => a.InsDeletedBy == null && a.InsId == costCenter.InsId).ToList();
 
+            var L1 = (from a in cC
+                      orderby -a.InsId
+                      select new InsuranceResponse
+                      { 
+                          InsId = a.InsId,
+                          InsCostCenter = a.InsCostCenter,
+                          InsVehicleCode = a.InsVehicleCode,
+                          InsVehicleName = a.InsVehicleName,
+                          InsPolicyNo = a.InsPolicyNo,
+                          InsPurchaseDate = a.InsPurchaseDate,
+                          InsPurchaseAmount = a.InsPurchaseAmount,
+                          InsCompany =a.InsCompany,
+                          InsExpDate = a.InsExpDate,
+                          InsPremiumAmount =a.InsPremiumAmount,
+                          InsOthers1 = a.InsOthers1,
+                     
+                      }).ToList();
+            if (L1.Any())
+            {
+                foreach (var rr in L1)
+                {
+                    var ff = _context.CostCenterMaster.FirstOrDefault(v => v.CsId == rr.InsCostCenter && v.CsDeletedBy == null);
+                    if (ff != null)
+                    {
+                        rr.InsCostCenterName = ff.CsName;
+                    }
+                    else
+                    {
+                        rr.InsCostCenterName = "";
+                    }
+                }
+            }
 
-         
             if (cC != null)
             {
-                _response.InsuranceMasterResponse = cC.OrderByDescending(a => a.InsId).ToList();
+                _response.InsuranceMasterResponse = L1.OrderByDescending(a => a.InsId).ToList();
+                _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
                 _response.Message = _toaster.Success;
             }
             else

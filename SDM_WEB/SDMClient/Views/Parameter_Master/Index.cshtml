@@ -176,52 +176,52 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerName" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Name</label>
+                                        <input type="text" id="txtCustomerName" maxlength="250" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Name<span class="required">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerAddress" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Address</label>
+                                        <input type="text" id="txtCustomerAddress" maxlength="1000" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Address<span class="required">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerContact" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Contact</label>
+                                        <input type="text" id="txtCustomerContact" maxlength="100" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Contact<span class="required">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerMobile" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Mobile</label>
+                                        <input type="text" id="txtCustomerMobile" maxlength="50" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Mobile<span class="required">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtTrnVatNumber" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">TRN/VAT Number</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerEmail" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerFax" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Fax Number</label>
+                                        <input type="text" id="txtTrnVatNumber" maxlength="100" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">TRN/VAT Number<span class="required">*</span></label>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <input type="text" id="txtCustomerLandline" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Landline Number</label>
+                                        <input type="text" id="txtCustomerEmail" maxlength="50" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Email<span class="required">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtCustomerFax" maxlength="100" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Fax Number<span class="required">*</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-row form-group">
+                                        <input type="text" id="txtCustomerLandline" maxlength="50" placeholder=" " class="form-row-field-input form-control">
+                                        <label for="POST-name" class="form-row-field">Landline Number<span class="required">*</span></label>
                                     </div>
                                 </div>
 
@@ -407,17 +407,19 @@
     var CustomerEmail=$('#txtCustomerEmail').val();
     var trnNo=$('#txtTrnVatNumber').val();
     var landLine=$('#txtCustomerLandline').val();
+
     if(CustomerName==""){
-    toastr.warning("Please enter the customer name.");
+    toastr.warning("Please enter the name.");
+      $('#txtCustomerName').focus()
+    return false;
+    }
+      if(CustomerAddress==""){
+    toastr.warning("Please enter the address.");
+      $('#txtCustomerAddress').focus()
     return false;
     }
 
-    if(CustomerEmail==""){
-    toastr.warning("Please enter the customer email.");
-    return false;
-    }
-    
-if($('#txtCustomerContact').val()==""||$('#txtCustomerContact').val()==null){
+    if($('#txtCustomerContact').val()==""||$('#txtCustomerContact').val()==null){
     toastr.warning("Please enter contact");
     $('#txtCustomerContact').focus()
     return false;
@@ -427,16 +429,26 @@ if($('#txtCustomerMobile').val()==""||$('#txtCustomerMobile').val()==null){
     $('#txtCustomerMobile').focus()
     return false;
 }
-if($('#txtCustomerFax').val()==""||$('#txtCustomerFax').val()==null){
-    toastr.warning("Please enter fax");
-    $('#txtCustomerFax').focus()
-    return false;
-}
 if($('#txtTrnVatNumber').val()==""||$('#txtTrnVatNumber').val()==null){
     toastr.warning("Please enter VAT Number");
     $('#txtTrnVatNumber').focus()
     return false;
 }
+
+    if(CustomerEmail==""){
+    toastr.warning("Please enter the email.");
+     $('#txtCustomerEmail').focus()
+    return false;
+    }
+    
+
+
+if($('#txtCustomerFax').val()==""||$('#txtCustomerFax').val()==null){
+    toastr.warning("Please enter fax");
+    $('#txtCustomerFax').focus()
+    return false;
+}
+
 if($('#txtCustomerLandline').val()==""||$('#txtCustomerLandline').val()==null){
     toastr.warning("Please enter landline");
     $('#txtCustomerLandline').focus()

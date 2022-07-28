@@ -5,6 +5,8 @@
     var _response = JsonConvert.DeserializeObject<Response>(Context.Session.GetString("_response"));
     var CheckMonth = "";
     var TotalAmount = "0";
+    var bankaccountnumber="";
+    var Cardnumber="";
     int j = 0;
 }
 
@@ -134,9 +136,7 @@ td{
                 <div class="col-sm-4 invoice-col">
         
                   <address>
-                    <strong>@_response.CustomerMasterResponse[0].CustAddress,.</strong><br> 
-                    Phone: @_response.CustomerMasterResponse[0].CustContactMobile<br>
-                    Email: @_response.CustomerMasterResponse[0].CustEmail
+                   
                   </address>
                 </div> 
               </div>
@@ -150,7 +150,11 @@ td{
                   <h3 class="text-center">Card Report</h3>
 </div>
   
-             <table class="table" style="margin-left:20% !important;margin-right:20% !important;width:60% !important">
+
+ foreach (var k in @_response.ReportTemp)
+                    { 
+                 @bankaccountnumber = k["trnAccountnumber"];
+                    <table class="table" style="margin-left:20% !important;margin-right:20% !important;width:60% !important">
         <tr>
             <th width="5%">Name</th>
             <td width="25%">AXIS</td>
@@ -159,7 +163,7 @@ td{
         </tr> 
         <tr>
             <th width="5%">Card No</th>
-            <td width="25%">524323423</td>
+            <td width="25%">@bankaccountnumber</td>
             <th width="5%">IBAN</th>
             <td width="25%">23232</td>
         </tr>
@@ -170,22 +174,25 @@ td{
 
                     <table class="table" width="100%">
                          @foreach (var i in @_response.ReportTemp)
-                        { 
-                         @if(CheckMonth!= Convert.ToString(@i["trnMonthFormat"])&&CheckMonth!="")
+                            {
+                                @Cardnumber = i["trnAccountnumber"];
+                                @if (bankaccountnumber ==  Cardnumber)
                                 {
-                                            <tr class="">
-                                <td colspan="8"></td>
-                                    <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
-                                          </tr>
-                                }
-                         @if(CheckMonth!= Convert.ToString(@i["trnMonthFormat"]))
-                        {
-                            
+                                    @if (CheckMonth != Convert.ToString(@i["trnMonthFormat"]) && CheckMonth != "")
+                                    {
+                                        <tr class="">
+                                            <td colspan="8"></td>
+                                            <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
+                                        </tr>
+                                    }
+                                    @if (CheckMonth != Convert.ToString(@i["trnMonthFormat"]))
+                                    {
 
-                            <tr class="blank_row">
-                                <td colspan="8"></td>
-                                          </tr>
-                                 
+
+                                        <tr class="blank_row">
+                                            <td colspan="8"></td>
+                                        </tr>
+
                                         <tr>
                                             <th class="text-center">Date</th>
                                             <th class="text-center">SubAccount</th>
@@ -197,42 +204,43 @@ td{
                                             <th class="text-center">Amount</th>
                                             <th class="text-center">Total</th>
                                         </tr>
-                                  
-                                   
-                                }
-                               
-                               
-                
-                         
-                       <tr>
-                            <td class="text-center">@i["trnDateFormat"]</td>
-                            <td>@i["trnCommonSubAccount"]</td>
-                            <td>@i["trnCategoryName"]</td>
-                            <td>@i["trnInvNo"]</td>
-                            <td>@i["trnSupplierName"]</td>
-                            <td>@i["trnDetails"]</td>
-                            <td>@i["trnRequestBy"]</td>
-                            <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@i["trnAmount"]))</td>
-                            <td></td>
 
-                                </tr>
 
-                                {
-                                    TotalAmount = Convert.ToString(Convert.ToDouble(TotalAmount)+Convert.ToDouble(@i["trnAmount"]=="" ?"0":@i["trnAmount"]));
-                                    CheckMonth = Convert.ToString(@i["trnMonthFormat"]);
-                                    j++;
-                                }  
-                       @if(@j==@_response.ReportTemp.Count)
-                                {
-                                            <tr class="">
-                                <td colspan="8"></td>
-                                    <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
-                                          </tr>
+                                    }
+
+
+
+
+                                    <tr>
+                                        <td class="text-center">@i["trnDateFormat"]</td>
+                                        <td>@i["trnCommonSubAccount"]</td>
+                                        <td>@i["trnCategoryName"]</td>
+                                        <td>@i["trnInvNo"]</td>
+                                        <td>@i["trnSupplierName"]</td>
+                                        <td>@i["trnDetails"]</td>
+                                        <td>@i["trnRequestBy"]</td>
+                                        <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@i["trnAmount"]))</td>
+                                        <td></td>
+
+                                    </tr>
+
+                                    {
+                                        TotalAmount = Convert.ToString(Convert.ToDouble(TotalAmount) + Convert.ToDouble(@i["trnAmount"] == "" ? "0" : @i["trnAmount"]));
+                                        CheckMonth = Convert.ToString(@i["trnMonthFormat"]);
+                                        j++;
+                                    }
+                                    @if (@j == @_response.ReportTemp.Count)
+                                    {
+                                        <tr class="">
+                                            <td colspan="8"></td>
+                                            <td class="text-right">@string.Format("{0:n}",Convert.ToDouble(@TotalAmount))</td>
+                                        </tr>
+                                    }
                                 }
-             
                 }
                    </table>
                   </div> 
+                     }
                 </div>
                 <!-- /.col -->
               </div>

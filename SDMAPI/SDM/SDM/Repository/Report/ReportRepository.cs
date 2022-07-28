@@ -227,14 +227,14 @@ namespace SDM.Repository.Report
                                        TrnCurrency = a.TrnCurrency,
                                        TrnAmount = a.TrnAmount ?? "",
                                        TrnInstrumentType = a.TrnInstrumentType,
-                                       TrnInstrumentNumb = a.TrnInstrumentNo,
-                                       TrnRemarks = a.TrnRemarks,
-                                       TrnRequestBy = a.TrnInstrumentNo,
+                                       TrnInstrumentNumb = a.TrnInstrumentNo ?? "",
+                                       TrnRemarks = a.TrnRemarks ?? "",
+                                       TrnRequestBy = a.TrnInstrumentNo ?? "",
                                        TrnBankAccountNumb = a.TrnBankAccountNo,
-                                       TrnAccountnumber = a.TrnAccountnumber,
+                                       TrnAccountnumber = a.TrnAccountnumber ?? "",
                                        TrnVehicle = a.TrnVechile,
                                        TrnEmployee = a.TrnEmployee,
-                                       TrnFlag = a.TrnFlag,
+                                       TrnFlag = a.TrnFlag ?? "",
                                        //TrnCommonSubAccount= transactionAccounts.FirstOrDefault(x => x.Type.Contains(a.TrnFlag)&& x.Id==a.TrnSubAccount).Value,
                                        // TrnBankAccountName = _context.BankMasterEntry.FirstOrDefault(s => s.BnkId == a.TrnBankAccountNumb && s.BnkDeletedBy == null).BnkAccName ?? "",
                                    }).Where(t => t.TrnDeletedBy == null &&
@@ -320,7 +320,7 @@ namespace SDM.Repository.Report
                 }   //_response.ReportsResponse = transaction;
                     transaction = transaction.OrderBy(x => x.TrnDate).ToList();
                     var _returnValues = transaction.GroupBy(t => (t.TrnBankAccountNumb, t.TrnAccountnumber)).ToList();
-                    _response.ReportTemp = transaction.OrderBy(x=>x.TrnDate);
+                    _response.ReportTemp = transaction.OrderBy(t=> (t.TrnBankAccountNumb, t.TrnAccountnumber));
                     _response.ReportResponse = JsonConvert.SerializeObject(_returnValues);
                     _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
                     _response.Message = _toaster.Success;

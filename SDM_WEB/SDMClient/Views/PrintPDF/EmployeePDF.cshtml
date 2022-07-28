@@ -33,6 +33,7 @@
 table td,table th{
 border:none !important;
 border-top:0px !important;
+font-size:13.5px !important;
 }
 </style>
  </head>
@@ -55,9 +56,9 @@ border-top:0px !important;
                 <div class="col-sm-4 invoice-col">
                    
                   <address>
-                    <strong>@_Headingresponse.CustomerMasterResponse[0].CustAddress,.</strong><br> 
-                    Phone: @_Headingresponse.CustomerMasterResponse[0].CustContactMobile<br>
-                    Email: @_Headingresponse.CustomerMasterResponse[0].CustEmail
+                    <strong>@_Headingresponse.CustomerMasterResponse[0].CustName.</strong><br> 
+             @*       Phone: @_Headingresponse.CustomerMasterResponse[0].CustContactMobile<br>
+                    Email: @_Headingresponse.CustomerMasterResponse[0].CustEmail*@
                   </address>
                 </div> 
               </div>
@@ -68,7 +69,7 @@ border-top:0px !important;
            
                 <div class="col-12">
                   <div class="row col-md-12">
-                  <h3 class="text-center">Employee</h3>
+                  <h5 class="text-center">Employee</h5>
                 </div> 
                   <div class="table-responsive">
                     <table class="table"width="100%">
@@ -113,9 +114,10 @@ border-top:0px !important;
                         <tr>
                            <th style="width:25%">Photo:</th>
                            @{
+
                            var FirstImage = AppHostName + @_response.EmployeeMasterResponse[0].EmpPhoto;
                            }
-                        <td> <img  src="@FirstImage" height="50px"/>  </td>
+                        <td> <img  src="@FirstImage" height="100px"/>  </td>
                         
                         <th style="width:25%">Nationality:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpNationality</td>
@@ -146,137 +148,143 @@ border-top:0px !important;
 
                         <tr>
                            <th style="width:25%">  Passport Number:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpCode</td>
+                        <td>@_response.EmployeeMasterResponse[0].EmpPpNo</td>
                         
-                        <th style="width:25%"> Passport Image Attachment:</th>
-                                    @{
-                                        if (@_response.EmployeeMasterResponse[0].EmpPpImageAttachment == null || @_response.EmployeeMasterResponse[0].EmpPpImageAttachment == "")
-                                        {
-                                            
-                                            <td>No Image</td>
+                        <th style="width:25%"> Passport Image :</th>
+                        <td>
+                                        @{
+                                            var splitimages = @_response.EmployeeMasterResponse[0].EmpPassPortFrontImage.Split("&&");
+                                            foreach(var t in splitimages)
+                                            {
+                                                var _PSImages = AppHostName + t;
+                                                <img  src="@_PSImages" height="50px"/>
                                         }
-                                        else{
-                                            var a = @_response.EmployeeMasterResponse[0].EmpPpImageAttachment.Split("&&");
-                                           
-                                                var FirstImage1 = AppHostName + @a[0];
-                                                var SecondImage1 = AppHostName + @a[1];
-                                       
-                                            <td><div class="row">
-                                               <img  class="float-left" src="@FirstImage1" height="50px" style="max-width:75px !important"/>  &nbsp; &nbsp; 
-                                               <img  class="float-left" src="@SecondImage1" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div>
-                                            </td>
-                                            }
-                       
-                                        }
+                                         
+                           }
+                           </td>
+                         
                                     
                     </tr>
 
                         <tr>
+                              
                            <th style="width:25%">  Passport Issued Date:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpPpIssuedDate</td>
-                        
+                              
                         <th style="width:25%"> Passport Expiry Date:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpPpExpirationDate</td>
+                       
                     </tr>
 
                         <tr>
+                       
                            <th style="width:25%">  Visa Issued From:</h>
                         <td>@_response.EmployeeMasterResponse[0].EmpVisaIssuedFrom</td>
-                        
-                        <th style="width:25%"> Visa Number:</th>
+                           <th style="width:25%"> Visa File Number:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpVisaNo</td>
+                      
                     </tr>
 
                         <tr>
+
+                              
+                     
                            <th style="width:25%">  Visa Expiry Date:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpVisaExpDt</td>
-                        
-                        <th style="width:25%"> Visa Image Attachment:</th>
-                                @{
-                                        if (@_response.EmployeeMasterResponse[0].EmpVisaImageAttachment == null || @_response.EmployeeMasterResponse[0].EmpVisaImageAttachment == "")
-                                        {
-                                            
-                                            <td>No Image</td>
-                                        }
-                                        else{
-                                            var a = @_response.EmployeeMasterResponse[0].EmpVisaImageAttachment.Split("&&");
-                                            var FirstImage2 = AppHostName + @a[0];
-                                            var SecondImage2 = AppHostName + @a[1];
-                                            <td>
-                                              <div class="row">
-                                               <img  class="float-left" src="@FirstImage2" height="50px"  style="max-width:75px !important;margin-left:5px !important"/> &nbsp; &nbsp; 
-                                               <img  class="float-left" src="@SecondImage2" height="50px"  style="max-width:75px !important;margin-left:5px !important"/>  </div> 
-                                            </td>
-                                            }
-                       
-                                        }
+                         
+                        <th style="width:25%"> Visa  Image :</th>
+                            @{
+                           var FirstImage_V1 = AppHostName + @_response.EmployeeMasterResponse[0].EmpVisaFrontImage;
+                           }
+                        <td> <img  src="@FirstImage_V1" height="50px"/>  </td> 
+                    
  
                     </tr>
-
-                        <tr>
-                           <th style="width:25%">  Eid Number:</th>
+                       
+                         <th style="width:25%">  Eid Number:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpEidNo</td>
-                        
                         <th style="width:25%"> Eid Expiry Date:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpVisaExpDt</td>
-                    </tr>
-
+                        <td>@_response.EmployeeMasterResponse[0].EmpVisaExpDt</td> 
+                                 </tr>
                         <tr>
-                           <th style="width:25%">  Assets Given :</th>
+                          
+                        
+                        
+                        <th style="width:25%">  Assets Given :</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpAssetsGiven</td>
-                        
-                        <th style="width:25%"> Eid Image Attachment:</th>
-                        <td>  @{
-                               var FirstImage4 = AppHostName + @_response.EmployeeMasterResponse[0].EmpEidImageAttachment;
-                        }    <img src="@FirstImage4" height="50px"/>  </td>
+                         <th style="width:25%"> Eid Image Attachment:</th>
+                                            <td>
+                                        @{
+                                            var splitimages1 = @_response.EmployeeMasterResponse[0].EmpEidImageAttachment.Split("&&");
+                                            foreach(var t in splitimages1)
+                                            {
+                                                var _EidImages = AppHostName + t;
+                                                <img  src="@_EidImages" height="50px"/>
+                                        }
+                                         
+                           }
+                           </td>
                     </tr>
 
                         <tr>
-                           <th style="width:25%">  Housing Details:</th>
+                         
+                        
+                       
+                        <th style="width:25%">  Housing Details:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpHousingDetails</td>
-                        
-                        <th style="width:25%"> Loans Given:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpLoansGiven</td>
+                          <th style="width:25%"> Loans Given:</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpLoansGiven</td> 
                     </tr>
 
                         <tr>
-                           <th style="width:25%">  Mobile Number:</th>
+                        
+                        
+                      
+                        <th style="width:25%">  Mobile Number:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpMobileNumber</td>
-                        
-                        <th style="width:25%"> Email ID:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpEmailId</td>
+                           <th style="width:25%"> Email ID:</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpEmailId</td>    
                     </tr>
 
                         <tr>
-                           <th style="width:25%">  Previous Vacation Details:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpPrevVacationDetails</td>
+                          
                         
+                     
+                        <th style="width:25%">  Previous Vacation Details:</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpPrevVacationDetails</td>
                         <th style="width:25%"> Leave Balance:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpLeaveBalance</td>
+                        
                     </tr>
 
                         <tr>
+                      
+                        
                            <th style="width:25%">  Air Ticket:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpAirTicket</td>
-                        
                         <th style="width:25%"> Probation Period:</th>
                         <td>@_response.EmployeeMasterResponse[0].EmpProbationPeriod</td>
                     </tr>
-                        <tr>
-                           <th style="width:25%">  Employment End Date:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpEmploymentEndDate</td>
-                        
-                        <th style="width:25%"> Employment Status :</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpEmploymentStatus</td>
-                    </tr>
 
                         <tr>
-                           <th style="width:25%">  Employment Type:</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpType</td>
                         
-                        <th style="width:25%"> Others :</th>
-                        <td>@_response.EmployeeMasterResponse[0].EmpOthers1</td>
+                        
+                        <th style="width:25%">  Employment End Date:</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpEmploymentEndDate</td>
+                         <th style="width:25%"> Employment Status :</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpEmploymentStatus</td>  
                     </tr>
+                        <tr>
+                         
+                        
+                       
+                        <th style="width:25%">  Employment Type:</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpType</td>
+                         <th style="width:25%"> Others :</th>
+                        <td>@_response.EmployeeMasterResponse[0].EmpOthers1</td>
+                        
+                    </tr>
+                     
                     </tbody></table>
                   </div>
                 </div>

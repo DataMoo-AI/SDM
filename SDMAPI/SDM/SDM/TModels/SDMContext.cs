@@ -969,7 +969,7 @@ namespace SDM.TModels
 
                 entity.Property(e => e.SupCompanyName)
                     .HasColumnName("sup_Company_Name")
-                    .HasMaxLength(250)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SupContactMobile)
@@ -979,7 +979,7 @@ namespace SDM.TModels
 
                 entity.Property(e => e.SupContactPerson)
                     .HasColumnName("sup_Contact_Person")
-                    .HasMaxLength(50)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SupCreatedBy).HasColumnName("sup_CreatedBy");
@@ -1001,7 +1001,7 @@ namespace SDM.TModels
 
                 entity.Property(e => e.SupEmail)
                     .HasColumnName("sup_Email")
-                    .HasMaxLength(50)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SupLandline)

@@ -15,7 +15,7 @@ namespace SDM.Common.Response
         public List<SupplierMaster> SupplierResponse { get; set; }
         public List<BankMasterEntry> BankResponse { get; set; }
         public List<ExpenseCategory> ExpenseCategoryResponse { get; set; }
-        public List<InsuranceMaster> InsuranceMasterResponse { get; set; }
+        public List<InsuranceResponse> InsuranceMasterResponse { get; set; }
         public List<InsuranceResponse> InsuranceMasterResp { get; set; }
         public List<TransactionEntryResponse> TransactionEntries { get; set; }
         public List<InsuranceReq> InsuranceMasterReq { get; set; }
@@ -198,8 +198,54 @@ namespace SDM.Common.Response
         public int? EmpDeletedBy { get; set; }
         public DateTime? EmpDeletedDate { get; set; }
         public string Message { get; set; }
+
+        public string? EmpPassPortFrontImage { get; set; }
+        public string? EmpPassPortBackImage { get; set; }
+        public string? EmpVisaFrontImage { get; set; }
+        public string? EmpVisaBackImage { get; set; }
     }
     public class TransactionEntryResponse
+    {
+        public int TrnId { get; set; }
+        public DateTime? TrnDate { get; set; }
+        public string? TrnDateFormat { get; set; }
+        public string? TrnMonthFormat { get; set; }
+        public int? TrnCreditDebit { get; set; }
+        public int? TrnType { get; set; }
+        public int? TrnCategory { get; set; }
+        public string TrnCategoryName { get; set; }
+        public int? TrnSubAccount { get; set; }
+        public string TrnSubAccountName { get; set; }
+        public int? TrnCostCentre { get; set; }
+        public string TrnCostCentreName { get; set; }
+        public string TrnDetails { get; set; }
+        public string TrnInvNo { get; set; }
+        public int? TrnSupplier { get; set; }
+        public string TrnSupplierName { get; set; }
+        public int? TrnCurrency { get; set; }
+        public string TrnCurrencyName { get; set; }
+        public string TrnAmount { get; set; }
+        public int? TrnInstrumentType { get; set; }
+        public string TrnInstrumentNumb { get; set; }
+
+        public string TrnRemarks { get; set; }
+        public string TrnRequestBy { get; set; } 
+        public int? TrnBankAccountNumb { get; set; }
+        public string? TrnAccountnumber { get; set; }
+        public int? TrnVehicle { get; set; }
+        public int? TrnEmployee { get; set; }
+        public string? TrnVehicleName { get; set; }
+        public string? TrnEmployeeName { get; set; }
+        public string? TrnCommonSubAccount{ get; set; }
+        public string TrnBankAccountName { get; set; }
+        public int? TrnCreatedBy { get; set; }
+        public DateTime? TrnCreatedDate { get; set; }
+        public int? TrnUpdatedBy { get; set; }
+        public DateTime? TrnUpdatedDate { get; set; }
+        public int? TrnDeletedBy { get; set; }
+        public DateTime? TrnDeletedDate { get; set; }
+        public string TrnFlag { get; set; }
+    } public class CardReportResponse
     {
         public int TrnId { get; set; }
         public DateTime? TrnDate { get; set; }

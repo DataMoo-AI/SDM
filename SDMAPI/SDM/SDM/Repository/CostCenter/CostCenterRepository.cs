@@ -79,6 +79,7 @@ namespace SDM.Repository.CostCenter
             if (cC != null)
             {
                 _response.CostCenterResponse = cC;
+                _response.CustomerMasterResponse = _context.CustomerMaster.Where(a => a.CustDeletedBy == null).ToList();
                 _response.Message = _toaster.Success;
             }
             else

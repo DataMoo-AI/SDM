@@ -103,7 +103,7 @@
                     <th>S.No</th>
                     <th>Insurance Vehicle-Code</th> 
                     <th>Insurance Policy-No</th> 
-                    <th>Insurance Expiry-Date</th> 
+                    <th>CostCenter</th> 
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -348,10 +348,10 @@ function Gridappend(data) {
             item += '<tr>';
             item += '<td>' + sno+ '</td>';
             item += '<td>' + Arr[i].insVehicleCode + '</td>';
+            item += '<td>' + Arr[i].insCostCenterName + '</td>';
             item += '<td>' + Arr[i].insPolicyNo + '</td>';
             item += '<td>' + Arr[i].insPurchaceDate + '</td>';
-            item += '<td>' + Arr[i].insCompany + '</td>';
-            item += '<td>' + Arr[i].insExpDate + '</td>';
+            item += '<td>' + Arr[i].insCompany + '</td>'; 
             item += '<td>' + Arr[i].insPremiumAmount + '</td>';            
   
             item += '  <td>';

@@ -178,7 +178,7 @@
                             <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <select id="ddlCostCenter" class="form-row-field-input form-control ">
-                                            <option selected>Select</option>
+                                            <option>Select</option>
                                         </select>
                                         <label for="POST-name" class="fileCss form-row-field">Cost Center</label>
                                     </div>
@@ -199,7 +199,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <select id="ddlGender" class="form-row-field-input form-control">
-                                            <option selected>Select</option>
+                                            <option >Select</option>
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
                                             <option value="3">Others</option>
@@ -223,7 +223,7 @@
                                     <div class="form-row form-group">
                                         <label for="POST-name" class="fileCss form-row-field ">Photo</label>
                                         <input type="file" id="fileEmpPhoto" ImageID="img_fileEmpPhoto" placeholder=" " accept="image/png, image/gif, image/jpeg" onchange="FileuploadsImage(this)" class="form-row-field-input form-control">
-                                        <img src="" id="img_fileEmpPhoto_View" height="75px" style="display:none; margin-left:6%;"/>
+                                        <img src="" id="img_fileEmpPhoto_View" height="125px" style="display:none; margin-left:6%;"/>
                                         <div class="nav-item dropdown img_fileEmpPhoto">
                                             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
                                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
@@ -281,34 +281,52 @@
                                         <label for="POST-name" class="form-row-field">Job Location</label>
                                     </div>
                                 </div>
+                                 <div class="col-sm-6" id="imgPassportFrontPhoto">
+	                            <div class="form-row form-group">
+		                            <label for="POST-name" class="fileCss form-row-field ">Passport Image</label>
+		                            <input type="file" id="filePassportFrontPhoto" bindid="bindPassortImages" ImageID="img_filePassportFrontPhoto" placeholder=" " accept="image/png, image/gif, image/jpeg" multiple onchange="MultiPassportImagesUpload(this)" class="form-row-field-input form-control"> <img src="" id="img_filePassportFrontPhoto_View" height="75px" style="display:none; margin-left:6%;" />
+		                          <div id="bindPassortImages" style="display:block"></div>
+                                    <input type="hidden" id="hdnPassportFrontPhoto"/>
+                                    <div class="nav-item dropdown img_filePassportFrontPhoto"> <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+			                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style=""> <img src="" id="img_filePassportFrontPhoto" height="175px" />
+				                           <div id="bindPassortImages_" style="display:block"></div>
+			                            </div>
+		                            </div>
+	                            </div>
+                            </div>
+                                <div class="col-sm-6" id="imgPassportFrontPhotolable" style="display:none">
+	                            <div class="form-row form-group"> <img class="Righttext" id="print" style="width:10%; top:5%; left:90%; display:none;" src="" /> </div>
+                            </div>
+                            
                                                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <input type="text" id="txtEmpPPNo" placeholder=" " class="form-row-field-input form-control">
                                         <label for="POST-name" class="form-row-field">Passport Number</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-row form-group">
-                                        <label for="POST-name" class="fileCss form-row-field ">Passport Image Attachment</label>
-                                        <input type="file" id="fileEmpImageAttach" ImageID="img_fileEmpImageAttach" multiple placeholder=" " accept="image/png, image/gif, image/jpeg" onchange="FileuploadsPassportImage(this)" class="form-row-field-input form-control">
-                                        
-                                              <img src="" id="img_fileEmpImageAttachFront_View" height="75px" style="display:none; margin-left:6%;"/>
-                                                <img src="" id="img_fileEmpImageAttachBack_View" height="75px" style="display:none; margin-left:6%;"/>
-                                        <div class="nav-item dropdown img_fileEmpImageAttach">
-                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
-                                            <input type="hidden" id="hdnfileEmpImageAttach"/>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
-                                                <a class="" href="#" id="lnk_fileEmpImageAttachFront" target="_blank">
-                                                <img src="" id="img_fileEmpImageAttachFront" width="100px" title="Passport Image 1"  height="100px" /></a>
-                                                 <a class="" href="#" id="lnk_fileEmpImageAttachBack" target="_blank">
-                                                <img src="" id="img_fileEmpImageAttachBack" width="100px"height="100px" title="Passport Image 2"  /></a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#" id="lnk_fileEmpImageAttach" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
+
+                             <div class="col-sm-6" id="imgVisaFrontPhoto">
+	                            <div class="form-row form-group">
+		                            <label for="POST-name" class="fileCss form-row-field ">Visa Image</label>
+		                            <input type="file" id="fileVisaFrontPhoto" ImageID="img_fileVisaFrontPhoto" placeholder=" " accept="image/png, image/gif, image/jpeg" onchange="FileuploadsImage(this)" class="form-row-field-input form-control"> <img src="" id="img_fileVisaFrontPhoto_View" height="75px" style="display:none; margin-left:6%;" />
+		                            <div class="nav-item dropdown img_fileVisaFrontPhoto"> <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
+			                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style=""> <img src="" id="img_fileVisaFrontPhoto" height="175px" />
+				                            <div class="dropdown-divider"></div>
+				                            <a class="dropdown-item" href="#" id="lnk_fileVisaFrontPhoto" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+			                            </div>
+		                            </div>
+	                            </div>
+                            </div>
+                            
+                            <div class="col-sm-6" id="imgVisaFrontPhotolable" style="display:none">
+	                            <div class="form-row form-group"> <img class="Righttext" id="print" style="width:10%; top:5%; left:90%; display:none;" src="" /> </div>
+                            </div>
+                            
+
+                        
+                        
+
+                            <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <label for="POST-name" class="fileCss form-row-field">Passport Issued Date</label>
                                         <input type="date" id="txtEmpPPIssuedDate" placeholder=" " class="form-row-field-input form-control">
@@ -320,16 +338,19 @@
                                         <input type="date" id="txtEmpPPExpDate" placeholder=" " class="form-row-field-input form-control">
                                     </div>
                                 </div>
+                              
+                         
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
-                                        <label for="POST-name" class="fileCss form-row-field">Visa Issued From</label>
-                                        <input type="text" id="txtEmpVisaIssuDate" placeholder=" " class="form-row-field-input form-control">
+                                   <input type="text" id="txtEmpVisaIssuDate" placeholder=" " class="form-row-field-input form-control">
+
+                                        <label for="POST-name" class="form-row-field">Visa Issued From</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <input type="text" id="txtEmpVisaNo" placeholder=" " class="form-row-field-input form-control">
-                                        <label for="POST-name" class="form-row-field">Visa Number</label>
+                                        <label for="POST-name" class="form-row-field">Visa File No</label>
                                     </div>
                                 </div>
                          
@@ -339,27 +360,7 @@
                                         <input type="date" id="txtEmpVisaExpDate" placeholder=" " class="form-row-field-input form-control">
                                     </div>
                                 </div>
-                                       <div class="col-sm-6">
-                                    <div class="form-row form-group">
-                                        <label for="POST-name" class="fileCss form-row-field ">Visa Image Attachment</label>
-                                        <input type="file" id="fileEmpVisaImage" ImageID="img_fileEmpVisaImage" placeholder=" " multiple accept="image/png, image/gif, image/jpeg" onchange="FileuploadsVisaImage(this)" class="form-row-field-input form-control">
-                                          
-                                           <img src="" id="img_fileEmpVisaImageFront_View" height="75px" style="display:none; margin-left:6%;"/>
-                                                <img src="" id="img_fileEmpVisaImageBack_View" height="75px" style="display:none; margin-left:6%;"/>
-                                        <div class="nav-item dropdown img_fileEmpVisaImage">
-                                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
-                                            <input type="hidden" id="hdnfileEmpVisaImage"/>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
-                                                <a class="" href="#" id="lnk_fileEmpVisaImageFront" target="_blank">
-                                                <img src="" id="img_fileEmpVisaImageFront" width="100px" title="Passport Image 1"  height="100px" /></a>
-                                                 <a class="" href="#" id="lnk_fileEmpVisaImageBack" target="_blank">
-                                                <img src="" id="img_fileEmpVisaImageBack" width="100px"height="100px" title="Passport Image 2"  /></a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#" id="lnk_fileEmpVisaImage" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <input type="text" id="txtEmpEIDNo" placeholder=" " class="form-row-field-input form-control">
@@ -382,14 +383,15 @@
                                   <div class="col-sm-6">
                                     <div class="form-row form-group">
                                         <label for="POST-name" class="fileCss form-row-field ">EID Image Attachment</label>
-                                        <input type="file" id="fileEmpEIDImage" ImageID="img_fileEmpEIDImage" accept="image/png, image/gif, image/jpeg" placeholder=" " onchange="FileuploadsImage(this)" class="form-row-field-input form-control">
+                                        <input type="file" id="fileEmpEIDImage" bindid="Bind_EidImages" ImageID="img_fileEmpEIDImage" multiple accept="image/png, image/gif, image/jpeg" placeholder=" " onchange="MultiImagesUpload(this)" class="form-row-field-input form-control">
+                                        <div id="Bind_EidImages" style="padding-left: 25px;display:block"></div>
+                                        
+                                    <input type="hidden" id="hdnEIDPhoto"/>
                                          <img src="" id="img_fileEmpEIDImage_View" height="75px" style="display:none; margin-left:6%;"/>
                                         <div class="nav-item dropdown img_fileEmpEIDImage">
                                             <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false"> View Images </a>
                                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right" style="">
-                                                <img src="" id="img_fileEmpEIDImage" height="175px" />
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#" id="lnk_fileEmpEIDImage" target="_blank"> <i class="fas fa-download mr-2"></i> Download </a>
+                                                <div id="Bind_EidImages_"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -487,6 +489,7 @@
     var Flag = 0;
     $(document).ready(function ()
     {
+        
           $('#Menu_Parameter_master').show();
           $('a.nav-link.Employee_Master').addClass("active");
           $('#Menu_Parameter_master').css({'display':'block'});
@@ -502,7 +505,8 @@
        var empIdG = 0;
     async function BindGrid()
     {
-        debugger;
+        
+        
         var url = '@Url.Action("BindGrid", "Employee_master")';
         var data = {};
         data = await callController(url, data);
@@ -511,6 +515,7 @@
     }
     async function _View(EmpId)
     {
+        
         $('h2.h3.mb-0.text-center').text('Employee Master - View');
         var url = '@Url.Action("BindGrid", "Employee_master")';
         var data = {"EmpId":EmpId};
@@ -525,6 +530,25 @@
         EnableDisble(true, data);
         $("#imgEmpPhoto").css({'display':'block'});
         $("#imgEmpPhotolable").css({'display':'none'});
+        $("#imgVisaBackPhoto").css({'display':'block'});
+        $("#imgVisaBackPhotolable").css({'display':'none'});
+        $("#imgVisaFrontPhoto").css({'display':'block'});
+        $("#imgVisaFrontPhotolable").css({'display':'none'});
+
+        
+
+        $(".img_fileVisaBackPhoto").css({'display':'none'});
+        $("#fileVisaBackPhoto").css({'display':'none'});
+        $("#img_fileVisaBackPhoto_View").css({'display':'block'});
+        $(".img_fileVisaFrontPhoto").css({'display':'none'});
+        $("#fileVisaFrontPhoto").css({'display':'none'});
+        $("#img_fileVisaFrontPhoto_View").css({'display':'block'});
+        $(".img_filePassportBackPhoto").css({'display':'none'});
+        $("#filePassportBackPhoto").css({'display':'none'});
+        $("#img_filePassportBackPhoto_View").css({'display':'block'});
+        $(".img_filePassportFrontPhoto").css({'display':'none'});
+        $("#filePassportFrontPhoto").css({'display':'none'});
+        $("#img_filePassportFrontPhoto_View").css({'display':'bolck'});
         $("#print").css({'display':'block'});
     }
     function printResult1() {
@@ -551,12 +575,32 @@
 }
     async function _Delete(EmpId)
     {
+        
         $("#imgEmpPhoto").css({'display':'block'});
         $("#imgEmpPhotolable").css({'display':'none'});
+        
+        $("#imgVisaBackPhoto").css({'display':'block'});
+        $("#imgVisaBackPhotolable").css({'display':'none'});
+        $("#imgVisaFrontPhoto").css({'display':'block'});
+        $("#imgVisaFrontPhotolable").css({'display':'none'});
+
+
+        $(".img_fileVisaBackPhoto").css({'display':'none'});
+        $("#fileVisaBackPhoto").css({'display':'none'});
+        $("#img_fileVisaBackPhoto_View").css({'display':'block'});
+        $(".img_fileVisaFrontPhoto").css({'display':'none'});
+        $("#fileVisaFrontPhoto").css({'display':'none'});
+        $("#img_fileVisaFrontPhoto_View").css({'display':'block'});
+        $(".img_filePassportBackPhoto").css({'display':'none'});
+        $("#filePassportBackPhoto").css({'display':'none'});
+        $("#img_filePassportBackPhoto_View").css({'display':'block'});
+        $(".img_filePassportFrontPhoto").css({'display':'none'});
+        $("#filePassportFrontPhoto").css({'display':'none'});
+        $("#img_filePassportFrontPhoto_View").css({'display':'block'});
         var data = {"EmpId":EmpId};
         var url = '@Url.Action("BindGrid", "Employee_master")';
         data = await callController(url, data);
-        debugger;
+        
          await GridShow(2)
         Flag = 3;
         empIdG = EmpId;
@@ -569,12 +613,15 @@
     }
     async function EnableDisble(type,data)
     {
+        
         $('#txtEmpVisaIssuDate').val('');
         $('#txtEmpVisaNo').val('');
         $('#txtEmpVisaExpDate').val('');
+        $('#txtEmpEmploymentStatus').val('');
         $('#txtEmpEIDNo').val('');
         $('#txtEmpEIDExpDate').val('');
         $('#txtEmpAssetGiven').val('');
+        $('#hdnEIDPhoto').val('');
         $('#txtEmpHousDetails').val('');
         $('#txtEmpLoansGiven').val('');
         $('#txtEmpMobileNo').val('');
@@ -583,8 +630,7 @@
         $('#txtEmpLeaveBalance').val('');
         $('#txtEmpAirTicket').val('');
         $('#txtEmpProbationPeriod').val('');
-        $('#txtEmpEmploymentEndDate').val("");
-        $('#txtEmpEmploymentStatus').val('');
+        $('#txtEmpEmploymentEndDate').val(""); 
         $('#txtEmpEmployeeType').val('');
         $('#txtEmpEmployeeOthers').val('');
         $('#txtEmpName').val('');
@@ -625,16 +671,17 @@
         
         $('#txtEmpName').val(data[0].empName);
         $('#txtEmpCode').val(data[0].empCode);
-        $('#ddlGender').val(1);
+       // $('#ddlGender').val(1);
         $('#txtEmpDesignation').val(data[0].empDesignation);
         $('#txtEmpDepartment').val(data[0].empDepartment);
+        
         if(data[0].empPhoto!=""||data[0].empPhoto!=null)
         {
             $('#lnk_fileEmpPhoto').attr("href",data[0].empPhoto);
-            $('#img_fileEmpPhoto').attr("src",data[0].empPhoto);
+            $('#img_fileEmpPhoto').attr("src","@AppHostName"+data[0].empPhoto);
             $('.img_fileEmpPhoto').show();
             $('#img_fileEmpPhoto_View').show();            
-            $('#img_fileEmpPhoto_View').attr("src",data[0].empPhoto);
+            $('#img_fileEmpPhoto_View').attr("src","@AppHostName"+data[0].empPhoto);
         }
         else
         {
@@ -643,7 +690,72 @@
             $('.img_fileEmpPhoto').show();            
             $('#img_fileEmpPhoto_View').attr("src","");
              $('#img_fileEmpPhoto_View').hide();
+        } 
+        //if(data[0].empPassPortFrontImage!=""||data[0].empPassPortFrontImage!=null)
+        //{
+        //    $('#lnk_filePassportFrontPhoto').attr("href",data[0].empPassPortFrontImage);
+        //    $('#img_filePassportFrontPhoto').attr("src","@AppHostName"+data[0].empPassPortFrontImage);
+        //    $('.img_filePassportFrontPhoto').show();
+        //    $('#img_filePassportFrontPhoto_View').show();            
+        //    $('#img_filePassportFrontPhoto_View').attr("src","@AppHostName"+data[0].empPassPortFrontImage);
+        //}
+        //else
+        //{
+        //    $('#lnk_filePassportFrontPhoto').attr("href","");
+        //    $('#img_filePassportFrontPhoto').attr("src","");
+        //    $('.img_filePassportFrontPhoto').show();            
+        //    $('#img_filePassportFrontPhoto_View').attr("src","");
+        //     $('#img_filePassportFrontPhoto_View').hide();
+        //}
+        //if(data[0].empPassPortBackImage!=""||data[0].empPassPortBackImage!=null)
+        //{
+        //    $('#lnk_filePassportBackPhoto').attr("href",data[0].empPassPortBackImage);
+        //    $('#img_filePassportBackPhoto').attr("src","@AppHostName"+data[0].empPassPortBackImage);
+        //    $('.img_filePassportBackPhoto').show();
+        //    $('#img_filePassportBackPhoto_View').show();            
+        //    $('#img_filePassportBackPhoto_View').attr("src","@AppHostName"+data[0].empPassPortBackImage);
+        //}
+        //else
+        //{
+        //    $('#lnk_filePassportBackPhoto').attr("href","");
+        //    $('#img_filePassportBackPhoto').attr("src","");
+        //    $('.img_filePassportBackPhoto').show();            
+        //    $('#img_filePassportBackPhoto_View').attr("src","");
+        //     $('#img_filePassportBackPhoto_View').hide();
+        //}
+          if(data[0].empVisaFrontImage!=""||data[0].empVisaFrontImage!=null)
+        {
+            $('#lnk_fileVisaFrontPhoto').attr("href",data[0].empVisaFrontImage);
+            $('#img_fileVisaFrontPhoto').attr("src","@AppHostName"+data[0].empVisaFrontImage);
+            $('.img_fileVisaFrontPhoto').show();
+            $('#img_fileVisaFrontPhoto_View').show();            
+            $('#img_fileVisaFrontPhoto_View').attr("src","@AppHostName"+data[0].empVisaFrontImage);
         }
+        else
+        {
+            $('#lnk_fileVisaFrontPhoto').attr("href","");
+            $('#img_fileVisaFrontPhoto').attr("src","");
+            $('.img_fileVisaFrontPhoto').show();            
+            $('#img_fileVisaFrontPhoto_View').attr("src","");
+             $('#img_fileVisaFrontPhoto_View').hide();
+        }
+        if(data[0].empVisaBackImage!=""||data[0].empVisaBackImage!=null)
+        {
+            $('#lnk_fileVisaBackPhoto').attr("href",data[0].empVisaBackImage);
+            $('#img_fileVisaBackPhoto').attr("src","@AppHostName"+data[0].empVisaBackImage);
+            $('.img_fileVisaBackPhoto').show();
+            $('#img_fileVisaBackPhoto_View').show();            
+            $('#img_fileVisaBackPhoto_View').attr("src","@AppHostName"+data[0].empVisaBackImage);
+        }
+        else
+        {
+            $('#lnk_fileVisaBackPhoto').attr("href","");
+            $('#img_fileVisaBackPhoto').attr("src","");
+            $('.img_fileVisaBackPhoto').show();            
+            $('#img_fileVisaBackPhoto_View').attr("src","");
+             $('#img_fileVisaBackPhoto_View').hide();
+        }
+
 
        
         $('#print .picture').html('<img src="'+data[0].empPhoto+'" />');
@@ -664,6 +776,7 @@
         $('#txtEmpJobLoc').val(data[0].empJobLocation);
        // $('#ddlCostCenter').val(data[0].empCostCentreId);
         $('#ddlCostCenter').val(data[0].empCostCenter); 
+        $('#ddlGender').val(data[0].empGenderId); 
         if(data[0].empDob!=null &&  data[0].empDob!="")
             $('#txtEmpDOB').val(data[0].empDob.slice(0,10));
         else
@@ -682,54 +795,63 @@
         $('#txtEmpPPNo').val(data[0].empPpNo); 
         $('#hdnfileEmpVisaImage').val(data[0].empVisaImageAttachment);
         $('#hdnfileEmpImageAttach').val(data[0].empPpImageAttachment);
-        var _splitimg=data[0].empPpImageAttachment.split("&&");
-        if(data[0].empPpImageAttachment!=""||data[0].empPpImageAttachment!=null)
+      debugger
+           if(data[0].empPassPortFrontImage!=""||data[0].empPassPortFrontImage!=null)
         {
-            $('#lnk_fileEmpImageAttachFront').attr("href",_splitimg[0]);
-            $('#img_fileEmpImageAttachFront').attr("src",_splitimg[0]);
-            $('.img_fileEmpImageAttach').show();   
-            $('#lnk_fileEmpImageAttachBack').attr("href",_splitimg[1]);
-            $('#img_fileEmpImageAttachBack').attr("src",_splitimg[1]);
-            $('#img_fileEmpImageAttachBack_View').attr("src",_splitimg[1]);
-            $('#img_fileEmpImageAttachFront_View').attr("src",_splitimg[0]);
-            $('.img_fileEmpImageAttach').show();
+              $('#hdnPassportFrontPhoto').val(data[0].empPassPortFrontImage)
+              var _splitimg=data[0].empPassPortFrontImage;
+              var IDS="bindPassortImages";
+              ImagesBind(_splitimg.split("&&"),IDS)    
+              var IDS="bindPassortImages_";
+              ImagesBind(_splitimg.split("&&"),IDS)
+        }
+        //if(data[0].empPpImageAttachment!=""||data[0].empPpImageAttachment!=null)
+        //{
+        //    $('#lnk_fileEmpImageAttachFront').attr("href",_splitimg[0]);
+        //    $('#img_fileEmpImageAttachFront').attr("src",_splitimg[0]);
+        //    $('.img_fileEmpImageAttach').show();   
+        //    $('#lnk_fileEmpImageAttachBack').attr("href",_splitimg[1]);
+        //    $('#img_fileEmpImageAttachBack').attr("src",_splitimg[1]);
+        //    $('#img_fileEmpImageAttachBack_View').attr("src",_splitimg[1]);
+        //    $('#img_fileEmpImageAttachFront_View').attr("src",_splitimg[0]);
+        //    $('.img_fileEmpImageAttach').show();
 
-        }
-        else
-        {
-            $('#lnk_fileEmpImageAttachFront').attr("href","");
-            $('#img_fileEmpImageAttachFront').attr("src","");
-            $('.img_fileEmpImageAttach').show();
-            $('#lnk_fileEmpImageAttachBack').attr("href","");
-            $('#img_fileEmpImageAttachBack').attr("src","");
-            $('.img_fileEmpImageAttach').show();
-            $('#img_fileEmpImageAttachBack_View').attr("src","");
-            $('#img_fileEmpImageAttachFront_View').attr("src","");
-        }
-        _splitimg=data[0].empVisaImageAttachment.split("&&");
-         if(data[0].empVisaImageAttachment!=""||data[0].empVisaImageAttachment!=null)
-        {
-            $('#lnk_fileEmpVisaImageFront').attr("href",_splitimg[0]);
-            $('#img_fileEmpVisaImageFront').attr("src",_splitimg[0]);
-            $('.img_fileEmpVisaImage').show();   
-            $('#lnk_fileEmpVisaImageBack').attr("href",_splitimg[1]);
-            $('#img_fileEmpVisaImageBack').attr("src",_splitimg[1]);
-            $('#img_fileEmpVisaImageBack_View').attr("src",_splitimg[1]);
-            $('#img_fileEmpVisaImageFront_View').attr("src",_splitimg[0]);
-            $('.img_fileEmpVisaImage').show();
+        //}
+        //else
+        //{
+        //    $('#lnk_fileEmpImageAttachFront').attr("href","");
+        //    $('#img_fileEmpImageAttachFront').attr("src","");
+        //    $('.img_fileEmpImageAttach').show();
+        //    $('#lnk_fileEmpImageAttachBack').attr("href","");
+        //    $('#img_fileEmpImageAttachBack').attr("src","");
+        //    $('.img_fileEmpImageAttach').show();
+        //    $('#img_fileEmpImageAttachBack_View').attr("src","");
+        //    $('#img_fileEmpImageAttachFront_View').attr("src","");
+        //}
+        ////_splitimg=data[0].empVisaImageAttachment.split("&&");
+        // if(data[0].empVisaImageAttachment!=""||data[0].empVisaImageAttachment!=null)
+        //{
+        //    $('#lnk_fileEmpVisaImageFront').attr("href",_splitimg[0]);
+        //    $('#img_fileEmpVisaImageFront').attr("src",_splitimg[0]);
+        //    $('.img_fileEmpVisaImage').show();   
+        //    $('#lnk_fileEmpVisaImageBack').attr("href",_splitimg[1]);
+        //    $('#img_fileEmpVisaImageBack').attr("src",_splitimg[1]);
+        //    $('#img_fileEmpVisaImageBack_View').attr("src",_splitimg[1]);
+        //    $('#img_fileEmpVisaImageFront_View').attr("src",_splitimg[0]);
+        //    $('.img_fileEmpVisaImage').show();
 
-        }
-        else
-        {
-            $('#lnk_fileEmpVisaImageFront').attr("href","");
-            $('#img_fileEmpVisaImageFront').attr("src","");
-            $('.img_fileEmpVisaImage').show();
-            $('#lnk_fileEmpVisaImageBack').attr("href","");
-            $('#img_fileEmpVisaImageBack').attr("src","");
-            $('.img_fileEmpVisaImage').show();
-            $('#img_fileEmpVisaImageBack_View').attr("src","");
-            $('#img_fileEmpVisaImageFront_View').attr("src","");
-        }
+        //}
+        //else
+        //{
+        //    $('#lnk_fileEmpVisaImageFront').attr("href","");
+        //    $('#img_fileEmpVisaImageFront').attr("src","");
+        //    $('.img_fileEmpVisaImage').show();
+        //    $('#lnk_fileEmpVisaImageBack').attr("href","");
+        //    $('#img_fileEmpVisaImageBack').attr("src","");
+        //    $('.img_fileEmpVisaImage').show();
+        //    $('#img_fileEmpVisaImageBack_View').attr("src","");
+        //    $('#img_fileEmpVisaImageFront_View').attr("src","");
+        //}
         //if(data[0].empVisaImageAttachment!=""||data[0].empVisaImageAttachment!=null)
         //{
         //    $('#lnk_fileEmpVisaImage').attr("href",data[0].empVisaImageAttachment);
@@ -746,18 +868,31 @@
         //}
         if(data[0].empEidImageAttachment!=""||data[0].empEidImageAttachment!=null)
         {
-            $('#lnk_fileEmpEIDImage').attr("href",data[0].empEidImageAttachment);
-            $('#img_fileEmpEIDImage').attr("src",data[0].empEidImageAttachment);
-            $('.img_fileEmpEIDImage').show();
-            $('#img_fileEmpEIDImage_View').show();            
-            $('#img_fileEmpEIDImage_View').attr("src",data[0].empEidImageAttachment);
+            $('#hdnEIDPhoto').val(data[0].empEidImageAttachment)
+              var _splitimg=data[0].empEidImageAttachment;
+                var IDS="Bind_EidImages";
+              ImagesBind(_splitimg.split("&&"),IDS)
+              var IDS="Bind_EidImages_";
+              ImagesBind(_splitimg.split("&&"),IDS)           
+
         }
-        else
-        {
-            $('#lnk_fileEmpEIDImage').attr("href","");
-            $('#img_fileEmpEIDImage').attr("src","");
-            $('.img_fileEmpEIDImage').show();
-        }
+        
+         
+        //if(data[0].empEidImageAttachment!=""||data[0].empEidImageAttachment!=null)
+        //{
+        //    $('#lnk_fileEmpEIDImage').attr("href",data[0].empEidImageAttachment);
+        //    $('#img_fileEmpEIDImage').attr("src","@AppHostName"+data[0].empEidImageAttachment);
+        //    $('.img_fileEmpEIDImage').show();
+        //    $('#img_fileEmpEIDImage_View').show();            
+        //    $('#img_fileEmpEIDImage_View').attr("src","@AppHostName"+data[0].empEidImageAttachment);
+        //}
+        //else
+        //{
+        //    $('#lnk_fileEmpEIDImage').attr("href","");
+        //    $('#img_fileEmpEIDImage').attr("src","");
+        //    $('.img_fileEmpEIDImage').show();
+        //}
+
         $('#txtEmpVisaIssuDate').val(data[0].empVisaIssuedFrom);
         $('#txtEmpVisaNo').val(data[0].empVisaNo);
         $('#txtEmpVisaExpDate').val(data[0].empVisaExpDt);
@@ -777,7 +912,7 @@
         }
         else
             $('#txtEmpEmploymentEndDate').val("");
-        $('#txtEmpEmploymentStatus').val(data[0].empLeaveBalance);
+        $('#txtEmpEmploymentStatus').val(data[0].empEmploymentStatus);
         $('#txtEmpEmployeeType').val(data[0].empType);
         $('#txtEmpEmployeeOthers').val(data[0].empOthers1);
         $('#txtEmpName').prop('disabled', type);
@@ -884,10 +1019,36 @@
         data=data.employeeMasterResponse;
         $("#imgEmpPhoto").css({'display':'block'});
         $("#imgEmpPhotolable").css({'display':'none'});
-        $('h2.h3.mb-0.text-center').text('Employee Master - Edit');
+        
+        $("#imgVisaBackPhoto").css({'display':'block'});
+        $("#imgVisaBackPhotolable").css({'display':'none'});
+        $("#imgVisaFrontPhoto").css({'display':'block'});
+        $("#imgVisaFrontPhotolable").css({'display':'none'});
+        $("#bindPassortImages").css({'display':'block'});
+        $("#Bind_EidImages").css({'display':'none'});
+
+
+        
+
+     
         $('#_btnSubmit').show();
         EnableDisble(false,data);
         $("#print").css({'display':'none'});
+           $(".img_fileVisaBackPhoto").css({'display':'block'});
+        $("#fileVisaBackPhoto").css({'display':'block'});
+        $("#img_fileVisaBackPhoto_View").css({'display':'none'});
+        $(".img_fileVisaFrontPhoto").css({'display':'block'});
+        $("#fileVisaFrontPhoto").css({'display':'block'});
+        $("#bindPassortImages").css({'display':'none'});
+        $("#img_fileVisaFrontPhoto_View").css({'display':'none'});
+        //$(".img_filePassportBackPhoto").css({'display':'block'});
+        //$("#filePassportBackPhoto").css({'display':'block'});
+        //$("#img_filePassportBackPhoto_View").css({'display':'none'});
+        //$(".img_filePassportFrontPhoto").css({'display':'block'});
+       // $("#filePassportFrontPhoto").css({'display':'block'});
+        //$("#img_filePassportFrontPhoto_View").css({'display':'none'});
+        $('h2.h3.mb-0.text-center').text('Employee Master - Edit');
+            $('#txtEmpEmploymentStatus').val(data[0].empEmploymentStatus);
     }
     async function GridShow(Flag)
     {
@@ -916,8 +1077,10 @@
     }
     async function BindCostCenter()
     {
+        
            var url = '@Url.Action("BindGrid", "Cost_Center_Master")';
         var data = {"csId":0};
+
         data = await callController(url, data);
         console.log(data)
         $.each(data.costCenterResponse, function (res, value) {
@@ -926,7 +1089,7 @@
     }
     function Gridappend(data)
     {
-        debugger;
+        
         var item = '';
         var Arr;
         if (data!=undefined)
@@ -963,14 +1126,16 @@
     }
     async function IUDEmpDetails(empId)
     {
+
         debugger;
+        
         var empid=0;
         var txtEmpName=$('#txtEmpName').val();
         var txtEmpCode=$('#txtEmpCode').val();
         var ddlGender=$('#ddlGender').val();
         var ddlDesignation=$('#txtEmpDesignation').val();
         var ddlEmpDept=$('#txtEmpDepartment').val();
-        var fileEmpPhoto=$('#fileEmpPhoto')[0].files.length ? $('#fileEmpPhoto')[0].files[0].name : "";
+        //var fileEmpPhoto=$('#fileEmpPhoto')[0].files.length ? $('#fileEmpPhoto')[0].files[0].name : "";
         var txtEmpNation=$('#txtEmpNation').val();
         var txtEmpJoinDate=$('#txtEmpJoinDate').val();
         var txtEmpMonthSal=$('#txtEmpMonthSal').val();
@@ -982,14 +1147,14 @@
         var txtEmpPPNo=$('#txtEmpPPNo').val();
         var txtEmpPPIssuedDate=$('#txtEmpPPIssuedDate').val();
         var txtEmpPPExpDate=$('#txtEmpPPExpDate').val();
-        var fileEmpImageAttach=$('#fileEmpImageAttach')[0].files.length ? $('#fileEmpImageAttach')[0].files[0].name : "";
+        //var fileEmpImageAttach=$('#fileEmpImageAttach')[0].files.length ? $('#fileEmpImageAttach')[0].files[0].name : "";
         var txtEmpVisaIssuDate=$('#txtEmpVisaIssuDate').val();
         var txtEmpVisaNo=$('#txtEmpVisaNo').val();
         var txtEmpVisaExpDate=$('#txtEmpVisaExpDate').val();
-        var fileEmpVisaImage=$('#fileEmpVisaImage')[0].files.length ? $('#fileEmpVisaImage')[0].files[0].name : "";
+        //var fileEmpVisaImage=$('#fileEmpVisaImage')[0].files.length ? $('#fileEmpVisaImage')[0].files[0].name : "";
         var txtEmpEIDNo=$('#txtEmpEIDNo').val();
         var txtEmpEIDExpDate=$('#txtEmpEIDExpDate').val();
-        var fileEmpEIDImage= $('#fileEmpEIDImage')[0].files.length ? $('#fileEmpEIDImage')[0].files[0].name : "";
+        //var fileEmpEIDImage= $('#hdnEIDPhoto')[0].files.length ? $('#hdnEIDPhoto')[0].files[0].name : "";
         var txtEmpAssetGiven=$('#txtEmpAssetGiven').val();
         var txtEmpHousDetails=$('#txtEmpHousDetails').val();
         var txtEmpLoansGiven=$('#txtEmpLoansGiven').val();
@@ -1007,20 +1172,24 @@
            if(txtEmpCostCenter=="0")
         {
             toastr.warning("Please select the  cost center .");
+            $('#ddlCostCenter').focus()
             return false;
         }
         if(txtEmpName=="")        {
-            toastr.warning("Please enter the employee name.");
+            toastr.warning("Please enter the name.");
+            $('#txtEmpName').focus()
             return false;
         }
         if(txtEmpCode=="")
         {
-            toastr.warning("Please enter the employee code.")
+            toastr.warning("Please enter the code.");
+            $('#txtEmpCode').focus()
             return false;
         }
          if(ddlGender=="")
         {
             toastr.warning("Please enter the gender.");
+             $('#ddlGender').focus()
             return false;
         }
         // if(ddlDesignation=="")
@@ -1204,7 +1373,7 @@
         "Empid": empIdG,
         "EmpCode": txtEmpCode,
         "EmpName": txtEmpName,
-        "EmpGenderId": ddlGender,
+        "EmpGenderId": $('#ddlGender').val(),
         "EmpDesignation": ddlDesignation,
         "EmpDepartment":ddlEmpDept,
         "EmpNationality": txtEmpNation,
@@ -1219,6 +1388,10 @@
         "EmpPpIssuedDate": txtEmpPPIssuedDate,
         "EmpPpExpirationDate": txtEmpPPExpDate,
         "EmpPhoto":$('#lnk_fileEmpPhoto').attr('href'),
+        "EmpPassPortFrontImage":$('#hdnPassportFrontPhoto').val(),
+        "EmpPassPortBackImage":$('#lnk_filePassportBackPhoto').attr('href'),
+        "EmpVisaFrontImage":$('#lnk_fileVisaFrontPhoto').attr('href'),
+        "EmpVisaBackImage":$('#lnk_fileVisaBackPhoto').attr('href'),
         "EmpPpImageAttachment": $('#hdnfileEmpImageAttach').val(),
         "EmpVisaIssuedFrom": txtEmpVisaIssuDate,
         "EmpVisano": txtEmpVisaNo,
@@ -1226,7 +1399,7 @@
         "EmpVisaImageAttachment": $('#hdnfileEmpVisaImage').val(),
         "EmpEidno": txtEmpEIDNo,
         "EmpEidexpDt": txtEmpEIDExpDate,
-        "EmpEidImageAttachment": $('#lnk_fileEmpEIDImage').attr('href'),
+        "EmpEidImageAttachment": $('#hdnEIDPhoto').val(),
         "EmpAssetsGiven": txtEmpAssetGiven,
         "EmpHousingDetails": txtEmpHousDetails,
         "EmpLoansGiven": txtEmpLoansGiven,
@@ -1294,10 +1467,143 @@
             }
         });
     }
-    var _imgPassport="";
-     function FileuploadsPassportImage(obj)
+    var _imgVisa="";
+    
+        var _MultiImages="";
+      async   function MultiImagesUpload(obj)
     {
-        if($(obj)[0].files.length == 2){
+        _MultiImages="";
+        
+        var Image_ID = $(obj).attr("bindid");
+        var link_ID = $(obj).attr("ID");
+        if($(obj)[0].files.length < 3){
+        var j=0;
+        for(var i=0;i < $(obj)[0].files.length;i++ )
+        { 
+        var data = new FormData();
+        data.append("formFile", $(obj)[0].files[i]);
+        data.append("formPath", "test");
+        var url = '@Url.Action("FileUpload", "Employee_Master")';
+        
+      await  $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            console.log(result);
+            if (result.status == "success")
+            {
+                
+                j=j+1;
+                if(j==1){
+                    //$("#img_fileEmpImageAttachFront").attr('src', result.fileName);
+                    _MultiImages += result.fileName;
+                }                    
+                else{
+                    //$("#img_fileEmpImageAttachBack").attr('src', result.fileName);
+                    _MultiImages +="&&"+result.fileName;
+                }
+                $('#hdnEIDPhoto').val(_MultiImages);
+                 
+            }
+            else
+            {
+                    $("."+Image_ID).hide();
+            }
+        });
+        }
+        
+        console.log('NUHUH',_MultiImages);
+        ImagesBind(_MultiImages.split("&&"),Image_ID)
+        }
+        else
+        {$(obj).val('');
+             toastr.error('maximum 2 images only allowed.');
+        }
+    }
+      var _MultiPassportImages="";
+      async   function MultiPassportImagesUpload(obj)
+    {
+        _MultiPassportImages="";
+        
+        var Image_ID = $(obj).attr("bindid");
+        var link_ID = $(obj).attr("ID");
+        if($(obj)[0].files.length < 3){
+        var j=0;
+        for(var i=0;i < $(obj)[0].files.length;i++ )
+        { 
+        var data = new FormData();
+        data.append("formFile", $(obj)[0].files[i]);
+        data.append("formPath", "test");
+        var url = '@Url.Action("FileUpload", "Employee_Master")';
+        
+      await  $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            console.log(result);
+            if (result.status == "success")
+            {
+                
+                j=j+1;
+                if(j==1){
+                    //$("#img_fileEmpImageAttachFront").attr('src', result.fileName);
+                    _MultiPassportImages += result.fileName;
+                }                    
+                else{
+                    //$("#img_fileEmpImageAttachBack").attr('src', result.fileName);
+                    _MultiPassportImages +="&&"+result.fileName;
+                }
+               
+                $('#hdnPassportFrontPhoto').val(_MultiPassportImages);
+                
+            }
+            else
+            {
+                    $("."+Image_ID).hide();
+            }
+        });
+        }
+        
+        console.log('NUHUH',_MultiPassportImages);
+        ImagesBind(_MultiPassportImages.split("&&"),Image_ID)
+        }
+        else
+        {$(obj).val('');
+             toastr.error('maximum 2 images only allowed.');
+        }
+    }
+    function ImagesBind(Data,IDS){
+        var rows ="";
+        try{
+        var urls="@AppHostName";
+        for(var i=0;i<Data.length;i++){
+            rows +='<a target="_blank"  href="'+urls+Data[i]+'"> <img  height="75px" src="'+urls+Data[i]+'"/> </a> ';
+        }
+        }catch{}
+        $('#'+IDS).html('').append(rows);
+        $('#'+IDS+'_').html('').append(rows);
+
+    }
+      function ImagesclassBind(Data,IDS){
+        var rows ="";
+        try{
+        var urls="@AppHostName";
+        for(var i=0;i<Data.length;i++){
+            rows +='<a href="'+urls+Data[i]+'" <img  height="75px" src="'+urls+Data[i]+'"/> </a> ';
+        }
+        }catch{}
+        $('.'+IDS).html('').append(rows);
+
+    }
+     function FileuploadsVisaImage(obj)
+    {
+        if($(obj)[0].files.length < 2){
             var j=0;
         for(var i=0;i < $(obj)[0].files.length;i++ ){
 
@@ -1319,17 +1625,17 @@
             console.log(result);
             if (result.status == "success")
             {
-                debugger;
+                
                 j=j+1;
                 if(j==1){
                     $("#img_fileEmpImageAttachFront").attr('src', result.fileName);
-                    _imgPassport += result.fileName;
+                    _imgVisa += result.fileName;
                 }                    
                 else{
                     $("#img_fileEmpImageAttachBack").attr('src', result.fileName);
-                    _imgPassport +="&&"+result.fileName;
+                    _imgVisa +="&&"+result.fileName;
                 }
-                $('#hdnfileEmpImageAttach').val(_imgPassport);
+                $('#hdnfileEmpImageAttach').val(_imgVisa);
                 $("#lnk_"+link_ID).attr('href', result.fileName);
                 $("."+Image_ID).show();
             }
@@ -1368,17 +1674,17 @@
             console.log(result);
             if (result.status == "success")
             {
-                debugger;
+                
                 j=j+1;
                 if(j==1){
                     $("#img_fileEmpVisaImageFront").attr('src', result.fileName);
-                    _imgPassport += result.fileName;
+                    _imgVisa += result.fileName;
                 }                    
                 else{
                     $("#img_fileEmpVisaImageBack").attr('src', result.fileName);
-                    _imgPassport +="&&"+result.fileName;
+                    _imgVisa +="&&"+result.fileName;
                 }
-                $('#hdnfileEmpVisaImage').val(_imgPassport);
+                $('#hdnfileEmpVisaImage').val(_imgVisa);
                 $("#lnk_"+link_ID).attr('href', result.fileName);
                 $("."+Image_ID).show();
             }

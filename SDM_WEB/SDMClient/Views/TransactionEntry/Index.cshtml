@@ -274,14 +274,15 @@
                                 <div class="col-sm-6">
                                     <div class="form-row form-group">
                                      <select id="txttransactioninstrumenttype" class="form-row-field-input form-control">
-                                          
+                                            <option selected value = "0">Select</option>
+
                                             <option value="1">Cheque</option>
                                             <option value="2">Cash</option>
                                             <option value="3">Telex Trans</option>
                                             <option value="4">Swift</option>
                                             <option value="5">Credit card</option>
                                         </select>
-                                          <label for="POST-name" class="form-row-field">Instrument Type</label>
+                                          <label for="POST-name" class="fileCss form-row-field">Instrument Type</label>
                                     </div>
                                 </div>
 
@@ -846,7 +847,7 @@
         var url = '';
         if(Flag1==2){
         url=  '@Url.Action("Update", "TransactionEntry")';
-        toastr.success('Transaction entry uodated.');
+        toastr.success('Transaction entry updated.');
         }
         else if(Flag1==3){
         url=  '@Url.Action("Delete", "TransactionEntry")';
